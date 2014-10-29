@@ -575,6 +575,170 @@ namespace Merit.Traveller.BMS.Controllers
             }
 
         }
+
+
+        public void getCalendarFirst()
+        {
+            String user_id = Request.Cookies["user_id"].Value;
+            String office_guid = Request.Cookies["officeID"].Value;
+            String password = getPassword();
+            var permitDataServices = getWebPermitDataServices();
+            permit_list_list permitIntray = null;
+            JavaScriptSerializer objSerializer = new JavaScriptSerializer();
+
+            Response.Cookies["permitListDateFrom"].Value = "";
+            Response.Cookies["permitListDateTo"].Value = "";
+            permitIntray = permitDataServices.ws_get_perm_list(user_id, password, "1", office_guid, "", "");
+
+            List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
+
+            if (permitIntray.permit_list_dets.Count() == 0)
+            {
+
+                var keyValues = new Dictionary<string, string>
+                   {
+                       { "permID", " "},
+                       { "varnRef", " "},
+                       { "PermitNo", " "},
+                       { "surname", " "},
+                       { "givenName", " "},
+                       { "PermitClass", " "},
+                       { "NextAction", " "},
+                       { "Status", " "},
+                       { "Finalised", " "},
+                       { "DocumentNumber", " "},
+                       { "DateLodged", " "},
+                       { "Site", " "}
+                   };
+                data.Add(keyValues);
+
+                Response.Write(objSerializer.Serialize(Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() })));
+                //return Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() }, JsonRequestBehavior.AllowGet);
+            }
+            int iterator = 0;
+            for (int i = 0; i < permitIntray.permit_list_dets.Count(); i++)
+            {
+                Response.Cookies["permitListFilterString"].Value = "";
+                if (String.IsNullOrEmpty(permitIntray.permit_list_dets.ElementAt(i).document_no))
+                    permitIntray.permit_list_dets.ElementAt(i).document_no = "none";
+
+                String permitNo = permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString();
+                if (permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString().Equals("0"))
+                    permitNo = "";
+
+                var keyValues = new Dictionary<string, string>
+                        {
+                            { "permID", permitIntray.permit_list_dets.ElementAt(i).permit_guid.ToString()},
+                            { "varnRef", permitIntray.permit_list_dets.ElementAt(i).varn_ref.ToString()},
+                            { "PermitNo", permitNo},
+                            { "surname", permitIntray.permit_list_dets.ElementAt(i).applic_surname_given.Split(' ')[0]},
+                            { "givenName", permitIntray.permit_list_dets.ElementAt(i).given_name.ToString()},
+                            { "PermitClass", permitIntray.permit_list_dets.ElementAt(i).permit_type_class},
+                            { "NextAction", permitIntray.permit_list_dets.ElementAt(i).next_action},
+                            { "Status", permitIntray.permit_list_dets.ElementAt(i).status_outcome},
+                            { "Finalised", permitIntray.permit_list_dets.ElementAt(i).finalised_ind},
+                            { "DocumentNumber", permitIntray.permit_list_dets.ElementAt(i).document_no},
+                            { "DateLodged", permitIntray.permit_list_dets.ElementAt(i).date_lodged.ToString("dd-MMM-yyyy").Split(' ')[0]},
+                            { "Site", permitIntray.permit_list_dets.ElementAt(i).lodged_at_for}
+                        };
+                data.Add(keyValues);
+                iterator++;
+            }
+
+            try
+            {
+                Response.Write(objSerializer.Serialize(Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() })));
+            }
+            catch (Exception ex)
+            {
+                Response.Write(objSerializer.Serialize("Error"));
+            }
+
+        }
+
+        public void getCalendarSecond()
+        {
+            String user_id = Request.Cookies["user_id"].Value;
+            String office_guid = Request.Cookies["officeID"].Value;
+            String password = getPassword();
+            var permitDataServices = getWebPermitDataServices();
+            permit_list_list permitIntray = null;
+            JavaScriptSerializer objSerializer = new JavaScriptSerializer();
+
+            Response.Cookies["permitListDateFrom"].Value = "";
+            Response.Cookies["permitListDateTo"].Value = "";
+            permitIntray = permitDataServices.ws_get_perm_list(user_id, password, "2", office_guid, "", "");
+
+            List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
+
+            if (permitIntray.permit_list_dets.Count() == 0)
+            {
+
+                var keyValues = new Dictionary<string, string>
+                   {
+                       { "permID", " "},
+                       { "varnRef", " "},
+                       { "PermitNo", " "},
+                       { "surname", " "},
+                       { "givenName", " "},
+                       { "PermitClass", " "},
+                       { "NextAction", " "},
+                       { "Status", " "},
+                       { "Finalised", " "},
+                       { "DocumentNumber", " "},
+                       { "DateLodged", " "},
+                       { "Site", " "}
+                   };
+                data.Add(keyValues);
+
+                Response.Write(objSerializer.Serialize(Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() })));
+                //return Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() }, JsonRequestBehavior.AllowGet);
+            }
+            int iterator = 0;
+            for (int i = 0; i < permitIntray.permit_list_dets.Count(); i++)
+            {
+                Response.Cookies["permitListFilterString"].Value = "";
+                if (String.IsNullOrEmpty(permitIntray.permit_list_dets.ElementAt(i).document_no))
+                    permitIntray.permit_list_dets.ElementAt(i).document_no = "none";
+
+                String permitNo = permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString();
+                if (permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString().Equals("0"))
+                    permitNo = "";
+
+                var keyValues = new Dictionary<string, string>
+                        {
+                            { "permID", permitIntray.permit_list_dets.ElementAt(i).permit_guid.ToString()},
+                            { "varnRef", permitIntray.permit_list_dets.ElementAt(i).varn_ref.ToString()},
+                            { "PermitNo", permitNo},
+                            { "surname", permitIntray.permit_list_dets.ElementAt(i).applic_surname_given.Split(' ')[0]},
+                            { "givenName", permitIntray.permit_list_dets.ElementAt(i).given_name.ToString()},
+                            { "PermitClass", permitIntray.permit_list_dets.ElementAt(i).permit_type_class},
+                            { "NextAction", permitIntray.permit_list_dets.ElementAt(i).next_action},
+                            { "Status", permitIntray.permit_list_dets.ElementAt(i).status_outcome},
+                            { "Finalised", permitIntray.permit_list_dets.ElementAt(i).finalised_ind},
+                            { "DocumentNumber", permitIntray.permit_list_dets.ElementAt(i).document_no},
+                            { "DateLodged", permitIntray.permit_list_dets.ElementAt(i).date_lodged.ToString("dd-MMM-yyyy").Split(' ')[0]},
+                            { "Site", permitIntray.permit_list_dets.ElementAt(i).lodged_at_for}
+                        };
+                data.Add(keyValues);
+                iterator++;
+            }
+
+            try
+            {
+                Response.Write(objSerializer.Serialize(Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() })));
+            }
+            catch (Exception ex)
+            {
+                Response.Write(objSerializer.Serialize("Error"));
+            }
+
+        }
+
+
+
+
+
         public JsonResult generateSearchQueryTable(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null, string SearchQuery= "")
         {
             String user_id = Request.Cookies["user_id"].Value;
