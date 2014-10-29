@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempurl.org" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempurl.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempurl.org">
+      <s:element name="ws_get_action_details">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_action_detailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_action_detailsResult" type="tns:action_details" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="action_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_officer_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_officer_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="assign_datetime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="outcome_datetime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="due_datetime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="outcome_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="outcome_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="reason_assigned" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="reason_assigned_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="finalised_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="priority_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="priority" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="position_no" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="after_pos_no" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="in_time_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="escalated_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="division_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="division_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="department_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="department_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="change_due_date" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="change_action_reqd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="change_priority" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="change_action_officer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="skip_time_taken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_format" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_comments" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_get_officer_filters">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filter_type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_officer_filtersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_officer_filtersResult" type="tns:filter_list" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="filter_list">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="filter_det" type="tns:ArrayOfFilter_details" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFilter_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="filter_details" nillable="true" type="tns:filter_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="filter_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="filter_no" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="filter_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="filter_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="filter_share" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="filter_data" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="group_code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_add_action_comment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment_text" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="email_act_officer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email_resp_officer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email_all_officer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="action_required" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="t_action" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_add_action_commentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_add_action_commentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_action_remarks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_action_remarksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_action_remarksResult" type="tns:action_remarks" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="action_remarks">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="act_remark_dets" type="tns:ArrayOfAction_remark_details" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAction_remark_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="action_remark_details" nillable="true" type="tns:action_remark_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="action_remark_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="note_type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="note_datetime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="sub_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="attachment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sent_by" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_add_new_action">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="action_reqd_code" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="due_date" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="reason" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="send_email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="officer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_add_new_actionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_add_new_actionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_reassign_action">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="new_officer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reassign_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reassign_to_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email_responsible_officer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email_old_action_officer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email_new_action_officer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reason" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_reassign_actionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_reassign_actionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_complete_action">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="completed_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comments" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="completed_date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_complete_actionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_complete_actionResult" type="tns:completed_action" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="completed_action">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="position_no_arr" type="tns:ArrayOfInt" />
+          <s:element minOccurs="1" maxOccurs="1" name="position_no" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="act_level_arr" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="reason_assigned" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bypass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="due_date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="priority" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_type" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_triggerdependant_action">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="resp_officer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bypass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="position_no_arr" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="action_type_arr" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="act_type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="position_no" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="officer_type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="due_datetime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_triggerdependant_actionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_triggerdependant_actionResult" type="tns:completed_action" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_action_intray">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="data_group" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="filter_no" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="from_date" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="to_date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_action_intrayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_action_intrayResult" type="tns:action_intray_list" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="action_intray_list">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="action_intray_det" type="tns:ArrayOfAction_intray_details" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAction_intray_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="action_intray_details" nillable="true" type="tns:action_intray_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="action_intray_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="assign_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="assign_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="due_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="due_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="priority" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="assign_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_given_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="service_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="function_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="request_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="request_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="provider" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="provider_notified" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_given_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="division" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="department_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="address_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="location_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="refer_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="in_time_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="escalated_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="posted_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="finalised_ind" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="outcome_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_house_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_street_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_street_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_locality_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_gis_x_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_gis_y_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_house_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_house_suffix" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_street_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_street_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_locality_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_gis_x_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_gis_y_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="facility_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="outcome_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="reason_assigned" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_notified" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="status_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="status_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="count_only" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="centre_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="with_action" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ws_get_action_detailsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_action_details" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_action_detailsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_action_detailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_officer_filtersSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_officer_filters" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_officer_filtersSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_officer_filtersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_add_action_commentSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_add_action_comment" />
+  </wsdl:message>
+  <wsdl:message name="ws_add_action_commentSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_add_action_commentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_action_remarksSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_action_remarks" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_action_remarksSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_action_remarksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_add_new_actionSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_add_new_action" />
+  </wsdl:message>
+  <wsdl:message name="ws_add_new_actionSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_add_new_actionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_reassign_actionSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_reassign_action" />
+  </wsdl:message>
+  <wsdl:message name="ws_reassign_actionSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_reassign_actionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_complete_actionSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_complete_action" />
+  </wsdl:message>
+  <wsdl:message name="ws_complete_actionSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_complete_actionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_triggerdependant_actionSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_triggerdependant_action" />
+  </wsdl:message>
+  <wsdl:message name="ws_triggerdependant_actionSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_triggerdependant_actionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_action_intraySoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_action_intray" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_action_intraySoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_action_intrayResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ws_merit_actionSoap">
+    <wsdl:operation name="ws_get_action_details">
+      <wsdl:input message="tns:ws_get_action_detailsSoapIn" />
+      <wsdl:output message="tns:ws_get_action_detailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_officer_filters">
+      <wsdl:input message="tns:ws_get_officer_filtersSoapIn" />
+      <wsdl:output message="tns:ws_get_officer_filtersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_add_action_comment">
+      <wsdl:input message="tns:ws_add_action_commentSoapIn" />
+      <wsdl:output message="tns:ws_add_action_commentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_action_remarks">
+      <wsdl:input message="tns:ws_get_action_remarksSoapIn" />
+      <wsdl:output message="tns:ws_get_action_remarksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_add_new_action">
+      <wsdl:input message="tns:ws_add_new_actionSoapIn" />
+      <wsdl:output message="tns:ws_add_new_actionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_reassign_action">
+      <wsdl:input message="tns:ws_reassign_actionSoapIn" />
+      <wsdl:output message="tns:ws_reassign_actionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_complete_action">
+      <wsdl:input message="tns:ws_complete_actionSoapIn" />
+      <wsdl:output message="tns:ws_complete_actionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_triggerdependant_action">
+      <wsdl:input message="tns:ws_triggerdependant_actionSoapIn" />
+      <wsdl:output message="tns:ws_triggerdependant_actionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_action_intray">
+      <wsdl:input message="tns:ws_get_action_intraySoapIn" />
+      <wsdl:output message="tns:ws_get_action_intraySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ws_merit_actionSoap" type="tns:ws_merit_actionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ws_get_action_details">
+      <soap:operation soapAction="http://tempurl.org/ws_get_action_details" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_officer_filters">
+      <soap:operation soapAction="http://tempurl.org/ws_get_officer_filters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_add_action_comment">
+      <soap:operation soapAction="http://tempurl.org/ws_add_action_comment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_action_remarks">
+      <soap:operation soapAction="http://tempurl.org/ws_get_action_remarks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_add_new_action">
+      <soap:operation soapAction="http://tempurl.org/ws_add_new_action" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_reassign_action">
+      <soap:operation soapAction="http://tempurl.org/ws_reassign_action" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_complete_action">
+      <soap:operation soapAction="http://tempurl.org/ws_complete_action" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_triggerdependant_action">
+      <soap:operation soapAction="http://tempurl.org/ws_triggerdependant_action" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_action_intray">
+      <soap:operation soapAction="http://tempurl.org/ws_get_action_intray" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ws_merit_actionSoap12" type="tns:ws_merit_actionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ws_get_action_details">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_action_details" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_officer_filters">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_officer_filters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_add_action_comment">
+      <soap12:operation soapAction="http://tempurl.org/ws_add_action_comment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_action_remarks">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_action_remarks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_add_new_action">
+      <soap12:operation soapAction="http://tempurl.org/ws_add_new_action" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_reassign_action">
+      <soap12:operation soapAction="http://tempurl.org/ws_reassign_action" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_complete_action">
+      <soap12:operation soapAction="http://tempurl.org/ws_complete_action" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_triggerdependant_action">
+      <soap12:operation soapAction="http://tempurl.org/ws_triggerdependant_action" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_action_intray">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_action_intray" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ws_merit_action">
+    <wsdl:port name="ws_merit_actionSoap" binding="tns:ws_merit_actionSoap">
+      <soap:address location="http://merit-laptop-3/merit_traveller/ws_merit_action.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ws_merit_actionSoap12" binding="tns:ws_merit_actionSoap12">
+      <soap12:address location="http://merit-laptop-3/merit_traveller/ws_merit_action.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section Sidebar{
+    <div class="sidebar-button"><a href="/"><div class="sidebar-button-text">Help</div></a></div>
+    <div class="sidebar-button"><a href="/ChangePassword/"><div class="sidebar-button-text">Change Password</div></a></div>
+    <div class="sidebar-button"><a href="mailto:support@merit.com.au"><div class="sidebar-button-text">Email</div></a></div>
+    <div class="sidebar-button"><a href="/Account/LogOff/"><div class="sidebar-button-text">Logout</div></a></div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="sidebar-action-Buttons">
+        <b>View Action</b>
+        <table>
+            <tr><td><button onclick ="location.href='/ActionSummary?aid=@ViewBag.actionID'">Summary</button></td></tr>
+            <tr><td><button onclick ="location.href='/ActionUDFs?aid=@ViewBag.actionID'">User Defined Fields</button></td></tr>
+            <tr><td><button onclick ="location.href='/ActionCommentsAttachments?aid=@ViewBag.actionID'">Comments and Attachments</button></td></tr>
+            <tr><td><button onclick ="location.href='/ActionReassign?aid=@ViewBag.actionID'">Reassign</button></td></tr>
+            <tr><td><button onclick ="location.href='/ActionComplete?aid=@ViewBag.actionID'">Complete</button></td></tr>
+        </table>
+    </div>
+}
+
+<h2>View Action</h2>
+
+<h3>Action: @ViewBag.actionID -<b>@ViewBag.name</b></h3>
+
+<fieldset>
+    <br />
+    <legend>category</legend>
+    <span>@ViewBag.category</span>
+</fieldset>
+<br />
+<fieldset>
+    <legend>Action Details</legend>
+    <br />
+    <table>
+        <tr>
+            <td>Date Input</td>
+            <td>Due Date</td>
+            <td>Completed Date</td>
+        </tr>
+        <tr>
+            <td><input type="text" value="@ViewBag.dateInput"/>&nbsp;</td>
+            <td><input type="text" value="@ViewBag.dueDate"/>&nbsp;</td>
+            <td><input type="text" value="@ViewBag.compelteDate"/>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Action Officer</td>
+            <td>Input Officer</td>
+            <td>Completed Outcome</td>
+        </tr>
+        <tr>
+            <td><input type="text" value="@ViewBag.actionOfficer" />&nbsp;</td>
+            <td><input type="text" value="@ViewBag.inputOfficer"/>&nbsp;</td>
+            <td><input type="text" value="@ViewBag.completedOutcome" />&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Priority</td>
+            <td>Reference No.</td>
+            <td>How Received</td>
+        </tr>
+        <tr>
+            <td><input type="text" value="@ViewBag.Priority"/>&nbsp;</td>
+            <td><input type="text" value="@ViewBag.ReferenceNo"/>&nbsp;</td>
+            <td><input type="text" value="@ViewBag.howReceived" />&nbsp;</td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+<fieldset>
+    <legend>Location Address</legend>
+    <br />
+    <table>
+        <tr>
+            <td>Location Address</td>
+            <td>Location Address Descr</td>
+        </tr>
+        <tr>
+             <td><input type="text" value="@ViewBag.locationAddress"/>&nbsp;</td>
+             <td><input type="text" value="@ViewBag.locationAddressDesc"/>&nbsp;</td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+<fieldset>
+    <legend>Customer Details</legend>
+    <br />
+    <table>
+        <tr>
+            <td>Customer Name</td>
+            <td>Company Name</td>
+        </tr>
+        <tr>
+            <td><input type="text" value="@ViewBag.customerName"/>&nbsp;</td>
+             <td><input type="text" value="@ViewBag.companyName" />&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Phone Number</td>
+            <td>Mobile Number</td>
+            <td>Work Number</td>
+        </tr>
+        <tr>
+            <td><input type="text" value="" />&nbsp;</td>
+            <td><input type="text" value="" />&nbsp;</td>
+            <td><input type="text" value="" />&nbsp;</td>
+        </tr>
+        <tr>
+            <td>customer Address</td>
+            <td>Customer Address Descr</td>
+        </tr>
+        <tr>
+            <td><input type="text" />&nbsp;</td>
+            <td><input type="text" />&nbsp;</td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+<fieldset>
+    <legend>Request</legend>
+    <br />
+    <table>
+        <tr>
+            <td>Request Description</td>
+        </tr>
+        <tr>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td>Request Instructions</td>
+        </tr>
+        <tr>
+            <td><input type="text" /></td>
+        </tr>
+    </table>
+</fieldset>

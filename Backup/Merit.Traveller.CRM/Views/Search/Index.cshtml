@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section Sidebar{
+    <div class="sidebar-button"><a href="/"><div class="sidebar-button-text">Help</div></a></div>
+    <div class="sidebar-button"><a href="/ChangePassword/"><div class="sidebar-button-text">Change Password</div></a></div>
+    <div class="sidebar-button"><a href="mailto:support@merit.com.au"><div class="sidebar-button-text">Email</div></a></div>
+    <div class="sidebar-button"><a href="/Account/LogOff/"><div class="sidebar-button-text">Logout</div></a></div>
+}
+
+<h2>Search</h2>
+
+This form will search the database for anything that you type in the below text box.
+
+<table>
+    <tr>
+        <td><input type="text" placeholder="Type a search term here..." data-bind="value: search.searchText, valueUpdate: 'afterkeydown'"/></td>
+        <td>&nbsp;&nbsp;<button class="button" data-bind="click: search.find">Search</button></td>
+    </tr>
+</table>
+
+<img src="/Content/Images/ajax-loader-white.gif" id="searchLoad" />
+<div id="searchResults"></div>
+
+<script type="text/javascript" >
+    ViewModels.search = new SearchViewModel();
+</script>

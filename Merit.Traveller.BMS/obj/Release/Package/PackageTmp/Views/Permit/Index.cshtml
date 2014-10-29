@@ -1,0 +1,162 @@
+﻿@{
+    Layout = "~/Views/Shared/_Permit.cshtml";
+    ViewBag.Title = "Index";
+}
+<div class="processContainer">
+    <h2>Processes (@ViewBag.processes.Count)</h2>
+
+    <table id="processTable">
+        @{
+          <tr id="processTableHeader">
+            <th>Status</th>
+            <th>Process</th>
+        </tr>
+            
+            for (int i = 0; i < ViewBag.processes.Count; i++)
+            {
+                if (ViewBag.processTypes[i] == "ApplicantDetails")
+                {  
+                    <tr class="processRows" onclick ="@Url.Action(ViewBag.processTypes[i],"Permit",new { permitID = ViewBag.guid, dependentID = ViewBag.dependentID })">
+                        <td>
+                            @if (ViewBag.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@ViewBag.processDescs.line_icon[i]</b>-->   
+
+                        </td>
+                        <td class="procDescLineRow"><img src="Content/Images/Icons/applicant.png" />&nbsp; @ViewBag.processDescs.line_txt[i]</td>
+                    </tr>
+                }
+                //sponsor details
+                else if (ViewBag.processTypes[i] == "p999")
+                {
+                    <tr class="processRows" onclick ="@Url.Action(ViewBag.processTypes[i],"Permit",new { permitID = ViewBag.guid, sponsorID = ViewBag.sponsorID })">
+                        <td>
+                            @if (ViewBag.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@ViewBag.processDescs.line_icon[i]</b>-->  
+
+                        </td>
+                        <td class="procDescLineRow"><img src="Content/Images/Icons/sponsor.png" />&nbsp;@ViewBag.processDescs.line_txt[i]</td>
+                    </tr>
+                    
+                }
+                //no sponsor required
+                else if (ViewBag.processTypes[i] == "p998")
+                {
+                    <tr class="processRows" >
+                        <td>
+                            @if (ViewBag.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" /> 
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@ViewBag.processDescs.line_icon[i]</b>-->  
+
+                        </td>
+                        <td class="procDescLineRow"><img src="Content/Images/Icons/sponsor.png" />&nbsp;@ViewBag.processDescs.line_txt[i]</td>
+                    </tr>
+                    
+                }
+                //check requirements
+                else if (ViewBag.processTypes[i] == "p461")
+                {
+                    <tr class="processRows" onclick ="@Url.Action(ViewBag.processTypes[i],"Permit",new { permitID = ViewBag.guid, dependentID = ViewBag.dependentID,intrayID = ViewBag.processes[i] })" >
+                        <td>
+                            @if (ViewBag.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@ViewBag.processDescs.line_icon[i]</b>-->  
+
+                        </td>
+                        <td class="procDescLineRow"><img src="Content/Images/Icons/checkRequirements.png" />&nbsp;@ViewBag.processDescs.line_txt[i]</td>
+                    </tr>
+                    
+                }
+                //make recommendations
+                else if (ViewBag.processTypes[i] == "p462")
+                {
+                    <tr class="processRows" onclick ="@Url.Action(ViewBag.processTypes[i],"Permit",new { permitID = ViewBag.guid, dependentID = ViewBag.dependentID,intrayID = ViewBag.processes[i] })" >
+                        <td>
+                            @if (ViewBag.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@ViewBag.processDescs.line_icon[i]</b>-->  
+
+                        </td>
+                        <td class="procDescLineRow"><img src="Content/Images/Icons/makeRecommendation.png" />&nbsp;@ViewBag.processDescs.line_txt[i]</td>
+                    </tr>
+                    
+                }
+                //make decision
+                else if (ViewBag.processTypes[i] == "p455")
+                {
+                    <tr class="processRows" onclick ="@Url.Action(ViewBag.processTypes[i],"Permit",new { permitID = ViewBag.guid, dependentID = ViewBag.dependentID,intrayID = ViewBag.processes[i] })" >
+                        <td>
+                            @if (ViewBag.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@ViewBag.processDescs.line_icon[i]</b>-->   
+
+                        </td>
+                        <td class="procDescLineRow"><img src="Content/Images/Icons/makeDecision.png" />&nbsp;@ViewBag.processDescs.line_txt[i]</td>
+                    </tr>
+                    
+                }
+                //other
+                else
+                {
+                     <tr class="processRows" onclick ="@Url.Action(ViewBag.processTypes[i],"Permit",new { permitID = ViewBag.guid, noPARAM = "" })">
+                        <td>
+                            @if (ViewBag.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@ViewBag.processDescs.line_icon[i]</b>-->  
+
+                        </td>
+                        <td class="procDescLineRow"><img src="Content/Images/Icons/print.png" />&nbsp;@ViewBag.processDescs.line_txt[i]</td>
+                    </tr>
+                }
+            }  
+            }
+    </table>
+
+</div>
+<input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
+<script type="text/javascript" >
+    ViewModels.permit = new PermitViewModel();
+</script>

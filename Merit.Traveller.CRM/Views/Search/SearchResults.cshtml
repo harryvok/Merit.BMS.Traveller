@@ -1,0 +1,20 @@
+﻿@model Merit.Traveller.CRM.ws_traveller.search_list
+
+<div id="searchResult">
+    <table class="intrayTable" id="srt">
+        <tr class="tableHeaders">
+            <th>Type</th>
+            <th>Description</th>
+            <th>Key ID</th>
+        </tr>
+         @foreach (var searchResult in Model.search_dets)
+         {
+             <tr class="intrayRows" id="requestRows">
+                 <td>@searchResult.result_type</td>
+                 <td>@searchResult.description</td>
+                 <td>@searchResult.key_id</td>
+             </tr>
+         }
+    </table>
+
+</div>

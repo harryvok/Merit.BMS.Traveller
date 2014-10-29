@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_Permit.cshtml";
+    ViewBag.Title = "Check Requirements";
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/ViewModels/CheckRequirementsViewModel.js")"></script>
+}
+
+<div class="processContainer">
+    <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.permit_guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
+<div class="maincontent" id="checkrequirementsformdiv">
+     
+    <h3>Met</h3>
+    <div id="metList"></div>
+    <br />
+    <h3>Not Met</h3>
+    <div id="notMetList"></div>
+
+
+<br />
+
+<div>
+
+
+    <h3>Comments</h3><br />
+    <textarea id="commentsTextArea" class="textArea" data-bind="value: checkRequirements.comments">@ViewBag.checkItems.s_comments</textarea>
+    
+    @{ if (ViewBag.isModifiable !="N"){ 
+        <button type="button" id="notMetButton" class="button" style="background:red" data-bind="click: checkRequirements.requirmentsMetClick.bind($data, 'Y')"><b>Not Met</b></button>  
+        <button type="button" id="metButton" class="button" style="background:green" data-bind="click: checkRequirements.requirmentsMetClick.bind($data, 'N')"><b>Met</b></button>
+
+       }
+    }
+
+</div>
+<br />
+
+
+<div class="float-right">
+  
+</div>
+
+<input type="text" id="hiddenPermitGuidField" hidden value="@ViewBag.guid"/>
+<input type="text" id="hiddenIntrayIDField" hidden value="@ViewBag.intrayID"/>
+<input type="text" id="hiddenDependentIDField" hidden value="@ViewBag.dependentID"/>
+<input type="text" id="hiddenEditable" hidden value="@ViewBag.editable"/>
+</div>
+</div>
+<input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
+<script type="text/javascript" >
+    ViewModels.checkRequirements = new CheckRequirementsViewModel();
+</script>

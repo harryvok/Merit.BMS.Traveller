@@ -1,0 +1,29 @@
+﻿@model Merit.Traveller.BMS.BMS_Web_Admin.ws_change_passwordRequestBody
+
+@{
+    ViewBag.Title = "Change Site";
+}
+
+<div class="maincontent" id="changePasswordContainer">
+<p>
+    Use the form below to change the site. 
+</p>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    <div>
+        <fieldset>
+            
+                <b>Site</b><br />
+            <input name="siteName" value="@Request.Cookies["centralName"].Value" />
+            <br />
+            <p>
+                <input type="submit" value="Change Site" />
+            </p>
+        </fieldset>
+    </div>
+}
+
+    </div>

@@ -1,0 +1,312 @@
+﻿@{
+    Layout = "~/Views/Shared/_Permit.cshtml";
+    ViewBag.Title = "Sponsor";
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/ViewModels/SponsorDetailsViewModel.js")"></script>
+}
+
+<div class="processContainer">
+    <div class="maincontent" id="sponsorformdiv">
+   <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.permit_guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
+    <form id="sponsorDetailsForm">
+        <table id="sponsorForm1">
+            <tr>
+                <td>Find Business</td>
+                <td><input type="text" id="searchInput" name="searchInput" value="@ViewBag.company" data-bind="value: sponsorDetails.searchQuery"/>
+                    <button data-bind="click: sponsorDetails.searchForSponsor"><b>Search</b></button>
+                    <button type="button" class="button" data-bind="click: sponsorDetails.getSponsorDialog"><b>New</b></button>
+                </td>
+            </tr>
+        </table>
+        <br />
+       <hr class="greyhr"/>
+    <br />
+         <div id="sponsorInfo" class="float-right">
+            <b>Company: </b><span id="sponsorCompany">-</span>
+            <br />
+             <div class="formFieldContainer ">
+            <b>Address Details</b>
+            <table>
+                <tr>
+                    <td style="width:12px;"><b>Addr 1:</b></td>
+                    <td><span id="sponsorAddr1">-</span></td>
+                </tr>
+                <tr>
+                    <td><b>Addr 2:</b></td>
+                    <td><span id="sponsorAddr2">-</span></td>
+                </tr>
+                <tr>
+                    <td><b>Addr 3:</b></td>
+                    <td><span id="sponsorAddr3">-</span></td>
+                </tr>
+            </table>
+            <br />
+            <b>Postal Address Details:</b>
+            <table>
+                <tr>
+                    <td style="width:12px;"><b>1:</b></td>
+                    <td><span id="sponsorPAddr1">-</span></td>
+                </tr>
+                <tr>
+                    <td><b>2:</b></td>
+                    <td><span id="sponsorPAddr2">-</span></td>
+                </tr>
+                <tr>
+                    <td><b>3:</b></td>
+                    <td><span id="sponsorPAddr3">-</span></td>
+                </tr>
+            </table>
+            </div>
+             <div class="formFieldContainer ">
+                <b>Contact Details</b>
+                <table>
+                    <tr>
+                        <td style="width:12px;"><b>Email:</b></td>
+                        <td><span id="sponsorEmail">-</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Principal Position:</b></td>
+                        <td><span id="sponsorPrincipalPosition">-</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Title:</b></td>
+                        <td><span id="sponsorTitle">-</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Surname:</b></td>
+                        <td><span id="sponsorSurname">-</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Passport Number:</b></td>
+                        <td><span id="sponsorPassportNumber">-</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Phone:</b></td>
+                        <td><span id="sponsorPhone">-</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Fax:</b></td>
+                        <td><span id="sponsorFax">-</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Given Name:</b></td>
+                        <td><span id="sponsorGiveName">-</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Status:</b></td>
+                        <td><span id="sponsorStatus">-</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="sponsorDialogTable">
+
+        </div>
+        <br>
+        <br>
+       <!--<input type="text" data-bind="value: sponsorDetails.company "/>-->
+        <br />
+        <br />
+        <br />
+        <br />
+        @{
+            if (ViewBag.modify != "N"){
+             <button class="float-right" style="margin-top: -20px;" data-bind="click: sponsorDetails.postSponsor"><b>Post</b></button>   
+            }    
+        
+        }
+        
+        <input type="text" id="hiddenSponsorCompanyName" hidden />
+        <input type="text" id="hiddenSponsorGUID" hidden />
+        <input type="text" id="hiddenSponsorAddress" hidden />
+        <input type="text" id="hiddenSponsorAddress2" hidden />
+        <input type="text" id="hiddenTitleGuid" hidden />
+
+
+    
+        <!-- HIDDEN FIELDS -->
+        <input type="text" hidden="hidden" id="hiddenPermitID" data-bind="value: sponsorDetails.permitID" value="@ViewBag.guid"/>
+        <input type="text" hidden="hidden" id="hiddenSponsorID" data-bind="value: sponsorDetails.sponsorID" value="@ViewBag.sponsorId"/>
+        <input type="text" hidden="hidden" id="hiddenOfficerID" data-bind="value: sponsorDetails.officerID" value="@ViewBag.officerID"/>
+        <input type="text" hidden="hidden" id="hiddenApplicantID" data-bind="value: sponsorDetails.applicantID" value="@ViewBag.applicantID"/>
+
+    </form>
+        </div>
+    </div>
+
+
+<div  id="sponsorDialog">
+
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-6 col-sm-6">
+            <div id="sponsorFormLeft">
+                <!--<b>Name: </b><span>@ViewBag.company</span>-->
+                <div class="formFieldContainer">
+                        <h4>Principal of Business/Person</h4>
+                    <table id="sponsorForm2">
+                        <tr>
+                            <td>Sponsor Name:</td>
+                            <td><input type="text" id="companyInput" name="companyInput" value="@ViewBag.company" data-bind="value: sponsorDetails.company" /></td>
+                        </tr>
+                        <tr>
+                            <td>Position</td>
+                            <td><input type="text" id="positionInput" name="positionInput" value="@ViewBag.position" data-bind="value: sponsorDetails.position" /></td>
+                        </tr>
+                        <tr>
+                            <td>Surname*</td>
+                            <td><input type="text" id="surnameInput" name="surnameInput" value ="@ViewBag.surname" data-bind="value: sponsorDetails.surname"/></td>
+                        </tr>
+                        <tr>    
+                            <td>Given Name*</td>
+                            <td><input type="text" id="givenNameInput" name="givenNameInput" value="@ViewBag.givenName" data-bind="value: sponsorDetails.givenName" /></td>
+                        </tr>
+                        <tr>
+                            <td>Email Address*</td>
+                            <td><input type="text" id="emailAddressInput" name="emailAddressInput" value="@ViewBag.email" data-bind="value: sponsorDetails.email" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="formFieldContainer">
+                         <h4>Location Details</h4>
+                    <table id="sponsorForm3">
+                        <tr>
+                            <td>Address Line 1</td>
+                            <td>
+                                <input type ="text" id="ladd1Input" value="@ViewBag.lAdd1" data-bind="value: sponsorDetails.lAdd1" /></td>
+                        </tr>
+                        <tr>
+                            <td>Address Line 2</td>
+                            <td>
+                                <input type ="text" id="ladd2Input" value="@ViewBag.lAdd2" data-bind="value: sponsorDetails.lAdd2" /></td>
+                        </tr>
+                        <tr>
+                            <td>Address Line 3</td>
+                            <td>
+                                <input type ="text" id="ladd3Input" value="@ViewBag.lAdd3" data-bind="value: sponsorDetails.lAdd3" /></td>
+                        </tr>
+                    </table>
+                 </div>
+                <div class="formFieldContainer">
+                         <h4>Postal Details</h4>
+                    <table id="sponsorForm4">
+                        <tr>
+                            <td>Address Line 1</td>
+                            <td><input type ="text" id="pAdd1Input" value="@ViewBag.pAdd1" data-bind="value: sponsorDetails.pAdd1" /></td>
+                        </tr>
+                        <tr>
+                            <td>Address Line 2</td>
+                            <td><input type ="text" id="pAdd2Input" value="@ViewBag.pAdd2" data-bind="value: sponsorDetails.pAdd2" /></td>
+                        </tr>
+                        <tr>
+                            <td>Address Line 3</td>
+                            <td><input type ="text" id="pAdd3Input" value="@ViewBag.pAdd3" data-bind="value: sponsorDetails.pAdd3" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+        <div class="col-xs-6 col-sm-6">
+            <div id="">
+
+                <div class="formFieldContainer">
+                        <table id="sponsorTable6">
+                       <tr>
+                        <td>Title*</td>
+                        <td>
+                             <select id="titleSelect" name="titleSelect" data-bind="value: sponsorDetails.titleID" >
+                                    <option value="@ViewBag.titleID">@ViewBag.titleName </option>
+                                    @{
+                                        for (int i = 0; i < ViewBag.titles.Count; i++)
+                                        {
+                                            <option value="@ViewBag.titles[i].code_guid">@ViewBag.titles[i].code_desc</option>
+                                        }  
+                                     }
+                                </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Passport Number*</td>
+                        <td><input type="text" id="passportNumInput" name="passportNumInput" value="@ViewBag.passportNum" data-bind="value: sponsorDetails.passportNum"/></td>
+                    </tr>
+
+                   </table>
+                </div>
+
+                <div class="formFieldContainer">
+                    <table id="sponsorTable7">
+                        <tr>
+                            <td>Phone Number</td>
+                            <td>
+                                <input type ="text" id="pNoInput" value="@ViewBag.pNo" data-bind="value: sponsorDetails.pNo" /></td>
+                        </tr>
+                        <tr>
+                            <td>Fax</td>
+                            <td>
+                                <input type ="text" id="faxInput" value="@ViewBag.fax" data-bind="value: sponsorDetails.fax" /></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="formFieldContainer">
+                    <h4>Status Details</h4>
+                    <table id="sponsorForm5">
+                    <tr>
+                        <td>Status*</td>
+                        <td>
+                            <select id="statusSelect" data-bind="value: sponsorDetails.status" >
+                               <option value="@ViewBag.status">@ViewBag.statusName </option>
+                                    @{
+                                        for (int i = 0; i < ViewBag.statuses.Count; i++)
+                                        {
+                                            <option value="@ViewBag.statuses[i].code_guid">@ViewBag.statuses[i].code_desc</option>
+                                        }  
+                                     }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Active?</td>
+                        <td><b id= "activeText" data-bind="value: sponsorDetails.activeInd">@ViewBag.active</b></td>
+                    </tr>
+                    <tr>
+                        <td>Verified?</td>
+                        <td><b id= "verifiedText" data-bind="value: sponsorDetails.verifiedInd">@ViewBag.verified</b></td>
+                    </tr>
+                    <tr>
+                        <td>Project Enabled?</td>
+                        <td><b id= "projEnabledText" data-bind="value: sponsorDetails.projEnabled">@ViewBag.ProjectEnabled</b></td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        </div>
+        <!--/span-->
+    </div>
+
+
+         @{ if (ViewBag.isModifiable != "N")
+            { 
+                <button type="button" class="button float-right" id="processButton" style="margin-top:-20px" data-bind="click: sponsorDetails.processSponsorDetails"><b>Process</b></button>
+            }
+         }
+
+    
+
+    <div id="sponsorList">
+        
+
+        <!--<button id="sponsorOkButton" type="button" class="button" data-bind="click: visaRegistration.closeSponsorWindow">Ok</button>-->
+    </div>
+</div>
+
+
+<input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
+
+<script type="text/javascript" >
+
+    ViewModels.sponsorDetails = new SponsorDetailsViewModel();
+</script>

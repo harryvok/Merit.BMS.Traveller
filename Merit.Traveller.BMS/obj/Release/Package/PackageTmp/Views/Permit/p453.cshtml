@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_Permit.cshtml";
+    ViewBag.Title = ViewBag.title;
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/ViewModels/PrintLetterViewModel.js")"></script>
+}
+
+<div class="processContainer">
+    <div class="maincontent">
+
+        <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.permit_guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-6 col-sm-6">
+                <div id="printletterleft">
+                    <h4>Action Required</h4>
+                    <table >
+                        <tr>
+                            <td><b>Action:</b></td>
+                            <td>@ViewBag.title </td>
+                        </tr>
+                        <tr>
+                            <td><b>Officer:</b></td>
+                            <td>@ViewBag.processingOfficer</td>
+                        </tr>
+                        <tr>
+                            <td><b>Done:</b></td>
+                            <td>[date]</td>
+                        </tr>
+                    </table>
+                    <br />
+                    <h4>Document</h4>
+                    <table id="printDocumentTable">
+                        <tr>
+                            <td><b>Format:</b></td>
+                            <td>[format]</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="col-xs-6 col-sm-6">
+                <div id="">
+                    <h4>Action Taken</h4>
+                    <table >
+                        <tr>
+                            <td><b>File Name:</b> Rejection Lette1 - Visa Branch.pdf</td>
+                        </tr>
+                        <tr>
+                            <td><b>Comments:</b></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea id="comment_txt" class="textArea" data-bind=""></textarea></td>
+                        </tr>
+                         @{ if (ViewBag.isModifiable !="N"){ 
+                                <tr>
+                                    <td>
+                                        <button type="button" class="button float-right" data-bind="click: printletter.openWindow"><b>Print</b></button>
+                                    </td>
+                                </tr>
+                            }
+                         }
+                    </table>
+                </div>
+            </div>
+            <!--/span-->
+        </div>
+
+        <input hidden type="text" id="hiddenPermitGUID" value="@ViewBag.permit_guid"/>
+        <input hidden type="text" id="hiddenIntrayGUID" value="@ViewBag.intrayID"/>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    ViewModels.printletter = new PrintLetterViewModel();
+</script>

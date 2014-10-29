@@ -1,0 +1,78 @@
+﻿@{
+    Layout = "~/Views/Shared/_Permit.cshtml";
+    ViewBag.Title = "Decide Application Approval";
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/ViewModels/MakeRecommendationsViewModel.js")"></script>
+    <script src="@Url.Content("~/Scripts/ViewModels/MakeDecisionViewModel.js")"></script>
+}
+
+<div class="processContainer">
+    <div class="maincontent" id="decisionformdiv">
+    
+        <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.permit_guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-6 col-sm-6">
+                <h4>Details:</h4>
+                <div id="requirementsDetailsDisplay" class="formFieldContainer">
+                    <ul>
+                       @{
+                       
+                           for (int i = 0; i < 3; i++)
+                            {
+                                  <li> @ViewBag.controlText[i]</li>
+                            }  
+                       
+                        }
+                     </ul>
+                </div>
+                <h4>Recommendation:</h4>
+                 
+                <div id="recommendationsDisplay" class="formFieldContainer">
+                    From: <b>@ViewBag.fromText </b><br />
+                    @ViewBag.recommendText
+                </div>
+       
+            </div>
+            <div  class="col-xs-6 col-sm-6">
+               
+                <h4>Decision</h4>
+                <div id="decisionInputFields" class="formFieldContainer">
+                    <table>
+                        <tr>
+                            <td><b>Valid From*</b></td>
+                            <td><b>Valid To*</b></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="validFromDate" value="@ViewBag.validFrom " data-bind="value: makeDecisions.from_date"/></td>
+                            <td><input type="text" id="validToDate" value="@ViewBag.validTo" data-bind="value: makeDecisions.to_date"/></td>
+                        </tr>
+                     </table>
+                    <br />
+                    <table>
+                        <tr><td>comments:</td></tr>
+                        <tr><td><textarea class="textArea" data-bind="value: makeDecisions.comment_txt"></textarea></td></tr>
+                    </table>
+                   @{ if (ViewBag.isModifiable !="N"){ 
+                        <div style="float:right;">
+                            <button type="button" id="declineButton" style="background:red" class="button" data-bind="click: makeDecisions.approvePermit.bind($data, 'D')"><b>Decline</b></button>
+                            <button type="button" id="approveButton" style="background:green" class="button" data-bind="click: makeDecisions.approvePermit.bind($data, 'A')"><b>Approve</b></button>
+                        </div>
+                       }
+                   }
+               </div>
+            </div>
+        </div>
+
+    
+    <br />
+     </div>
+     <input  type="text" hidden id="hiddenIntrayID" value="@ViewBag.intrayID" />
+    <input  type="text" hidden id="hiddenPermitID" value="@ViewBag.guid" />
+    <input  type="text" hidden id="editable" value="@ViewBag.editable" />
+</div>
+<input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
+<script type="text/javascript" >
+    ViewModels.makeDecisions = new MakeDecisionViewModel();
+</script>    

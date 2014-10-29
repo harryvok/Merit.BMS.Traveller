@@ -1,0 +1,1154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempurl.org" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempurl.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempurl.org">
+      <s:element name="ws_complete_action">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="intray_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reject_ind" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="status_date" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="status_time" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="comments" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="officer_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="central_guid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_complete_actionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_complete_actionResult" type="tns:action_return" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="action_return">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="return_message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_new_guid" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_new_visa_reg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="a_params" type="tns:new_visa_inp" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="new_visa_inp">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ws_user_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_office_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_officer_guid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_date_lodged" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_ptype_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_pclass_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_receipt_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_doc_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_nation_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_doc_no" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_expiry_date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_given_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_gender_code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_dob" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_sponsor_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_project_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_comments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_prime_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_head_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_sub_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_checks_guid" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_central_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_current_permit_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_guarantee" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_image_guid" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_new_visa_regResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_new_visa_regResult" type="tns:new_visa_ret" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="new_visa_ret">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="st_permit_guid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="st_permit_no" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="st_varn_ref" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_upd_applicant_dets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="params" type="tns:applicant_dets" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="applicant_dets">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_title_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_given_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_nationality_code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_date_of_birth" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_gender_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_country_of_birth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_place_of_birth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_marital_status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_occupation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_passport_number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_image_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_address_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_address_2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_address_3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_phone_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_email_addr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_file_no" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_file_type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_work_permit_no" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_position_no" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_wp_expiry" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_pp_expiry" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_picture" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_complete_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_pic_txt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_pos_no_reqd_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_work_perm_reqd_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_permit_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_applicant_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_addr_in_country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_officer_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_office_guid" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_upd_applicant_detsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_upd_applicant_detsResult" type="tns:applicant_dets" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_upd_proc_check_dets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="params" type="tns:proc_check_dets" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="proc_check_dets">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_pcheck_guid" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_check_guid" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_officer_guid" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_check_date" type="tns:ArrayOfDateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_receipt_number" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_comments" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_receipt_guid" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_finalised_ind" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_check_desc" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_mandatory_ind" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_n_at_post_ind" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_comments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_officer_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_office_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_central_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_reject_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_for_office_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_permit_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_intray_guid" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDateTime">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="dateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_upd_proc_check_detsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_upd_proc_check_detsResult" type="tns:action_return" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_upd_recommend_dets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="params" type="tns:proc_recommend_dets" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="proc_recommend_dets">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_comments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_officer_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_office_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_central_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_reject_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_permit_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_intray_guid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_valid_from" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_valid_to" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_upd_recommend_detsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_upd_recommend_detsResult" type="tns:action_return" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_upd_sponsor_dets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="params" type="tns:sponsor_dets" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="sponsor_dets">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_sponsor_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_company_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_address_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_address_2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_address_3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_phone_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_fax_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_email_addr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_postal_addr_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_postal_addr_2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_postal_addr_3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_principal_position" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_title_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_given_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_passport_number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_status_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_active_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_verified_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_proj_enabled" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_comment_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_permit_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_applicant_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_officer_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_complete_ind" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_upd_sponsor_detsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_upd_sponsor_detsResult" type="tns:sponsor_dets" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_new_receipt_cntrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="a_params" type="tns:receipt_cntrl_details" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="receipt_cntrl_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ws_user_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_rec_cntrl_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_receipt_no" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_batch_dt" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_batch_bal_ind" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_batch_tot_cnt" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_batch_tot_amt" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_multi_sponsor_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_sponsor_guid" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_new_receipt_cntrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_new_receipt_cntrlResult" type="tns:new_return" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="new_return">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="st_new_guid" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_new_receipt_tot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="a_params" type="tns:receipt_tot_details" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="receipt_tot_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ws_user_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_rec_tot_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_rec_cntrl_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_permit_type_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_permit_class_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_tot_bal_ind" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_given_tot_cnt" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_given_tot_amt" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_pt_tot_cnt" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_pt_tot_amt" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_new_receipt_totResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_new_receipt_totResult" type="tns:new_return" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_new_intray_dets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="a_params" type="tns:intray_details" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="intray_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ws_user_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_intray_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_officer_guid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_intray_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_intray_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_intray_type" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_intray_desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_status_code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_status_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_status_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_read_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_link_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_other_officer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_note_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_permit_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_finalised_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_comments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_office_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_decide_at_central" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_decide_at_post" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_change_date" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_new_intray_detsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_new_intray_detsResult" type="tns:action_return" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_upd_proc_decision_dets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="intray_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="central_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="decision_ind" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="from_date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="to_date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment_txt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_upd_proc_decision_detsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_upd_proc_decision_detsResult" type="tns:proc_decision_details" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="proc_decision_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_from_officer_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_from_officer_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_recommend_txt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_control_txt" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_date_valid_from" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_date_valid_to" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_comment_txt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_final_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_applicant_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_applicant_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_permit_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_ptype_txt" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_check_sponsor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permit_type_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permit_guid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_check_sponsorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_check_sponsorResult" type="tns:ws_result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ws_result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_reassign_action">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="intray_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permit_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comments" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="office_guid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_reassign_actionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_reassign_actionResult" type="tns:ws_result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_print_visa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permit_guid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_print_visaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_print_visaResult" type="tns:visa_print" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="visa_print">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="visa_print_dets" type="tns:ArrayOfVisa_print_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="need_vlid" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVisa_print_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="visa_print_details" nillable="true" type="tns:visa_print_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="visa_print_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="line_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_6" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_7" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_8" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_9" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_10" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_11" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_12" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_13" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_14" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_15" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_16" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_17" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_18" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_19" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_20" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_21" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_22" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_23" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_24" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_25" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_26" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_27" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_28" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_29" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_30" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_31" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_32" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_33" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_34" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_35" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_36" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_37" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_38" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="line_39" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_upd_print_visa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permit_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="intray_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vlid_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="office_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="process_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comments" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="central_guid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_upd_print_visaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_upd_print_visaResult" type="tns:ws_result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_print_reject_letter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permit_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="office_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="intray_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment_txt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="central_guid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_print_reject_letterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_print_reject_letterResult" type="tns:visa_reject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="visa_reject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="applicant_given" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="applicant_surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="applicant_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mission_city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mission_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mission_country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="permit_class" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="permit_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="reject_reason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sponsor_contact_full" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sponsor_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sponsor_name_full" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sponsor_post1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sponsor_post2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sponsor_post3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sponsor_principal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="varn_ref" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="when_lodged" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_upd_perm_vlid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permit_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vlid_series" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="vlid_id" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="office_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="how_used_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comments" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="process_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bypass_comment" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="intray_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="central_guid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_upd_perm_vlidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_upd_perm_vlidResult" type="tns:st_bm_vlid_filter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="st_bm_vlid_filter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="s_vlid_from" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_vlid_to" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_office" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_rdate_f" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_rdate_t" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_used_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_officer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_how_used" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_vlid_guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_return" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_vlid_id" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_comments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_series" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_guid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_upd_vdocs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permit_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="document_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment_txt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="date_returned" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_upd_vdocsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_upd_vdocsResult" type="tns:ws_result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ws_complete_actionSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_complete_action" />
+  </wsdl:message>
+  <wsdl:message name="ws_complete_actionSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_complete_actionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_new_visa_regSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_new_visa_reg" />
+  </wsdl:message>
+  <wsdl:message name="ws_new_visa_regSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_new_visa_regResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_applicant_detsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_upd_applicant_dets" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_applicant_detsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_upd_applicant_detsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_proc_check_detsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_upd_proc_check_dets" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_proc_check_detsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_upd_proc_check_detsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_recommend_detsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_upd_recommend_dets" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_recommend_detsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_upd_recommend_detsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_sponsor_detsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_upd_sponsor_dets" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_sponsor_detsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_upd_sponsor_detsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_new_receipt_cntrlSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_new_receipt_cntrl" />
+  </wsdl:message>
+  <wsdl:message name="ws_new_receipt_cntrlSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_new_receipt_cntrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_new_receipt_totSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_new_receipt_tot" />
+  </wsdl:message>
+  <wsdl:message name="ws_new_receipt_totSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_new_receipt_totResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_new_intray_detsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_new_intray_dets" />
+  </wsdl:message>
+  <wsdl:message name="ws_new_intray_detsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_new_intray_detsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_proc_decision_detsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_upd_proc_decision_dets" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_proc_decision_detsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_upd_proc_decision_detsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_check_sponsorSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_check_sponsor" />
+  </wsdl:message>
+  <wsdl:message name="ws_check_sponsorSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_check_sponsorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_reassign_actionSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_reassign_action" />
+  </wsdl:message>
+  <wsdl:message name="ws_reassign_actionSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_reassign_actionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_print_visaSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_print_visa" />
+  </wsdl:message>
+  <wsdl:message name="ws_print_visaSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_print_visaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_print_visaSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_upd_print_visa" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_print_visaSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_upd_print_visaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_print_reject_letterSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_print_reject_letter" />
+  </wsdl:message>
+  <wsdl:message name="ws_print_reject_letterSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_print_reject_letterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_perm_vlidSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_upd_perm_vlid" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_perm_vlidSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_upd_perm_vlidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_vdocsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_upd_vdocs" />
+  </wsdl:message>
+  <wsdl:message name="ws_upd_vdocsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_upd_vdocsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="bms_web_permit_procSoap">
+    <wsdl:operation name="ws_complete_action">
+      <wsdl:input message="tns:ws_complete_actionSoapIn" />
+      <wsdl:output message="tns:ws_complete_actionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_visa_reg">
+      <wsdl:input message="tns:ws_new_visa_regSoapIn" />
+      <wsdl:output message="tns:ws_new_visa_regSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_applicant_dets">
+      <wsdl:input message="tns:ws_upd_applicant_detsSoapIn" />
+      <wsdl:output message="tns:ws_upd_applicant_detsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_proc_check_dets">
+      <wsdl:input message="tns:ws_upd_proc_check_detsSoapIn" />
+      <wsdl:output message="tns:ws_upd_proc_check_detsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_recommend_dets">
+      <wsdl:input message="tns:ws_upd_recommend_detsSoapIn" />
+      <wsdl:output message="tns:ws_upd_recommend_detsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_sponsor_dets">
+      <wsdl:input message="tns:ws_upd_sponsor_detsSoapIn" />
+      <wsdl:output message="tns:ws_upd_sponsor_detsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_receipt_cntrl">
+      <wsdl:input message="tns:ws_new_receipt_cntrlSoapIn" />
+      <wsdl:output message="tns:ws_new_receipt_cntrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_receipt_tot">
+      <wsdl:input message="tns:ws_new_receipt_totSoapIn" />
+      <wsdl:output message="tns:ws_new_receipt_totSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_intray_dets">
+      <wsdl:input message="tns:ws_new_intray_detsSoapIn" />
+      <wsdl:output message="tns:ws_new_intray_detsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_proc_decision_dets">
+      <wsdl:input message="tns:ws_upd_proc_decision_detsSoapIn" />
+      <wsdl:output message="tns:ws_upd_proc_decision_detsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_check_sponsor">
+      <wsdl:input message="tns:ws_check_sponsorSoapIn" />
+      <wsdl:output message="tns:ws_check_sponsorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_reassign_action">
+      <wsdl:input message="tns:ws_reassign_actionSoapIn" />
+      <wsdl:output message="tns:ws_reassign_actionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_print_visa">
+      <wsdl:input message="tns:ws_print_visaSoapIn" />
+      <wsdl:output message="tns:ws_print_visaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_print_visa">
+      <wsdl:input message="tns:ws_upd_print_visaSoapIn" />
+      <wsdl:output message="tns:ws_upd_print_visaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_print_reject_letter">
+      <wsdl:input message="tns:ws_print_reject_letterSoapIn" />
+      <wsdl:output message="tns:ws_print_reject_letterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_perm_vlid">
+      <wsdl:input message="tns:ws_upd_perm_vlidSoapIn" />
+      <wsdl:output message="tns:ws_upd_perm_vlidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_vdocs">
+      <wsdl:input message="tns:ws_upd_vdocsSoapIn" />
+      <wsdl:output message="tns:ws_upd_vdocsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="bms_web_permit_procSoap" type="tns:bms_web_permit_procSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ws_complete_action">
+      <soap:operation soapAction="http://tempurl.org/ws_complete_action" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_visa_reg">
+      <soap:operation soapAction="http://tempurl.org/ws_new_visa_reg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_applicant_dets">
+      <soap:operation soapAction="http://tempurl.org/ws_upd_applicant_dets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_proc_check_dets">
+      <soap:operation soapAction="http://tempurl.org/ws_upd_proc_check_dets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_recommend_dets">
+      <soap:operation soapAction="http://tempurl.org/ws_upd_recommend_dets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_sponsor_dets">
+      <soap:operation soapAction="http://tempurl.org/ws_upd_sponsor_dets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_receipt_cntrl">
+      <soap:operation soapAction="http://tempurl.org/ws_new_receipt_cntrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_receipt_tot">
+      <soap:operation soapAction="http://tempurl.org/ws_new_receipt_tot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_intray_dets">
+      <soap:operation soapAction="http://tempurl.org/ws_new_intray_dets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_proc_decision_dets">
+      <soap:operation soapAction="http://tempurl.org/ws_upd_proc_decision_dets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_check_sponsor">
+      <soap:operation soapAction="http://tempurl.org/ws_check_sponsor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_reassign_action">
+      <soap:operation soapAction="http://tempurl.org/ws_reassign_action" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_print_visa">
+      <soap:operation soapAction="http://tempurl.org/ws_print_visa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_print_visa">
+      <soap:operation soapAction="http://tempurl.org/ws_upd_print_visa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_print_reject_letter">
+      <soap:operation soapAction="http://tempurl.org/ws_print_reject_letter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_perm_vlid">
+      <soap:operation soapAction="http://tempurl.org/ws_upd_perm_vlid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_vdocs">
+      <soap:operation soapAction="http://tempurl.org/ws_upd_vdocs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="bms_web_permit_procSoap12" type="tns:bms_web_permit_procSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ws_complete_action">
+      <soap12:operation soapAction="http://tempurl.org/ws_complete_action" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_visa_reg">
+      <soap12:operation soapAction="http://tempurl.org/ws_new_visa_reg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_applicant_dets">
+      <soap12:operation soapAction="http://tempurl.org/ws_upd_applicant_dets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_proc_check_dets">
+      <soap12:operation soapAction="http://tempurl.org/ws_upd_proc_check_dets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_recommend_dets">
+      <soap12:operation soapAction="http://tempurl.org/ws_upd_recommend_dets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_sponsor_dets">
+      <soap12:operation soapAction="http://tempurl.org/ws_upd_sponsor_dets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_receipt_cntrl">
+      <soap12:operation soapAction="http://tempurl.org/ws_new_receipt_cntrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_receipt_tot">
+      <soap12:operation soapAction="http://tempurl.org/ws_new_receipt_tot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_new_intray_dets">
+      <soap12:operation soapAction="http://tempurl.org/ws_new_intray_dets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_proc_decision_dets">
+      <soap12:operation soapAction="http://tempurl.org/ws_upd_proc_decision_dets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_check_sponsor">
+      <soap12:operation soapAction="http://tempurl.org/ws_check_sponsor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_reassign_action">
+      <soap12:operation soapAction="http://tempurl.org/ws_reassign_action" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_print_visa">
+      <soap12:operation soapAction="http://tempurl.org/ws_print_visa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_print_visa">
+      <soap12:operation soapAction="http://tempurl.org/ws_upd_print_visa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_print_reject_letter">
+      <soap12:operation soapAction="http://tempurl.org/ws_print_reject_letter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_perm_vlid">
+      <soap12:operation soapAction="http://tempurl.org/ws_upd_perm_vlid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_upd_vdocs">
+      <soap12:operation soapAction="http://tempurl.org/ws_upd_vdocs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="bms_web_permit_proc">
+    <wsdl:port name="bms_web_permit_procSoap" binding="tns:bms_web_permit_procSoap">
+      <soap:address location="http://merit-dbserver:8080/ws_bms_traveller/bms_web_permit_proc.asmx" />
+    </wsdl:port>
+    <wsdl:port name="bms_web_permit_procSoap12" binding="tns:bms_web_permit_procSoap12">
+      <soap12:address location="http://merit-dbserver:8080/ws_bms_traveller/bms_web_permit_proc.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

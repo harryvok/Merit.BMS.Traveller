@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempurl.org" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempurl.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempurl.org">
+      <s:element name="ws_get_request_details">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_request_detailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_request_detailsResult" type="tns:request_details" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="request_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="service_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="function_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="service_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="function_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_type_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="request_datetime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="due_datetime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="status_datetime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="division_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="division_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="department_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="department_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="provider_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="provider_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="outcome_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="outcome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="in_time_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="finalised_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="count_only" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="centre_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="centre_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="priority_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="priority" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="refer_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_responsible_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_responsible_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="input_by_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="input_by_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="how_received_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="how_received_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_instruction" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_name_det" type="tns:ArrayOfCustomer_name_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="address_det" type="tns:ArrayOfAddress_details" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_actions_det" type="tns:ArrayOfRequest_actions_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_comments" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="name_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="address_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="location_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="escalated_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="name_addr_xref" type="tns:ArrayOfRequest_name_addr_xref" />
+          <s:element minOccurs="0" maxOccurs="1" name="facility_det" type="tns:ArrayOfFacility_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="with_action" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address_desc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCustomer_name_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="customer_name_details" nillable="true" type="tns:customer_name_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="customer_name_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="name_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="given_names" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="initials" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pref_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="work_phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mobile_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fax_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email_address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="company_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="name_ctr" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name_type" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAddress_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="address_details" nillable="true" type="tns:address_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="address_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="address_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="house_number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="house_suffix" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="street_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="street_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="locality" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="postcode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="property_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gis_x_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gis_y_coord" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="address_ctr" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="melway_map" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="melway_ref" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address_desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address_type_code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="confidential" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="area_group" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="municipality" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="road_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="road_responsibility" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="street_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="facility_id" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRequest_actions_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="request_actions_details" nillable="true" type="tns:request_actions_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="request_actions_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_officer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_required" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_completed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="priority" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="finalised_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="in_time_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="escalated_ind" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="assign_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="outcome_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="due_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="comments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRequest_name_addr_xref">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="request_name_addr_xref" nillable="true" type="tns:request_name_addr_xref" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="request_name_addr_xref">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="name_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="address_id" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFacility_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="facility_details" nillable="true" type="tns:facility_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="facility_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="facility_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="facility_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="facility_desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="facility_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="facility_type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="address_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="house_number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="house_suffix" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="street_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="street_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="locality" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="postcode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="property_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gis_x_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gis_y_coord" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="address_ctr" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="melway_map" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="melway_ref" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address_desc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_get_request_remarks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_request_remarksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_request_remarksResult" type="tns:request_remarks" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="request_remarks">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="req_remark_dets" type="tns:ArrayOfRequest_remark_details" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRequest_remark_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="request_remark_details" nillable="true" type="tns:request_remark_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="request_remark_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="note_type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="note_datetime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="sub_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="attachment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="sent_by" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_get_request_udfs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_request_udfsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_request_udfsResult" type="tns:request_udf_list" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="request_udf_list">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_dets" type="tns:ArrayOfUdf_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUdf_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="udf_details" nillable="true" type="tns:udf_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="udf_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="udf_number" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="udf_order" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_looktype" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="udf_depends" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_op_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_dep_value" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="udf_fld_size" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_mandatory_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_active_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_action_reqd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_action_comp" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="udf_action_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_data" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="udf_level" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_required" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_required_code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_create_request">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="req_input" type="tns:request_input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="request_input">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="service_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="function_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="issue_type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="request_datetime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="due_datetime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="count_only" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="centre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="priority" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="refer_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="input_by" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="how_received" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_instruction" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_name_det" type="tns:ArrayOfCustomer_name_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="address_det" type="tns:ArrayOfAddress_details" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="req_points" type="tns:ArrayOfRequest_point_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="adhoc_officer" type="tns:ArrayOfAdhoc_officer_det" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRequest_point_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="request_point_details" nillable="true" type="tns:request_point_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="request_point_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="x_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="y_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nearest_addr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="point_desc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAdhoc_officer_det">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="adhoc_officer_det" nillable="true" type="tns:adhoc_officer_det" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="adhoc_officer_det">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="position_no" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_reqd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_create_requestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_create_requestResult" type="tns:request_creation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="request_creation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="count_only" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_add_req_comment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment_text" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email_resp_officer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email_current_act_officers" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_add_req_commentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_add_req_commentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_request_intray">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="data_group" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filter_no" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_request_intrayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_request_intrayResult" type="tns:action_intray_list" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="action_intray_list">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="action_intray_det" type="tns:ArrayOfAction_intray_details" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAction_intray_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="action_intray_details" nillable="true" type="tns:action_intray_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="action_intray_details">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="action_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="assign_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="assign_time" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="due_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="due_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="priority" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="assign_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_given_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="service_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="function_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="request_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="request_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="provider" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="provider_notified" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_given_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="division" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="department_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="address_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="location_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="refer_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="in_time_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="escalated_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="posted_ind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="finalised_ind" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="outcome_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_house_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_street_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_street_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_locality_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_gis_x_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer_gis_y_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_house_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_house_suffix" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_street_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_street_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_locality_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_gis_x_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_gis_y_coord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="request_description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action_comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="facility_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="outcome_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="reason_assigned" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_notified" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="status_date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="status_time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="count_only" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="centre_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="officer_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="with_action" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_get_srf_udfs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="s_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="r_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="f_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_srf_udfsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_srf_udfsResult" type="tns:request_udf_list" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_update_req_udfs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="a_data" type="tns:request_udf_list" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_update_req_udfsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_update_req_udfsResult" type="tns:request_udf_list" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_udf_ddlb_dets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="look_type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_udf_ddlb_detsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_udf_ddlb_detsResult" type="tns:udf_ddlb_list" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="udf_ddlb_list">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="udf_ddlb_det" type="tns:ArrayOfString" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_get_request_comments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_request_commentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_request_commentsResult" type="tns:request_remarks" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_request_attach">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_request_attachResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_request_attachResult" type="tns:request_remarks" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_chk_count_only">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="s_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="r_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="f_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_chk_count_onlyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_chk_count_onlyResult" type="tns:request_countonly" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="request_countonly">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="count_only" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_chk_adhoc_officer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="s_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="r_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="f_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_chk_adhoc_officerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_chk_adhoc_officerResult" type="tns:adhoc_officer_list" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="adhoc_officer_list">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="officer_det" type="tns:ArrayOfAdhoc_officer_det" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="adhoc_count" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ws_get_request_detailsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_request_details" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_detailsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_request_detailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_remarksSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_request_remarks" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_remarksSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_request_remarksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_udfsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_request_udfs" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_udfsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_request_udfsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_create_requestSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_create_request" />
+  </wsdl:message>
+  <wsdl:message name="ws_create_requestSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_create_requestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_add_req_commentSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_add_req_comment" />
+  </wsdl:message>
+  <wsdl:message name="ws_add_req_commentSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_add_req_commentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_intraySoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_request_intray" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_intraySoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_request_intrayResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_srf_udfsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_srf_udfs" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_srf_udfsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_srf_udfsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_update_req_udfsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_update_req_udfs" />
+  </wsdl:message>
+  <wsdl:message name="ws_update_req_udfsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_update_req_udfsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_udf_ddlb_detsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_udf_ddlb_dets" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_udf_ddlb_detsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_udf_ddlb_detsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_commentsSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_request_comments" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_commentsSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_request_commentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_attachSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_request_attach" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_request_attachSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_request_attachResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_chk_count_onlySoapIn">
+    <wsdl:part name="parameters" element="tns:ws_chk_count_only" />
+  </wsdl:message>
+  <wsdl:message name="ws_chk_count_onlySoapOut">
+    <wsdl:part name="parameters" element="tns:ws_chk_count_onlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_chk_adhoc_officerSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_chk_adhoc_officer" />
+  </wsdl:message>
+  <wsdl:message name="ws_chk_adhoc_officerSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_chk_adhoc_officerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ws_merit_requestSoap">
+    <wsdl:operation name="ws_get_request_details">
+      <wsdl:input message="tns:ws_get_request_detailsSoapIn" />
+      <wsdl:output message="tns:ws_get_request_detailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_remarks">
+      <wsdl:input message="tns:ws_get_request_remarksSoapIn" />
+      <wsdl:output message="tns:ws_get_request_remarksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_udfs">
+      <wsdl:input message="tns:ws_get_request_udfsSoapIn" />
+      <wsdl:output message="tns:ws_get_request_udfsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_create_request">
+      <wsdl:input message="tns:ws_create_requestSoapIn" />
+      <wsdl:output message="tns:ws_create_requestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_add_req_comment">
+      <wsdl:input message="tns:ws_add_req_commentSoapIn" />
+      <wsdl:output message="tns:ws_add_req_commentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_intray">
+      <wsdl:input message="tns:ws_get_request_intraySoapIn" />
+      <wsdl:output message="tns:ws_get_request_intraySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_srf_udfs">
+      <wsdl:input message="tns:ws_get_srf_udfsSoapIn" />
+      <wsdl:output message="tns:ws_get_srf_udfsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_update_req_udfs">
+      <wsdl:input message="tns:ws_update_req_udfsSoapIn" />
+      <wsdl:output message="tns:ws_update_req_udfsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_udf_ddlb_dets">
+      <wsdl:input message="tns:ws_get_udf_ddlb_detsSoapIn" />
+      <wsdl:output message="tns:ws_get_udf_ddlb_detsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_comments">
+      <wsdl:input message="tns:ws_get_request_commentsSoapIn" />
+      <wsdl:output message="tns:ws_get_request_commentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_attach">
+      <wsdl:input message="tns:ws_get_request_attachSoapIn" />
+      <wsdl:output message="tns:ws_get_request_attachSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_chk_count_only">
+      <wsdl:input message="tns:ws_chk_count_onlySoapIn" />
+      <wsdl:output message="tns:ws_chk_count_onlySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_chk_adhoc_officer">
+      <wsdl:input message="tns:ws_chk_adhoc_officerSoapIn" />
+      <wsdl:output message="tns:ws_chk_adhoc_officerSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ws_merit_requestSoap" type="tns:ws_merit_requestSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ws_get_request_details">
+      <soap:operation soapAction="http://tempurl.org/ws_get_request_details" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_remarks">
+      <soap:operation soapAction="http://tempurl.org/ws_get_request_remarks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_udfs">
+      <soap:operation soapAction="http://tempurl.org/ws_get_request_udfs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_create_request">
+      <soap:operation soapAction="http://tempurl.org/ws_create_request" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_add_req_comment">
+      <soap:operation soapAction="http://tempurl.org/ws_add_req_comment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_intray">
+      <soap:operation soapAction="http://tempurl.org/ws_get_request_intray" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_srf_udfs">
+      <soap:operation soapAction="http://tempurl.org/ws_get_srf_udfs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_update_req_udfs">
+      <soap:operation soapAction="http://tempurl.org/ws_update_req_udfs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_udf_ddlb_dets">
+      <soap:operation soapAction="http://tempurl.org/ws_get_udf_ddlb_dets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_comments">
+      <soap:operation soapAction="http://tempurl.org/ws_get_request_comments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_attach">
+      <soap:operation soapAction="http://tempurl.org/ws_get_request_attach" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_chk_count_only">
+      <soap:operation soapAction="http://tempurl.org/ws_chk_count_only" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_chk_adhoc_officer">
+      <soap:operation soapAction="http://tempurl.org/ws_chk_adhoc_officer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ws_merit_requestSoap12" type="tns:ws_merit_requestSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ws_get_request_details">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_request_details" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_remarks">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_request_remarks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_udfs">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_request_udfs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_create_request">
+      <soap12:operation soapAction="http://tempurl.org/ws_create_request" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_add_req_comment">
+      <soap12:operation soapAction="http://tempurl.org/ws_add_req_comment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_intray">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_request_intray" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_srf_udfs">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_srf_udfs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_update_req_udfs">
+      <soap12:operation soapAction="http://tempurl.org/ws_update_req_udfs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_udf_ddlb_dets">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_udf_ddlb_dets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_comments">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_request_comments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_request_attach">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_request_attach" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_chk_count_only">
+      <soap12:operation soapAction="http://tempurl.org/ws_chk_count_only" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_chk_adhoc_officer">
+      <soap12:operation soapAction="http://tempurl.org/ws_chk_adhoc_officer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ws_merit_request">
+    <wsdl:port name="ws_merit_requestSoap" binding="tns:ws_merit_requestSoap">
+      <soap:address location="http://merit-laptop-3/merit_traveller/ws_merit_request.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ws_merit_requestSoap12" binding="tns:ws_merit_requestSoap12">
+      <soap12:address location="http://merit-laptop-3/merit_traveller/ws_merit_request.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

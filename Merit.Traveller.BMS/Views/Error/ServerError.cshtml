@@ -1,0 +1,13 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.SubTitle = "Server Error";
+}
+<h1>Server Error</h1>
+<p>We've encountered a server error. That's not your fault!</p>
+<p><strong>Error: </strong> @Model.Exception.Message</p>
+<p>You can: </p>
+<ul>
+    <li>Email us at <a href="mailto:support@merit.com.au">support@merit.com.au</a>.</li>
+    <li>Go to the <a href="/">Homepage</a>.</li>
+</ul>

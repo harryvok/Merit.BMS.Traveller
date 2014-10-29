@@ -1,0 +1,143 @@
+﻿@using System.Configuration
+@using Merit.Traveller.CRM
+<!doctype html>
+
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<!-- the "no-js" class is for Modernizr. -->
+
+<head id="www-merit-com-au" data-template-set="html5-reset">
+    <meta charset="utf-8" />
+    <meta name="author" content="Jon Cleary">
+    <meta name="Copyright" content="Copyright Merit Technology Pty Ltd. 2012. All Rights Reserved.">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="/Content/Images/Icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="@Url.Content("~/Content/CSS/Base.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/CSS/Layout.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/CSS/Module.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/CSS/State.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.20.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.5.3.js")"></script>
+    <script src="@Url.Content("~/Scripts/knockout-2.2.1.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/Scripts/ViewModels/ActionIntrayViewModel.js")"></script>
+    <script src="@Url.Content("~/Scripts/ViewModels/RequestIntrayViewModel.js")"></script>
+    <script src="@Url.Content("~/Scripts/ViewModels/SearchViewModel.js")"></script>
+    <script type="text/javascript" >
+        var ViewModels = {};
+    </script>
+    <title>Merit Traveller - @ViewBag.Title</title>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="header-container">
+                <div id="logo">
+                    <div id="logo-container">
+                        <a href="/">
+                            <img border="0" src="/Content/Images/merit-logo.png" alt="Merit Technology" width="195" height="41" /></a>
+                        <div id="app-name">
+                            Traveller
+                        </div>
+                    </div>
+                    <div id="council">
+                        @CRMSettings.Settings.CouncilName
+                    </div>
+                </div>
+            </div>
+             @{
+                if(Request.IsAuthenticated) {
+                    <nav>
+                        <ul class="navbar float-left">
+                            <li onclick="location.href='/'">
+                                <div class="button-nav">Home</div>
+                            </li>
+                            <li onclick="location.href='/Requests/'">
+                                <div class="button-nav">Requests</div>
+                            </li>
+                            <li onclick="location.href='/Actions/'">
+                                <div class="button-nav">Actions</div>
+                            </li>
+                            <li onclick="location.href='/NewRequest/'">
+                                <div class="button-nav">New Request</div>
+                            </li>
+                            <li onclick="location.href='/Search'">
+                                <div class="button-nav">Search</div>
+                            </li>
+                        </ul>
+                        
+                        <ul class="navbar float-right">
+                            <li onclick="location.href='/Account/ChangePassword'">
+                                <div class="button-nav">Change Password</div>
+                            </li>
+                            <li onclick="location.href='/Account/LogOff'" class="no-margin">
+                                <div class="button-nav">Logout</div>
+                            </li>
+                        </ul>
+                        <div class="user-info">
+                            you are logged in as <strong>@User.Identity.Name</strong>
+                        </div>
+                    </nav>
+                }
+            }
+        </header>
+       
+        <div id="content-container">
+            @{
+                if(Request.IsAuthenticated) {
+                    if (IsSectionDefined("Sidebar")){
+                        <div id="sidebar">
+                            <h3>Menu</h3>
+                            @RenderSection("Sidebar")
+                        </div>
+                        <div id="content-body" class="logged-in">
+                            <div class="content">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    }
+                    else{
+                        <div id="content-body" class="float-left">
+                            <div class="content">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    }
+                }   
+                else{
+                    <div id="content-body">
+                        <div class="content not-logged-in">
+                            @RenderBody()
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+       <!--<footer>
+            <div id="footer-content">
+                <div id="copyright">
+                    <span class="medium bold">Copyright &copy; Merit Technology Pty. Ltd.</span> 
+                    <a target="_blank" href="http://www.merit.com.au/about/">About Merit</a> | <a target="_blank" href="http://www.merit.com.au/contact/">Contact Us</a> | <a target="_blank" href="http://support.merit.com.au/">Support Wiki</a>
+                </div>
+                <div id="reset">
+                     <span class="medium">Version @ConfigurationManager.AppSettings["TravellerVersion"]</span> |
+                   <span class="medium bold">@Html.ActionLink("Reset Settings", "Index", "Setup")</span>
+                </div>
+            </div>
+        </footer>-->
+    </div>
+</body>
+</html>
+
+<script type="text/javascript" >
+    $(document).ready(function () {
+        ko.applyBindings(ViewModels);
+    });
+</script>

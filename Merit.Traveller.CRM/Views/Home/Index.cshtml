@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section Sidebar{
+    <div class="sidebar-button"><a href="/"><div class="sidebar-button-text">Help</div></a></div>
+    <div class="sidebar-button"><a href="/ChangePassword/"><div class="sidebar-button-text">Change Password</div></a></div>
+    <div class="sidebar-button"><a href="mailto:support@merit.com.au"><div class="sidebar-button-text">Email</div></a></div>
+    <div class="sidebar-button"><a href="/Account/LogOff/"><div class="sidebar-button-text">Logout</div></a></div>
+}
+
+<h2>Welcome to Merit Traveller</h2>
+<p>
+    You are now logged in as <strong>@User.Identity.Name</strong>. Change your password <a href="/ChangePassword">here</a>.
+    
+</p>
+<p>
+    Merit Traveller is a portable web applicant designed to allow you to manage your Merit CRM at work, home or on the go on every internet-enabled device available.<br />
+    If you require assistance, please don't hesitate to email the webmaster at <a href="mailto: support@merit.com.au">support@merit.com.au</a>.
+</p>
+<p>
+    You are able to do a number of things with Merit Traveller CRM, namely:<br />
+    <ul>
+        <li>Track requests</li>
+        <li>View your action intray</li>
+        <li>Create requests with user defined fields</li>
+        <li>View summaries of Requests, Actions, Addresses, Officers, Animals and Names</li>
+        <li>Complete actions</li>
+    </ul>
+    To start, simply choose an option from the menu above.<br />
+    Certain pages have their own menu, which you can access from the sidebar to the left.
+</p>

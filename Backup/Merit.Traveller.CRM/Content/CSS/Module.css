@@ -1,0 +1,221 @@
+﻿#logo-container
+{
+    width:320px;
+    float:left;
+    text-align:left;
+}
+
+.navbar
+{
+    height: 30px;
+    margin:0;
+    padding:0;
+}
+
+.navbar li, .button-container
+{
+    position:relative;
+    background: #285c8d;
+    width:auto;
+    height:30px;
+    color:white;
+    float:left;
+    padding:0;
+    list-style:none;
+    text-align:center;
+    vertical-align:text-bottom;
+    font-weight:bold;
+    font-size:13px;
+    text-shadow: 1px 1px #000;
+    margin-right:10px;
+}
+
+.user-info
+{  
+    color:#fff;
+    float:right;
+    padding:10px;
+    padding-top:6px;
+}
+
+.button-nav
+{
+    position:relative;
+    margin-left:15px;
+    margin-right:15px;
+    margin-top:7px;
+}
+
+.dropdown
+{
+    display: none;
+    position: relative;
+    z-index: 5000;
+    left: 110px;
+}
+
+    .dropdown li
+    {
+        float: none;
+        width: 150px;
+        list-style-image: url(/Content/Images/icon-merit-sm.png);
+        list-style-position: inside;
+        text-align: left;
+        padding: 10px;
+        height: auto;
+    }
+
+/*.button
+{
+    position: relative;
+    margin-left: 37px;
+    margin-right: 36px;
+    margin-top: 7px;
+}*/
+
+.button-small
+{
+    position: relative;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 7px;
+}
+
+.solution
+{
+    border: 2px #CCC solid;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.solution-detail
+{
+    height: 27px;
+}
+
+.med-sm
+{
+    font-size: 12px;
+    float: left;
+    width: auto;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.wikibanner
+{
+    border: 2px #223f4e solid;
+}
+
+.list li
+{
+    width: auto;
+    height: auto;
+    background: #EEE;
+    border: 1px #DDD solid;
+    list-style-position: inside;
+    list-style-image: url(/Content/Images/icon-merit-sm.png);
+    padding: 10px;
+    margin-left: -40px;
+}
+
+    .list li:hover
+    {
+        background: #FFF;
+    }
+
+
+.details
+{
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+#copyright
+{
+    float: left;
+    font-size: 14px;
+}
+
+#reset
+{
+    float: right;
+}
+
+#council
+{
+    color: #FFF;
+    float: right;
+    font-size: 30px;
+    font-style:italic;
+    text-shadow: 1px 1px 0px #000;
+    padding-top: 2px;
+}
+
+.editor-label
+{
+    font-size: 14px;
+    color: #152848;
+    display: block;
+    width: 100%;
+    text-align: left;
+    line-height: 35px;
+    padding-top: 10px;
+    font-family: "Cambria", "Arial Black", Arial;
+    font-weight: bold;
+}
+
+.login
+{
+    font-size:24px;
+}
+
+.searchBar {
+    height: 20px;
+    width: 80%;
+    margin-left: 2px;
+}
+
+.intrayTable {
+    width: 100%;
+    border-color: #006BB2;
+    border: 1px solid black;
+}
+
+.intrayRows table {
+    height: 100%;
+    overflow: auto;
+    border-color: #006BB2;
+    border: 1px solid black;
+    width: 100%;
+   
+}
+
+.intrayRows td {
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   
+}
+
+.intrayRows:nth-child(even) {
+    background-color: #FCFCFC; 
+}
+
+.intrayRows:hover {
+    background-color: yellow;
+    cursor:pointer;
+}
+
+.intrayRows:active  {
+    background-color: lightgreen;
+}
+
+#searchLoad {
+    display: none;
+}
+
+.sidebar-action-Buttons button {
+    width: 264px;
+}

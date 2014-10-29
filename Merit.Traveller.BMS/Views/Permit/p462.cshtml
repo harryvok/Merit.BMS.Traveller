@@ -1,0 +1,95 @@
+﻿@{
+    Layout = "~/Views/Shared/_Permit.cshtml";
+    ViewBag.Title = "Make Recommendations";
+}
+@section scripts{
+     <script src="@Url.Content("~/Scripts/ViewModels/MakeRecommendationsViewModel.js")"></script>
+}
+
+<div class="processContainer">
+
+<div class="maincontent" id="makerecommendationformdiv">
+     <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
+ <form id="recommendationsForm">
+    <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-6 col-sm-6">
+                <h4>Requirements</h4>
+                <div class="formFieldContainer" id="recommendationDetsLeft">
+                      <table>
+                        <tr>
+                            <td>From:</td>
+                            <td><b>@ViewBag.from</b></td>
+                        </tr>
+                          <tr>
+                              <td></td>
+                              <td><hr class="greyhr" /></td>
+                          </tr>
+                        <tr>
+                            <td>Notes:</td>
+                            <td><b>@ViewBag.recs</b></td>
+                        </tr>
+                    </table>
+
+                </div>
+                 <h4>Action required</h4>
+                <div class="formFieldContainer" id="">
+                
+                    <table id="actionRequiredTable">
+                        <tr>
+                            <td><b>Action</b></td>
+                            <td>@ViewBag.action</td>
+                            <td><b>For</b></td>
+                            @{
+                                if (ViewBag.forText == "")
+                                    {
+                                         <td>N/A</td>
+                                    }
+                                    else{
+                                        <td>@ViewBag.forText</td>
+                                        }
+                             }
+                        </tr>
+                        <tr>
+                            <td><b>Given</b></td>
+                            <td>@ViewBag.given</td>
+                            <td><b>Due</b></td>
+                            <td>@ViewBag.Due</td>
+                        </tr>
+                   
+                    </table>
+                 
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <h4>Recommendation</h4>
+                
+                <table id="">
+                    <tr>
+                        <td><b>Valid From*</b>
+                            <input type="text" name="validFrom" id="validFrom" value="@ViewBag.fromDate" data-bind="value: makeRecommendations.validfrom"  /></td>
+                        <td><b>Valid To*</b>
+                            <input type="text" name="validTo" id="validTo" style="width:302px" value="@ViewBag.toDate" data-bind="value: makeRecommendations.validTo" /></td>
+                    </tr>
+                </table>
+                 
+                <textarea class="textArea" placeholder="additional comments here..." data-bind="value: makeRecommendations.comments"></textarea>
+                @{ if (ViewBag.isModifiable !="N"){ 
+                    <div style="float:right;">
+                        <B>Recommend to:</B> 
+                        <button type="button" class="button" id="rejectButton" style="background:red" data-bind="click: makeRecommendations.recommendProcess.bind($data, '')"><b>Reject</b></button>
+                        <button type="button" class="button" id="approveButton" style="background:green" data-bind="click: makeRecommendations.recommendProcess.bind($data, 'N')"><b>Approve</b></button>   
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+</form>
+    </div>
+</div>
+ <input  type="text" hidden id="hiddenIntrayID" value="@ViewBag.intrayID" data-bind="value: makeRecommendations.intrayID" />
+ <input  type="text" hidden id="hiddenPermitID" value="@ViewBag.guid" data-bind="value: makeRecommendations.permitID" />
+<input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
+<input type="text" id="hiddenEditable" hidden value="@ViewBag.editable"/>
+<script type="text/javascript" >
+    ViewModels.makeRecommendations = new MakeRecommendationsViewModel();
+</script>    

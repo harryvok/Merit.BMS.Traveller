@@ -1,0 +1,1274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{223E6A9A-E37A-4583-AB1D-03DC739ADB90}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Merit.Traveller.BMS</RootNamespace>
+    <AssemblyName>Merit.Traveller.BMS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PdfSharp">
+      <HintPath>..\packages\PdfSharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting">
+      <HintPath>..\packages\PdfSharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>App_Data\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.20105.1\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.1.0.20105.408\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>App_Data\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActionController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\PermitController.cs" />
+    <Compile Include="Controllers\PermitIntrayController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\VisaRegistrationController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Message.cs" />
+    <Compile Include="Models\AdminWebServices.cs" />
+    <Compile Include="Models\PermitDataWebServices.cs" />
+    <Compile Include="Models\PermitProcWebServices.cs" />
+    <Compile Include="permitmodel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\BMS_Web_Admin\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BMS_Web_Permit_Data\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BMS_Web_Permit_Proc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="applicantimages\default.txt" />
+    <Content Include="App_Data\System.Web.Optimization.dll" />
+    <Content Include="App_Data\WebGrease.dll" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\CSS\Base.css" />
+    <Content Include="Content\CSS\jquery-ui.css" />
+    <Content Include="Content\CSS\jquery-ui-1.8.23.custom.css" />
+    <Content Include="Content\CSS\Layout.css" />
+    <Content Include="Content\CSS\Module.css" />
+    <Content Include="Content\CSS\State.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\Airportlights.jpg" />
+    <Content Include="Content\Images\arrow.png" />
+    <Content Include="Content\Images\backgroundlogo.jpg" />
+    <Content Include="Content\Images\banner.jpg" />
+    <Content Include="Content\Images\banner2.jpg" />
+    <Content Include="Content\Images\banner3.jpg" />
+    <Content Include="Content\Images\bg.jpg" />
+    <Content Include="Content\Images\close.png" />
+    <Content Include="Content\Images\closecross.png" />
+    <Content Include="Content\Images\content-bg.png" />
+    <Content Include="Content\Images\cross.png" />
+    <Content Include="Content\Images\defaultprofilepic2.png" />
+    <Content Include="Content\Images\Flags\ABW.gif" />
+    <Content Include="Content\Images\Flags\AFG.gif" />
+    <Content Include="Content\Images\Flags\AGO.gif" />
+    <Content Include="Content\Images\Flags\AIA.gif" />
+    <Content Include="Content\Images\Flags\ALB.gif" />
+    <Content Include="Content\Images\Flags\AND.gif" />
+    <Content Include="Content\Images\Flags\ANT.gif" />
+    <Content Include="Content\Images\Flags\ARE.gif" />
+    <Content Include="Content\Images\Flags\ARG.gif" />
+    <Content Include="Content\Images\Flags\ARM.gif" />
+    <Content Include="Content\Images\Flags\ASM.gif" />
+    <Content Include="Content\Images\Flags\ATA.gif" />
+    <Content Include="Content\Images\Flags\ATG.gif" />
+    <Content Include="Content\Images\Flags\AUS.gif" />
+    <Content Include="Content\Images\Flags\AUT.gif" />
+    <Content Include="Content\Images\Flags\AZE.gif" />
+    <Content Include="Content\Images\Flags\BDI.gif" />
+    <Content Include="Content\Images\Flags\BEL.gif" />
+    <Content Include="Content\Images\Flags\BEN.gif" />
+    <Content Include="Content\Images\Flags\BFA.gif" />
+    <Content Include="Content\Images\Flags\BGD.gif" />
+    <Content Include="Content\Images\Flags\BGR.gif" />
+    <Content Include="Content\Images\Flags\BHR.gif" />
+    <Content Include="Content\Images\Flags\BHS.gif" />
+    <Content Include="Content\Images\Flags\BIH.gif" />
+    <Content Include="Content\Images\Flags\BLR.gif" />
+    <Content Include="Content\Images\Flags\BLZ.gif" />
+    <Content Include="Content\Images\Flags\BMU.gif" />
+    <Content Include="Content\Images\Flags\BOL.gif" />
+    <Content Include="Content\Images\Flags\BRA.gif" />
+    <Content Include="Content\Images\Flags\BRB.gif" />
+    <Content Include="Content\Images\Flags\BRN.gif" />
+    <Content Include="Content\Images\Flags\BTN.gif" />
+    <Content Include="Content\Images\Flags\BWA.gif" />
+    <Content Include="Content\Images\Flags\CAF.gif" />
+    <Content Include="Content\Images\Flags\CAN.gif" />
+    <Content Include="Content\Images\Flags\CCK.gif" />
+    <Content Include="Content\Images\Flags\CHE.gif" />
+    <Content Include="Content\Images\Flags\CHL.gif" />
+    <Content Include="Content\Images\Flags\CHN.gif" />
+    <Content Include="Content\Images\Flags\CIV.gif" />
+    <Content Include="Content\Images\Flags\CMR.gif" />
+    <Content Include="Content\Images\Flags\COD.gif" />
+    <Content Include="Content\Images\Flags\COG.gif" />
+    <Content Include="Content\Images\Flags\COK.gif" />
+    <Content Include="Content\Images\Flags\COL.gif" />
+    <Content Include="Content\Images\Flags\COM.gif" />
+    <Content Include="Content\Images\Flags\CPV.gif" />
+    <Content Include="Content\Images\Flags\CRI.gif" />
+    <Content Include="Content\Images\Flags\CUB.gif" />
+    <Content Include="Content\Images\Flags\CXR.gif" />
+    <Content Include="Content\Images\Flags\CYM.gif" />
+    <Content Include="Content\Images\Flags\CYP.gif" />
+    <Content Include="Content\Images\Flags\CZE.gif" />
+    <Content Include="Content\Images\Flags\D.gif" />
+    <Content Include="Content\Images\Flags\DEU.gif" />
+    <Content Include="Content\Images\Flags\DJI.gif" />
+    <Content Include="Content\Images\Flags\DMA.gif" />
+    <Content Include="Content\Images\Flags\DNK.gif" />
+    <Content Include="Content\Images\Flags\DOM.gif" />
+    <Content Include="Content\Images\Flags\DZA.gif" />
+    <Content Include="Content\Images\Flags\ECU.gif" />
+    <Content Include="Content\Images\Flags\EGY.gif" />
+    <Content Include="Content\Images\Flags\ERI.gif" />
+    <Content Include="Content\Images\Flags\ESH.gif" />
+    <Content Include="Content\Images\Flags\ESP.gif" />
+    <Content Include="Content\Images\Flags\EST.gif" />
+    <Content Include="Content\Images\Flags\ETH.gif" />
+    <Content Include="Content\Images\Flags\FIN.gif" />
+    <Content Include="Content\Images\Flags\FJI.gif" />
+    <Content Include="Content\Images\Flags\FLK.gif" />
+    <Content Include="Content\Images\Flags\FRA.gif" />
+    <Content Include="Content\Images\Flags\FRO.gif" />
+    <Content Include="Content\Images\Flags\FSM.gif" />
+    <Content Include="Content\Images\Flags\GAB.gif" />
+    <Content Include="Content\Images\Flags\GBD.gif" />
+    <Content Include="Content\Images\Flags\GBN.gif" />
+    <Content Include="Content\Images\Flags\GBO.gif" />
+    <Content Include="Content\Images\Flags\GBP.gif" />
+    <Content Include="Content\Images\Flags\GBR.gif" />
+    <Content Include="Content\Images\Flags\GBS.gif" />
+    <Content Include="Content\Images\Flags\GEO.gif" />
+    <Content Include="Content\Images\Flags\GHA.gif" />
+    <Content Include="Content\Images\Flags\GIB.gif" />
+    <Content Include="Content\Images\Flags\GIN.gif" />
+    <Content Include="Content\Images\Flags\GLP.gif" />
+    <Content Include="Content\Images\Flags\GMB.gif" />
+    <Content Include="Content\Images\Flags\GNB.gif" />
+    <Content Include="Content\Images\Flags\GNQ.gif" />
+    <Content Include="Content\Images\Flags\GRC.gif" />
+    <Content Include="Content\Images\Flags\GRD.gif" />
+    <Content Include="Content\Images\Flags\GRL.gif" />
+    <Content Include="Content\Images\Flags\GTM.gif" />
+    <Content Include="Content\Images\Flags\GUF.gif" />
+    <Content Include="Content\Images\Flags\GUM.gif" />
+    <Content Include="Content\Images\Flags\GUY.gif" />
+    <Content Include="Content\Images\Flags\HKG.gif" />
+    <Content Include="Content\Images\Flags\HMD.gif" />
+    <Content Include="Content\Images\Flags\HND.gif" />
+    <Content Include="Content\Images\Flags\HRV.gif" />
+    <Content Include="Content\Images\Flags\HTI.gif" />
+    <Content Include="Content\Images\Flags\HUN.gif" />
+    <Content Include="Content\Images\Flags\IDN.gif" />
+    <Content Include="Content\Images\Flags\IND.gif" />
+    <Content Include="Content\Images\Flags\IRL.gif" />
+    <Content Include="Content\Images\Flags\IRN.gif" />
+    <Content Include="Content\Images\Flags\IRQ.gif" />
+    <Content Include="Content\Images\Flags\ISL.gif" />
+    <Content Include="Content\Images\Flags\ISR.gif" />
+    <Content Include="Content\Images\Flags\ITA.gif" />
+    <Content Include="Content\Images\Flags\JAM.gif" />
+    <Content Include="Content\Images\Flags\JOR.gif" />
+    <Content Include="Content\Images\Flags\JPN.gif" />
+    <Content Include="Content\Images\Flags\KAZ.gif" />
+    <Content Include="Content\Images\Flags\KEN.gif" />
+    <Content Include="Content\Images\Flags\KGZ.gif" />
+    <Content Include="Content\Images\Flags\KHM.gif" />
+    <Content Include="Content\Images\Flags\KIR.gif" />
+    <Content Include="Content\Images\Flags\KNA.gif" />
+    <Content Include="Content\Images\Flags\KOR.gif" />
+    <Content Include="Content\Images\Flags\KWT.gif" />
+    <Content Include="Content\Images\Flags\LAO.gif" />
+    <Content Include="Content\Images\Flags\LBN.gif" />
+    <Content Include="Content\Images\Flags\LBR.gif" />
+    <Content Include="Content\Images\Flags\LBY.gif" />
+    <Content Include="Content\Images\Flags\LCA.gif" />
+    <Content Include="Content\Images\Flags\LIE.gif" />
+    <Content Include="Content\Images\Flags\LKA.gif" />
+    <Content Include="Content\Images\Flags\LSO.gif" />
+    <Content Include="Content\Images\Flags\LTU.gif" />
+    <Content Include="Content\Images\Flags\LUX.gif" />
+    <Content Include="Content\Images\Flags\LVA.gif" />
+    <Content Include="Content\Images\Flags\MAR.gif" />
+    <Content Include="Content\Images\Flags\MCO.gif" />
+    <Content Include="Content\Images\Flags\MDA.gif" />
+    <Content Include="Content\Images\Flags\MDG.gif" />
+    <Content Include="Content\Images\Flags\MDV.gif" />
+    <Content Include="Content\Images\Flags\MEX.gif" />
+    <Content Include="Content\Images\Flags\MHL.gif" />
+    <Content Include="Content\Images\Flags\MKD.gif" />
+    <Content Include="Content\Images\Flags\MLI.gif" />
+    <Content Include="Content\Images\Flags\MLT.gif" />
+    <Content Include="Content\Images\Flags\MMR.gif" />
+    <Content Include="Content\Images\Flags\MNG.gif" />
+    <Content Include="Content\Images\Flags\MNP.gif" />
+    <Content Include="Content\Images\Flags\MOZ.gif" />
+    <Content Include="Content\Images\Flags\MRT.gif" />
+    <Content Include="Content\Images\Flags\MSR.gif" />
+    <Content Include="Content\Images\Flags\MTQ.gif" />
+    <Content Include="Content\Images\Flags\MUS.gif" />
+    <Content Include="Content\Images\Flags\MWI.gif" />
+    <Content Include="Content\Images\Flags\MYS.gif" />
+    <Content Include="Content\Images\Flags\MYT.gif" />
+    <Content Include="Content\Images\Flags\NAM.gif" />
+    <Content Include="Content\Images\Flags\NCL.gif" />
+    <Content Include="Content\Images\Flags\NER.gif" />
+    <Content Include="Content\Images\Flags\NFK.gif" />
+    <Content Include="Content\Images\Flags\NGA.gif" />
+    <Content Include="Content\Images\Flags\NIC.gif" />
+    <Content Include="Content\Images\Flags\NIU.gif" />
+    <Content Include="Content\Images\Flags\NLD.gif" />
+    <Content Include="Content\Images\Flags\NOR.gif" />
+    <Content Include="Content\Images\Flags\NPL.gif" />
+    <Content Include="Content\Images\Flags\NRU.gif" />
+    <Content Include="Content\Images\Flags\NZL.gif" />
+    <Content Include="Content\Images\Flags\OMN.gif" />
+    <Content Include="Content\Images\Flags\PAK.gif" />
+    <Content Include="Content\Images\Flags\PAN.gif" />
+    <Content Include="Content\Images\Flags\PER.gif" />
+    <Content Include="Content\Images\Flags\PHL.gif" />
+    <Content Include="Content\Images\Flags\PLW.gif" />
+    <Content Include="Content\Images\Flags\PNG.gif" />
+    <Content Include="Content\Images\Flags\POL.gif" />
+    <Content Include="Content\Images\Flags\PRI.gif" />
+    <Content Include="Content\Images\Flags\PRK.gif" />
+    <Content Include="Content\Images\Flags\PRT.gif" />
+    <Content Include="Content\Images\Flags\PRY.gif" />
+    <Content Include="Content\Images\Flags\PYF.gif" />
+    <Content Include="Content\Images\Flags\QAT.gif" />
+    <Content Include="Content\Images\Flags\REU.gif" />
+    <Content Include="Content\Images\Flags\ROM.gif" />
+    <Content Include="Content\Images\Flags\RUS.gif" />
+    <Content Include="Content\Images\Flags\RWA.gif" />
+    <Content Include="Content\Images\Flags\SAU.gif" />
+    <Content Include="Content\Images\Flags\SDN.gif" />
+    <Content Include="Content\Images\Flags\SEN.gif" />
+    <Content Include="Content\Images\Flags\SGP.gif" />
+    <Content Include="Content\Images\Flags\SHN.gif" />
+    <Content Include="Content\Images\Flags\SLB.gif" />
+    <Content Include="Content\Images\Flags\SLE.gif" />
+    <Content Include="Content\Images\Flags\SLV.gif" />
+    <Content Include="Content\Images\Flags\SMR.gif" />
+    <Content Include="Content\Images\Flags\SOM.gif" />
+    <Content Include="Content\Images\Flags\SPM.gif" />
+    <Content Include="Content\Images\Flags\STP.gif" />
+    <Content Include="Content\Images\Flags\SUR.gif" />
+    <Content Include="Content\Images\Flags\SVK.gif" />
+    <Content Include="Content\Images\Flags\SVN.gif" />
+    <Content Include="Content\Images\Flags\SWE.gif" />
+    <Content Include="Content\Images\Flags\SWZ.gif" />
+    <Content Include="Content\Images\Flags\SYC.gif" />
+    <Content Include="Content\Images\Flags\SYR.gif" />
+    <Content Include="Content\Images\Flags\TCD.gif" />
+    <Content Include="Content\Images\Flags\TGO.gif" />
+    <Content Include="Content\Images\Flags\THA.gif" />
+    <Content Include="Content\Images\Flags\TJK.gif" />
+    <Content Include="Content\Images\Flags\TKM.gif" />
+    <Content Include="Content\Images\Flags\TMP.gif" />
+    <Content Include="Content\Images\Flags\TON.gif" />
+    <Content Include="Content\Images\Flags\TTO.gif" />
+    <Content Include="Content\Images\Flags\TUN.gif" />
+    <Content Include="Content\Images\Flags\TUR.gif" />
+    <Content Include="Content\Images\Flags\TUV.gif" />
+    <Content Include="Content\Images\Flags\TWN.gif" />
+    <Content Include="Content\Images\Flags\TZA.gif" />
+    <Content Include="Content\Images\Flags\UGA.gif" />
+    <Content Include="Content\Images\Flags\UKR.gif" />
+    <Content Include="Content\Images\Flags\URY.gif" />
+    <Content Include="Content\Images\Flags\USA.gif" />
+    <Content Include="Content\Images\Flags\UZB.gif" />
+    <Content Include="Content\Images\Flags\VAT.gif" />
+    <Content Include="Content\Images\Flags\VCT.gif" />
+    <Content Include="Content\Images\Flags\VEN.gif" />
+    <Content Include="Content\Images\Flags\VGB.gif" />
+    <Content Include="Content\Images\Flags\VIR.gif" />
+    <Content Include="Content\Images\Flags\VNM.gif" />
+    <Content Include="Content\Images\Flags\VUT.gif" />
+    <Content Include="Content\Images\Flags\WLF.gif" />
+    <Content Include="Content\Images\Flags\WSM.gif" />
+    <Content Include="Content\Images\Flags\YEM.gif" />
+    <Content Include="Content\Images\Flags\ZAF.gif" />
+    <Content Include="Content\Images\Flags\ZMB.gif" />
+    <Content Include="Content\Images\Flags\ZWE.gif" />
+    <Content Include="Content\Images\footer.jpg" />
+    <Content Include="Content\Images\global.jpg" />
+    <Content Include="Content\Images\greenpointsmall.png" />
+    <Content Include="Content\Images\homebanner.png" />
+    <Content Include="Content\Images\Homeicon.png" />
+    <Content Include="Content\Images\icon-merit-selected.png" />
+    <Content Include="Content\Images\icon-merit-sm.png" />
+    <Content Include="Content\Images\icon-merit.png" />
+    <Content Include="Content\Images\Icons\applicant.png" />
+    <Content Include="Content\Images\Icons\checkRequirements.png" />
+    <Content Include="Content\Images\Icons\cross.png" />
+    <Content Include="Content\Images\Icons\favicon.png" />
+    <Content Include="Content\Images\Icons\info.png" />
+    <Content Include="Content\Images\Icons\makeDecision.png" />
+    <Content Include="Content\Images\Icons\makeRecommendation.png" />
+    <Content Include="Content\Images\Icons\messageicon.png" />
+    <Content Include="Content\Images\Icons\print.png" />
+    <Content Include="Content\Images\Icons\sponsor.png" />
+    <Content Include="Content\Images\languages.png" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\merit-logo - Copy - Copy.png" />
+    <Content Include="Content\Images\merit-logo.png" />
+    <Content Include="Content\Images\plus.png" />
+    <Content Include="Content\Images\portmoresby.jpg" />
+    <Content Include="Content\Images\process-cross.png" />
+    <Content Include="Content\Images\prof.gif" />
+    <Content Include="Content\Images\redpointsmall.png" />
+    <Content Include="Content\Images\aeroplane2.jpg" />
+    <Content Include="Content\Images\social.png" />
+    <Content Include="Content\Images\Icons\stack.png" />
+    <Content Include="Content\Images\tick.png" />
+    <Content Include="Content\Images\topbar.png" />
+    <Content Include="Content\Images\world_map.jpg" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="doc\pngcustreceipt.pdf" />
+    <Content Include="doc\Rejection Letter1 - Visa Branch.pdf" />
+    <None Include="Properties\PublishProfiles\Merit.Traveller.BMS.pubxml" />
+    <None Include="Properties\PublishProfiles\package.pubxml" />
+    <None Include="Properties\PublishProfiles\PHIL.pubxml" />
+    <None Include="Scripts\Libraries\jquery-1.9.1-vsdoc.js" />
+    <Content Include="pdf\default.txt" />
+    <Content Include="Scripts\jquery-1.5.2.js" />
+    <Content Include="Scripts\jquery-1.5.2.min.js" />
+    <Content Include="Scripts\Libraries\jquery.form.js" />
+    <Content Include="Scripts\Libraries\jquery.form.min.js" />
+    <Content Include="Scripts\Libraries\knockout-2.3.0.debug.js" />
+    <Content Include="Scripts\Libraries\knockout-2.3.0.js" />
+    <Content Include="Scripts\Libraries\bootstrap.js" />
+    <Content Include="Scripts\Libraries\bootstrap.min.js" />
+    <Content Include="Scripts\Libraries\jquery-1.9.1.js" />
+    <Content Include="Scripts\Libraries\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\Libraries\jquery-ui-1.10.3.js" />
+    <Content Include="Scripts\Libraries\jquery-ui-1.10.3.min.js" />
+    <Content Include="Scripts\jtable\extensions\jquery.jtable.aspnetpagemethods.js" />
+    <Content Include="Scripts\jtable\extensions\jquery.jtable.aspnetpagemethods.min.js" />
+    <Content Include="Scripts\jtable\external\json2.js" />
+    <Content Include="Scripts\jtable\external\json2.min.js" />
+    <Content Include="Scripts\jtable\jquery.jtable.js" />
+    <Content Include="Scripts\jtable\jquery.jtable.min.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.de.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.es.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.fr.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.hu.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.it.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.lt.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.nl-NL.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.pl.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.pt-BR.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.pt-PT.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.ru.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.tr.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.vi.js" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.zh-CN.js" />
+    <Content Include="Scripts\jtable\themes\basic\close.png" />
+    <Content Include="Scripts\jtable\themes\basic\column-asc.png" />
+    <Content Include="Scripts\jtable\themes\basic\column-desc.png" />
+    <Content Include="Scripts\jtable\themes\basic\column-sortable.png" />
+    <Content Include="Scripts\jtable\themes\basic\delete.png" />
+    <Content Include="Scripts\jtable\themes\basic\edit.png" />
+    <Content Include="Scripts\jtable\themes\basic\jtable_basic.css" />
+    <Content Include="Scripts\jtable\themes\basic\jtable_basic.min.css" />
+    <Content Include="Scripts\jtable\themes\jqueryui\add.png" />
+    <Content Include="Scripts\jtable\themes\jqueryui\bg-thead.png" />
+    <Content Include="Scripts\jtable\themes\jqueryui\close.png" />
+    <Content Include="Scripts\jtable\themes\jqueryui\column-asc.png" />
+    <Content Include="Scripts\jtable\themes\jqueryui\column-desc.png" />
+    <Content Include="Scripts\jtable\themes\jqueryui\column-sortable.png" />
+    <Content Include="Scripts\jtable\themes\jqueryui\delete.png" />
+    <Content Include="Scripts\jtable\themes\jqueryui\edit.png" />
+    <Content Include="Scripts\jtable\themes\jqueryui\jtable_jqueryui.css" />
+    <Content Include="Scripts\jtable\themes\jqueryui\jtable_jqueryui.min.css" />
+    <Content Include="Scripts\jtable\themes\jqueryui\loading.gif" />
+    <Content Include="Scripts\jtable\themes\lightcolor\add.png" />
+    <Content Include="Scripts\jtable\themes\lightcolor\bg-thead.png" />
+    <Content Include="Scripts\jtable\themes\lightcolor\blue\jtable.css" />
+    <Content Include="Scripts\jtable\themes\lightcolor\blue\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\lightcolor\blue\loading.gif" />
+    <Content Include="Scripts\jtable\themes\lightcolor\close.png" />
+    <Content Include="Scripts\jtable\themes\lightcolor\column-asc.png" />
+    <Content Include="Scripts\jtable\themes\lightcolor\column-desc.png" />
+    <Content Include="Scripts\jtable\themes\lightcolor\column-sortable.png" />
+    <Content Include="Scripts\jtable\themes\lightcolor\delete.png" />
+    <Content Include="Scripts\jtable\themes\lightcolor\edit.png" />
+    <Content Include="Scripts\jtable\themes\lightcolor\gray\jtable.css" />
+    <Content Include="Scripts\jtable\themes\lightcolor\gray\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\lightcolor\gray\loading.gif" />
+    <Content Include="Scripts\jtable\themes\lightcolor\green\jtable.css" />
+    <Content Include="Scripts\jtable\themes\lightcolor\green\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\lightcolor\green\loading.gif" />
+    <Content Include="Scripts\jtable\themes\lightcolor\orange\jtable.css" />
+    <Content Include="Scripts\jtable\themes\lightcolor\orange\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\lightcolor\orange\loading.gif" />
+    <Content Include="Scripts\jtable\themes\lightcolor\red\jtable.css" />
+    <Content Include="Scripts\jtable\themes\lightcolor\red\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\lightcolor\red\loading.gif" />
+    <Content Include="Scripts\jtable\themes\metro\add.png" />
+    <Content Include="Scripts\jtable\themes\metro\blue\jtable.css" />
+    <Content Include="Scripts\jtable\themes\metro\blue\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\blue\loading.gif" />
+    <Content Include="Scripts\jtable\themes\metro\brown\jtable.css" />
+    <Content Include="Scripts\jtable\themes\metro\brown\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\brown\loading.gif" />
+    <Content Include="Scripts\jtable\themes\metro\close.png" />
+    <Content Include="Scripts\jtable\themes\metro\column-asc.png" />
+    <Content Include="Scripts\jtable\themes\metro\column-desc.png" />
+    <Content Include="Scripts\jtable\themes\metro\column-sortable.png" />
+    <Content Include="Scripts\jtable\themes\metro\crimson\jtable.css" />
+    <Content Include="Scripts\jtable\themes\metro\crimson\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\crimson\loading.gif" />
+    <Content Include="Scripts\jtable\themes\metro\darkgray\jtable.css" />
+    <Content Include="Scripts\jtable\themes\metro\darkgray\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\darkgray\loading.gif" />
+    <Content Include="Scripts\jtable\themes\metro\darkorange\jtable.css" />
+    <Content Include="Scripts\jtable\themes\metro\darkorange\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\darkorange\loading.gif" />
+    <Content Include="Scripts\jtable\themes\metro\delete.png" />
+    <Content Include="Scripts\jtable\themes\metro\edit.png" />
+    <Content Include="Scripts\jtable\themes\metro\green\jtable.css" />
+    <Content Include="Scripts\jtable\themes\metro\green\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\green\loading.gif" />
+    <Content Include="Scripts\jtable\themes\metro\jtable_metro_base.css" />
+    <Content Include="Scripts\jtable\themes\metro\jtable_metro_base.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\lightgray\jtable.css" />
+    <Content Include="Scripts\jtable\themes\metro\lightgray\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\lightgray\loading.gif" />
+    <Content Include="Scripts\jtable\themes\metro\pink\jtable.css" />
+    <Content Include="Scripts\jtable\themes\metro\pink\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\pink\loading.gif" />
+    <Content Include="Scripts\jtable\themes\metro\purple\jtable.css" />
+    <Content Include="Scripts\jtable\themes\metro\purple\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\purple\loading.gif" />
+    <Content Include="Scripts\jtable\themes\metro\red\jtable.css" />
+    <Content Include="Scripts\jtable\themes\metro\red\jtable.less" />
+    <Content Include="Scripts\jtable\themes\metro\purple\jtable.less" />
+    <Content Include="Scripts\jtable\themes\metro\pink\jtable.less" />
+    <Content Include="Scripts\jtable\themes\metro\lightgray\jtable.less" />
+    <Content Include="Scripts\jtable\themes\metro\jtable_metro_base.less" />
+    <Content Include="Scripts\jtable\themes\metro\green\jtable.less" />
+    <Content Include="Scripts\jtable\themes\metro\darkorange\jtable.less" />
+    <Content Include="Scripts\jtable\themes\metro\darkgray\jtable.less" />
+    <Content Include="Scripts\jtable\themes\metro\crimson\jtable.less" />
+    <Content Include="Scripts\jtable\themes\metro\brown\jtable.less" />
+    <Content Include="Scripts\jtable\themes\metro\blue\jtable.less" />
+    <Content Include="Scripts\jtable\themes\lightcolor\red\jtable.less" />
+    <Content Include="Scripts\jtable\themes\lightcolor\orange\jtable.less" />
+    <Content Include="Scripts\jtable\themes\lightcolor\jtable_lightcolor_base.less" />
+    <Content Include="Scripts\jtable\themes\lightcolor\green\jtable.less" />
+    <Content Include="Scripts\jtable\themes\lightcolor\gray\jtable.less" />
+    <Content Include="Scripts\jtable\themes\lightcolor\blue\jtable.less" />
+    <Content Include="Scripts\jtable\themes\jtable_theme_base.less" />
+    <Content Include="Scripts\jtable\themes\jqueryui\jtable_jqueryui.less" />
+    <Content Include="Scripts\jtable\themes\basic\jtable_basic.less" />
+    <Content Include="Scripts\Libraries\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\jtable\themes\metro\red\jtable.min.css" />
+    <Content Include="Scripts\jtable\themes\metro\red\loading.gif" />
+    <Content Include="Scripts\Libraries\jquery-timepicker.js" />
+    <Content Include="Scripts\Libraries\jquery-ui.js" />
+    <Content Include="Scripts\ViewModels\advFilterViewModel.js" />
+    <Content Include="Scripts\ViewModels\ApplicantDetailsViewModel.js" />
+    <Content Include="Scripts\ViewModels\CheckRequirementsViewModel.js" />
+    <Content Include="Scripts\ViewModels\MessagesViewModel.js" />
+    <Content Include="Scripts\ViewModels\HomeViewModel.js" />
+    <Content Include="Scripts\ViewModels\MakeDecisionViewModel.js" />
+    <Content Include="Scripts\ViewModels\MakeRecommendationsViewModel.js" />
+    <Content Include="Scripts\ViewModels\PermitIntrayViewModel.js" />
+    <Content Include="Scripts\ViewModels\PermitViewModel.js" />
+    <Content Include="Scripts\ViewModels\PopupViewModel.js" />
+    <None Include="Scripts\Libraries\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Libraries\jquery.validate.js" />
+    <Content Include="Scripts\Libraries\jquery.validate.min.js" />
+    <Content Include="Scripts\Libraries\modernizr-2.5.3.js" />
+    <Content Include="Scripts\ViewModels\PrintLetterViewModel.js" />
+    <Content Include="Scripts\ViewModels\PrintViewModel.js" />
+    <Content Include="Scripts\ViewModels\ReturnDocumentViewModel.js" />
+    <Content Include="Scripts\ViewModels\SearchViewModel.js" />
+    <Content Include="Scripts\ViewModels\SponsorDetailsViewModel.js" />
+    <Content Include="Scripts\ViewModels\VisaRegistrationViewModel.js" />
+    <None Include="Service References\BMS_Web_Admin\bms_web_admin1.wsdl" />
+    <None Include="Service References\BMS_Web_Admin\configuration91.svcinfo" />
+    <None Include="Service References\BMS_Web_Admin\configuration.svcinfo" />
+    <None Include="Service References\BMS_Web_Admin\bms_web_admin1.disco" />
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.checklist_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.common_codes_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.countries_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.doc_types_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.filter_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.login_result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.merit_ini_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.merit_settings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.nationality_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.officers_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.officer_roles.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.office_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.permit_class_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.permit_fees_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.project_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.proj_employers_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.proj_ptypes_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.proj_pt_checks_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.proj_sites_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.proj_structure_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.receipt_no_details.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.sponsor_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.user_options.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_change_passwordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_chk_receipt_noResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_all_sponsorsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_an_officerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_checklistResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_common_codesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_countriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_doc_typesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_filter_intrayResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_hempsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_merit_iniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_merit_rolesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_merit_settingsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_nationalityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_officersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_officesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_outcomesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_pclassesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_pclass_detResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_pempsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_permit_classResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_permit_feesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_permit_list_filtersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_projectResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_projectsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_proj_employersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_proj_ptypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_proj_pt_checksResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_proj_sitesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_proj_structureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_ptypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_sempsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_specific_codesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_sponsorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_undertakingsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_user_optionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_merit_loginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_receipt_listResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_partial_nationalityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.how_used_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_how_usedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Admin\Merit.Traveller.BMS.BMS_Web_Admin.ws_get_reassign_officersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\BMS_Web_Admin\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BMS_Web_Permit_Data\bms_web_permit_data1.wsdl" />
+    <None Include="Service References\BMS_Web_Permit_Data\configuration91.svcinfo" />
+    <None Include="Service References\BMS_Web_Permit_Data\configuration.svcinfo" />
+    <None Include="Service References\BMS_Web_Permit_Data\bms_web_permit_data1.disco" />
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.action_intray_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.action_return.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.applicant_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.biodata_details.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.cust_recpt_details.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.filter_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.image_details.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.message_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.message_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.permit_base_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.permit_head_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.permit_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.permit_list_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.permit_log_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.permit_print_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.permit_proc_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.proc_approve_details.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.proc_check_details.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.proc_decision_details.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.proc_permit_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.recommend_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.rec_cntrl_return.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.rec_unbal_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.sponsor_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_calc_fee_amtResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_check_outstand_itemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_check_sponsor_completeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_chk_approve_allowedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_chk_biodata_stringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_action_intrayResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_applicant_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_biodata_detailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_custody_recpt_detailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_imageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_message_countResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_officer_filtersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_permit_base_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_permit_head_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_permit_listResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_permit_log_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_permit_printResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_permit_proc_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_perm_det_listResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_proc_approve_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_proc_check_itemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_proc_decision_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_proc_permit_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_received_msgsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_recommend_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_rec_pclassesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_rec_pc_cntsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_rec_ptypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_rec_unbal_listResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_single_messageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_single_sponsorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_check_dateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_perm_listResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_search_perm_listResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_send_messageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_update_messageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.vdoc_list.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_proc_vdoc_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\BMS_Web_Permit_Data\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BMS_Web_Permit_Proc\bms_web_permit_proc1.wsdl" />
+    <None Include="Service References\BMS_Web_Permit_Proc\configuration91.svcinfo" />
+    <None Include="Service References\BMS_Web_Permit_Proc\configuration.svcinfo" />
+    <None Include="Service References\BMS_Web_Permit_Proc\bms_web_permit_proc1.disco" />
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.action_return.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.applicant_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.new_return.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.new_visa_ret.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.sponsor_dets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_complete_actionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_new_intray_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_new_receipt_cntrlResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_new_receipt_totResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_new_visa_regResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_upd_applicant_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_upd_proc_check_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_upd_recommend_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_upd_sponsor_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.proc_decision_details.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_check_sponsorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_upd_proc_decision_detsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.visa_print.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_print_visaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_reassign_actionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_upd_print_visaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.visa_reject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_print_reject_letterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_upd_vdocsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.st_bm_vlid_filter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Proc\Merit.Traveller.BMS.BMS_Web_Permit_Proc.ws_upd_perm_vlidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\BMS_Web_Permit_Proc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="videos\Test_Visa_Registration.mp4" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Libraries\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\Libraries\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\Libraries\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\Libraries\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Libraries\MicrosoftAjax.js" />
+    <Content Include="Scripts\Libraries\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\Libraries\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\Libraries\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\Libraries\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\Libraries\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
+    <Content Include="Views\Error\BadRequest.cshtml" />
+    <Content Include="Views\Error\Unauthorized.cshtml" />
+    <Content Include="Views\Error\Forbidden.cshtml" />
+    <Content Include="Views\Error\MethodNotAllowed.cshtml" />
+    <Content Include="Views\VisaRegistration\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\PermitIntray\Index.cshtml" />
+    <Content Include="Views\Permit\Index.cshtml" />
+    <Content Include="Views\ActionIntray\Index.cshtml" />
+    <Content Include="Views\PermitIntray\PermitIntray.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\ActionIntray\ActionIntray.cshtml" />
+    <Content Include="Views\Permit\p451.cshtml" />
+    <Content Include="Views\Permit\p453.cshtml" />
+    <Content Include="Views\Permit\p454.cshtml" />
+    <Content Include="Views\Permit\p455.cshtml" />
+    <Content Include="Views\Permit\p456.cshtml" />
+    <Content Include="Views\Permit\p457.cshtml" />
+    <Content Include="Views\Permit\p461.cshtml" />
+    <Content Include="Views\Permit\p462.cshtml" />
+    <Content Include="Views\Permit\ApplicantDetails.cshtml" />
+    <Content Include="Views\Permit\p999.cshtml" />
+    <Content Include="Views\Permit\Summary.cshtml" />
+    <Content Include="Views\Shared\_Permit.cshtml" />
+    <Content Include="Views\PermitIntray\permitdetails.cshtml" />
+    <Content Include="Views\Shared\_PermitOLD.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Account\ChangeSite.cshtml" />
+    <Content Include="Views\Permit\pDocument.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BMS_Web_Admin\" />
+    <WCFMetadataStorage Include="Service References\BMS_Web_Permit_Data\" />
+    <WCFMetadataStorage Include="Service References\BMS_Web_Permit_Proc\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59566</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54142/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

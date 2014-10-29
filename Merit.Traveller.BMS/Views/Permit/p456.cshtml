@@ -1,0 +1,81 @@
+﻿@{
+    Layout = "~/Views/Shared/_Permit.cshtml";
+    ViewBag.Title = "Print Visa";
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/ViewModels/PrintViewModel.js")"></script>
+}
+
+<div class="processContainer">
+    <div class="maincontent">
+        <!--<button type="button" class="button" data-bind="click: print.printPDF">Print</button>
+        <button type="button" class="button">Register</button>-->
+        <div class="row row-offcanvas row-offcanvas-right">
+        <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.permit_guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
+        <div class="col-xs-6 col-sm-6">
+           
+        
+        <div class="formFieldContainer">
+            <h4>Record Visa Label ID</h4>
+            <table>
+                <tr>
+                    <td><b>VLID:</b></td>
+                    <td><input class="vlidsmall" type="text" data-bind="value: print.vlidseries" /><input type="text" data-bind="value: print.vlidID"/></td>
+                </tr>
+                <tr>
+                    <td><b>Re-enter VLID:</b></td>
+                    <td><input class="vlidsmall" type="text" data-bind="value: print.reVlidseries" /><input type="text" data-bind="value: print.reVlidID"/></td>
+                </tr>
+                <tr>
+                    <td><b>How Used:</b></td>
+                    <td>
+                        <select data-bind="value: print.howUsed">
+                            <option>-Select-</option>
+                            @{
+                                for (int i = 0; i < ViewBag.howUsed.how_used_dets.Count; i++)
+                                {
+                                <option value="@ViewBag.howUsed.how_used_dets[i].how_used_guid">@ViewBag.howUsed.how_used_dets[i].how_used_desc</option>
+                                }  
+                            }
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <textarea class="textArea" data-bind="value: print.comments">
+           </textarea>
+            @{ if (ViewBag.isModifiable != "N")
+               { 
+                <button id="okbutton" data-bind="click: print.processPrint.bind($data, '')"><b>OK</b></button>
+                <button id="bypass" data-bind="click: print.processPrint.bind($data, 'B')"><b>Bypass</b></button>
+                <button id="reprint" data-bind="click: print.processPrint.bind($data, 'R')"><b>Re-print</b></button>
+               }
+             }
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+<div  id="BypassDialog">
+Are You sure you want to bypass recording a VLID against the last print?
+    If you are sure then this will be reported to @Request.Cookies["vlid_bypass_officer"].Value (Document Administrator)
+    <br />
+    <textarea id="bypassComment" data-bind="value: print.bypassComments">
+
+    </textarea>
+    <br />
+    <b>Note: You must give a reason for not entering a VLID for the permit print.</b>
+    <div class="float-right">
+        <button data-bind="click: print.processPrintStep"><B>Ok</B></button>
+        <button data-bind="click: print.closeBypassDialog"><b>Cancel</b></button>  
+    </div>            
+
+</div>
+
+<input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
+<input type="text" hidden id="hiddenPermitID" value="@ViewBag.guid" />
+<input type="text" hidden id="hiddenDocumentURL" value="@ViewBag.documentURL" />
+<input type="text" hidden id="hiddenIntrayID" value="@ViewBag.intrayID" />
+<script type="text/javascript">
+    ViewModels.print = new PrintViewModel();
+</script>

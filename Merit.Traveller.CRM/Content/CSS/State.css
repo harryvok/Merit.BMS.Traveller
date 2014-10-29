@@ -1,0 +1,99 @@
+﻿.navbar li:hover, .button-container:hover
+{
+    cursor:pointer;
+    background: #1c4872;
+}
+
+.bold
+{
+    font-weight:bold;
+}
+
+.right-align
+{
+    text-align:right;
+}
+
+.float-left
+{
+    float:left;
+}
+
+.float-right
+{
+    float:right;
+}
+
+.center-align
+{
+    text-align:center;
+}
+
+.big
+{
+    font-size: 25px;
+    font-weight:bold;
+}
+
+.medium
+{
+    font-size:17px;
+}
+
+
+
+.small
+{
+    font-size:10px;
+}
+
+.solution:hover
+{
+    border: 2px solid #AAA;
+}
+
+.no-margin
+{   
+    margin:0 !important;
+}
+
+.right
+{
+    width:430px;
+    margin-left:20px;
+    float:right;
+    text-align:left;
+}
+
+.no-hover li:hover
+{
+    background:#EEE;
+}
+
+.no-margin
+{
+    margin-top:0;
+}
+
+.clickable li
+{
+    padding: 5px;
+    
+}
+
+    .clickable li:hover
+    {
+        cursor:pointer;
+    text-decoration:underline;
+    }
+
+.logged-in
+{  
+    width:86% !important;
+    float:right;
+}
+
+.not-logged-in
+{
+    padding-top:70px;
+}

@@ -1,0 +1,394 @@
+﻿@{
+    ViewBag.Title = "Visa Registration";
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/ViewModels/VisaRegistrationViewModel.js")"></script>
+}
+
+<div id="wholePage" class="">
+<div id="registerationfields" >
+    <div id="formContainer">
+    <form id="documentDetailsForm" name="visaReg">
+    <div> 
+
+
+        <div class="row row-offcanvas row-offcanvas-right" >
+            <div class="float-left" >
+                <div id="visaRegistrationInputForm">
+                    <table id="lodgedDetailsTable">
+                        <tr>
+                            <td class="greytd">Lodged For:</td>
+                            <td class="greytd"><b>@Request.Cookies["centralName"].Value</b></td>
+                            <td class="greytd">Lodged On:</td>
+                            <td class="greytd"><b id="lodgedOnDateInput"></b></td>
+                        </tr>
+                    </table>
+                    
+                    <b>Visa Details</b>
+                    <div class="formFieldContainer">
+                        <table id="visaDetailsTable2">
+                            
+                            <tr>
+                                <td id="visaDetailsAlign">Visa Type:</td>
+                                <td>
+                                    <select id="visaTypesDropDown" data-bind="value: visaRegistration.visaCode" class="required">
+                                        <option value="">-select-</option>
+                                        @{
+                                            for (int i = 0; i < ViewBag.pTypesList.Count; i++)
+                                            {
+                                            <option value="@ViewBag.pTypesList[i].code_guid">@ViewBag.pTypesList[i].code_desc</option>
+                                            }  
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Visa Class:</td>
+                                <td>
+                                    <select id="visaClassesDropDown" data-bind="value: visaRegistration.visaClass" disabled>
+                                        <option value="">-select-</option>
+                                    </select>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Receipt No:</td>
+                                <td>
+                                    <input type="text" data-bind="value: visaRegistration.receiptNo" />
+                                    <img class="helpButton" src="Content/Images/Icons/info.png" data-bind="click: visaRegistration.openNoReceiptDialog">
+                                    <span  id="receiptNumNotice" data-bind="html: visaRegistration.receiptNotice"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Visa Amount:</td>
+                                <td><b id="feeText" data-bind="value: visaRegistration.feeText"></b></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div data-bind="fadeVisible: visaRegistration.documentDetails">
+                        <b>Document Details</b>
+                        <div class="formFieldContainer" >
+
+                      <table id="documentDetailsTable">
+                                      
+                                        <tr>
+                                            <td id="documentDetailsTableAlign">Doc Type:</td>
+                                            <td>
+                                                <select id="doctypeselect" data-bind="value: visaRegistration.docType">
+                                                    <option value="">-select-</option>
+                                                    @{
+                                                        for (int i = 0; i < ViewBag.docTypes.Count; i++)
+                                                        {
+                                                        <option value="@ViewBag.docTypes[i].doc_type_code">@ViewBag.docTypes[i].doc_type_name</option>
+                                                        }  
+                                                    }
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nationality </td>
+                                            <td>
+                                                <select id="nationalitySelect" data-bind="value: visaRegistration.nationality">
+                                                    <option value="">-select-</option>
+                                                    @{
+                                                        for (int i = 0; i < ViewBag.nationalities.Count; i++)
+                                                        {
+                                                        <option value="@ViewBag.nationalities[i].nationality_code">@ViewBag.nationalities[i].nationality_desc</option>
+                                                        }  
+                                                    }
+                                                </select>
+                                                <img class="helpButton" src="@Url.Content("~/Content/Images/Icons/info.png")" data-bind="click: visaRegistration.getCountryList"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table id="documentDetailsTable2">
+                                        <tr>
+                                            <td id="ddt2firsttd">Doc Number:</td>
+                                            <td class="greytd">
+                                                <input type="text" id="docNum" class="numberInputField" name="docNum" data-bind="value: visaRegistration.docNumber" /></td>
+                                            <td class="greytd">Re-enter Doc. No:</td>
+                                            <td class="greytd">
+                                                <input type="text" id="reDocNum" class="numberInputField" name="reDocNum" data-bind="value: visaRegistration.reDocNumber" /></td>
+                                        </tr>
+                                      
+
+                                        <tr>
+                                            <td>Expiry Date:</td>
+                                            <td>
+                                                <input type="text" id="expDate" class="numberInputField" name="expDate" placeholder="dd-mm-yyyy" data-bind="value: visaRegistration.expiryDate" /></td>
+                                        </tr>
+                                    </table>
+                                    <div data-bind="fadeVisible: visaRegistration.adtnlDocDets ">
+                                        <span id="docNumNotice" data-bind="html: visaRegistration.docNumNotice"></span>
+                                    </div>
+                                
+                       
+                    </div>
+                    </div>
+                    <div data-bind="fadeVisible: visaRegistration.applicantDetails">
+                        <b>Applicant Details</b>
+                        <div class="formFieldContainer" >
+                            <table id="applicantDetailsTable">
+                            
+                                <tr>
+                                    <td id="applicantDetailsSurnameLabel">Surname:</td>
+                                    <td>
+                                        <input type="text" name="applicantSurname" id="applicantSurname" data-bind="value: visaRegistration.surname" /></td>
+                                    <td>Given Name:</td>
+                                    <td>
+                                        <input type="text" id="applicantName" name="applicantName" data-bind="value: visaRegistration.givenName" /></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td id="surNameNotice" data-bind="html: visaRegistration.surNameNotice"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td id="nameNotice" data-bind="html: visaRegistration.nameNotice"></td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Birth:</td>
+                                    <td>
+                                        <input type="text" id="dob" name="dob" placeholder="(click to add date)" data-bind="value: visaRegistration.dob" /></td>
+                                    <td>Sex:</td>
+                                    <td>
+                                        <select data-bind="value: visaRegistration.sex">
+                                            <option value="">-Select-</option>
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            
+                            </table>
+                        </div>
+                    </div>
+                    <div id="sponsorFieldsContainer"  data-bind="fadeVisible: visaRegistration.sponsorDetails">
+                    <b>Sponsor Details:</b>
+                    <div class="formFieldContainer" id="sponsorFields">
+
+
+                        <table id="sponsorField">
+                            
+                            <tr>
+                                <td></td>
+                                <td hidden id="selectedSponsor"><b>Selected:None</b></td>
+                            </tr>
+                            <tr>
+                                <td id="sponsorAlign">Sponsor:</td>
+                                <td>
+                                    <input type="text" id="sponsorInput" data-bind="value: visaRegistration.sponsorName, valueUpdate: 'afterkeydown' " />
+                                    <img class="helpButton" src="@Url.Content("~/Content/Images/Icons/info.png")" data-bind="click: visaRegistration.getSponsorDialog">
+                                    
+                                </td>
+                            </tr>
+                        </table>
+ 
+                    </div>
+                    </div>
+                    <div data-bind="fadeVisible: visaRegistration.extraDetails">
+                        <b>Project Details</b>
+                        <div >
+                        
+                        <div class="formFieldContainer">
+                            <table id="projectTable" >
+                                <tr>
+                                    <td id="projectRelatedAlign">Project Related?</td>
+                                    <td>
+                                        <select id="projectDropDown" data-bind="value: visaRegistration.projectSelected">
+                                            <option value="N">No</option>
+                                            <option value="Y">Yes</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        
+                            <div id="projectFields"  data-bind="fadeVisible: visaRegistration.projectDetails">
+                            
+           
+                                <table id="sponsorProject" >
+                                <tr>
+                                    <td id="sponsorProjectAlign">Project:</td>
+                                    <td>
+                                        <select data-bind ="value: visaRegistration.projectID">
+                                            <option value="">-select-</option>
+                                            
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <select id="primeEmployerDropDown" class="employerDropDowns" data-bind="value: visaRegistration.primeEmployer">
+                                           <option value="">-Prime-</option>
+                                        </select>
+                                        <select id="headEmployerDropDown" class="employerDropDowns" data-bind= "value: visaRegistration.headEmployer">
+                                            <option value="">-Head-</option>
+                                        </select>
+                                        <select id="subEmployerDropDown" class="employerDropDowns" data-bind= "value: visaRegistration.subEmployer">
+                                            <option value="">-Sub-</option>
+                                        </select>
+                                    </td>
+                                </tr>
+  
+                            </table>
+        
+                      
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                  
+                    <div id="registrationDiv" class="formFieldContainer" data-bind="fadeVisible: visaRegistration.extraDetails">
+                <table id="registrationTable">
+                    <tr>
+                        <td id="commentsTableAlign">Comments:</td>
+                        <td>
+                            <textarea id="visaCommentsTextArea" data-bind="value: visaRegistration.comments" ></textarea></td>
+                    </tr>
+
+                </table>
+             <b id="registerErrorText" hidden class="errorText">The form has not been filled out incorrectly. Make sure all details are entered correctly before proceeding</b>
+        </div>
+                </div>
+            </div>
+            <div class="float-left" id="visaRegistrationInfoFields">
+                <button id="eraseButton" class="button" data-bind="click: visaRegistration.eraseForm, fadeVisible: visaRegistration.visaCode().length > 0 && visaRegistration.visaClass().length > 0">Erase form</button>
+                <div id="visaregistrationrightdiv" data-bind="fadeVisible: visaRegistration.visaCode().length > 0 && visaRegistration.visaClass().length > 0">
+                    <div id="conditionsTableRow" class="formFieldContainer">
+                        <div>
+                            <b>Items required to register:</b>
+                            <span  id="conditionsList" data-bind=""></span>
+                        </div>
+                    </div>
+                    <select data-bind="value: visaRegistration.confirmed">
+                        <option selected value="N">No</option>
+                        <option value="Y">Yes</option>
+                    </select>
+                    Confirm you have all items above
+                    <br />
+                    <div hidden class="databox" id="flagImagecontainer" data-bind="visible: visaRegistration.nationality">
+                        <img id="countryFlagImage" src="@Url.Content("~/Content/Images/Flags/ABW.gif")"/>
+                    </div>
+                    <br />
+                    <div class="databox formFieldContainer" id="profileImagecontainer" data-bind="fadeVisible: visaRegistration.documentDetails">
+                        
+                        <img  width="170px" height="200px" src="@Url.Content("~/Content/Images/defaultprofilepic2.png")"/>
+                    </div>
+                    <div class="formFieldContainer" id="sponsorDetailsInfoBox" data-bind="fadeVisible: visaRegistration.SponsorEnabled && visaRegistration.sponsorName().length > 0">
+                        To search for a sponsor, input a search query and click the info icon
+                    </div>
+                    <span data-bind="fadeVisible: visaRegistration.projectDetails"><b>Undertakings</b></span>
+                    <div class="formFieldContainer" id="projectDetailsInfoBox" data-bind="fadeVisible: visaRegistration.projectDetails">
+                        
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class=" hidden" id="cb1" data-bind="value: visaRegistration.checkBox1" value=""></td>
+                                <td><span class="hidden" id="cbt1">text</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class=" hidden" id="cb2" data-bind="value: visaRegistration.checkBox2" value=""></td>
+                                <td><span class="hidden" id="cbt2">text</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class=" hidden" id="cb3" data-bind="value: visaRegistration.checkBox3" value=""></td>
+                                <td><span class="hidden" id="cbt3">text</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class=" hidden" id="cb4" data-bind="value: visaRegistration.checkBox4" value=""></td>
+                                <td><span class="hidden" id="cbt4">text</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class=" hidden" id="cb5" data-bind="value: visaRegistration.checkBox5" value=""></td>
+                                <td><span class="hidden" id="cbt5">text</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class=" hidden" id="cb6" data-bind="value: visaRegistration.checkBox6" value="Maintenance Guarantee"></td>
+                                <td><span class="hidden" id="cbt6">Maintenance Guarantee</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="hidden" id="cb7" data-bind="checked: visaRegistration.checkBox7" value="checked"></td>
+                                <td><span class="hidden" id="cbt7">Check All</span></td>
+                            </tr>
+                           
+                        </table>
+                        
+
+                    </div>
+                    
+                    
+                    <div id="registerButtonDiv" data-bind="fadeVisible: visaRegistration.extraDetails">
+                        <button id="regAppButton" type="button" class="button" data-bind="click: visaRegistration.registerApplication.bind($data, 'n')">Register Application</button>
+                        <button id="regRcptButton" type="button" class="button" data-bind="click: visaRegistration.registerApplication.bind($data, 'y')">Register with a Receipt</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+    <br />
+
+
+    </form>
+    <input hidden id="HiddenLodgedFor"  type="text" value="@ViewBag.lodgedFor"/>
+    <input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
+</div>
+    </div>
+
+<div  id="countryDialog">
+    <div id="countryList">
+        <div id="countryDialogTable">
+
+        </div>
+    </div>
+    <button id="countryOkButton" type="button" class="button" data-bind="click: visaRegistration.closeCountryWindow">Ok</button>
+</div>
+
+<div  id="sponsorDialog">
+    <div id="sponsorList">
+        <div id="sponsorDialogTable">
+
+        </div>
+        <!--<button id="sponsorOkButton" type="button" class="button" data-bind="click: visaRegistration.closeSponsorWindow">Ok</button>-->
+    </div>
+</div>
+
+<div class="" id="successMessage">
+    <span>The VARN for this application is: </span>
+    <span id="idspan">ID: </span>
+    <br />
+    <button class="button float-right" data-bind="click: visaRegistration.closeSuccessWindow">Close</button>
+</div>
+<div class="" id="NoReceiptDialog">
+    <table>
+        <tr>
+            <td><b>Reason:</b></td>
+            <td>
+                <select data-bind="value: visaRegistration.receiptDialogSelect">
+                    <option value="">-select-</option>
+                    @{
+                        for (int i = 0; i < ViewBag.receipts.Count; i++)
+                        {
+                        <option value="@ViewBag.receipts[i].code_desc">@ViewBag.receipts[i].code_desc</option>
+                        }  
+                    }
+                </select>
+            </td>
+        </tr>
+    </table>
+    <button class="button" data-bind="click: visaRegistration.closeReceiptWindow">Close</button>
+</div>
+</div>
+
+<script type="text/javascript" >
+    ViewModels.visaRegistration = new VisaRegistrationViewModel();
+</script>

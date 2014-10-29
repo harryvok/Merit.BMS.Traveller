@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Permit Summary</h2>
+
+
+@section Sidebar{
+    <div class="sidebar-button"><a href="/Permit?id=@ViewBag.guid"><div class="sidebar-button-text">Overview</div></a></div>
+     <div class="sidebar-button"><a href="/Permit/Summary?id=@ViewBag.guid"><div class="sidebar-button-text">Permit Summary</div></a></div>
+     @for (int i = 0; i < ViewBag.processes.Count; i++)
+            {
+                if (ViewBag.processTypes[i] == "ApplicantDetails")
+                {
+                    <div class="sidebar-button"><a href="/Permit/@ViewBag.processTypes[i]?permitID=@ViewBag.guid&dependentID=@ViewBag.dependentID">
+                        <div class="sidebar-button-text">
+                        
+                            <img width="10" src="@Url.Content("~/Content/Images/Icons/applicant.png")" /> @ViewBag.processDescs.line_txt[i]
+                        </div>
+                     </a>
+                    </div>
+                }
+                //sponsor details
+                else if (ViewBag.processTypes[i] == "p999")
+                {
+                    <div class="sidebar-button"><a href="/Permit/@ViewBag.processTypes[i]?permitID=@ViewBag.guid&sponsorID=@ViewBag.sponsorID">
+                        <div class="sidebar-button-text">
+                        
+                            <img width="10" src="@Url.Content("~/Content/Images/Icons/sponsor.png")" /> @ViewBag.processDescs.line_txt[i]
+                        </div>
+                     </a>
+                    </div>
+                    
+                }
+                //no sponsor required
+                else if (ViewBag.processTypes[i] == "p998")
+                {
+                    <div class="sidebar-button"><a href="/Permit/@ViewBag.processTypes[i]?permitID=@ViewBag.guid&sponsorID=@ViewBag.sponsorID">
+                        <div class="sidebar-button-text">
+                        
+                            <img width="10" src="@Url.Content("~/Content/Images/Icons/sponsor.png")" /> @ViewBag.processDescs.line_txt[i]
+                        </div>
+                     </a>
+                    </div>
+                    
+                }
+                //check requirements
+                else if (ViewBag.processTypes[i] == "p461")
+                {
+                    <div class="sidebar-button"><a href="/Permit/@ViewBag.processTypes[i]?permitID=@ViewBag.guid&dependentID=@ViewBag.dependentID&intrayID=@ViewBag.processes[i]">
+                        <div class="sidebar-button-text">
+                        
+                            <img width="10" src="@Url.Content("~/Content/Images/Icons/checkRequirements.png")" /> @ViewBag.processDescs.line_txt[i]
+                        </div>
+                     </a>
+                    </div>
+                    
+                }
+                //make recommendations
+                else if (ViewBag.processTypes[i] == "p462")
+                {
+                    <div class="sidebar-button"><a href="/Permit/@ViewBag.processTypes[i]?permitID=@ViewBag.guid&dependentID=@ViewBag.dependentID&intrayID=@ViewBag.processes[i]">
+                        <div class="sidebar-button-text">
+                        
+                            <img width="10" src="@Url.Content("~/Content/Images/Icons/makeRecommendation.png")" /> @ViewBag.processDescs.line_txt[i]
+                        </div>
+                     </a>
+                    </div>
+                    
+                }
+                //make decision
+                else if (ViewBag.processTypes[i] == "p455")
+                {
+                    <div class="sidebar-button"><a href="/Permit/@ViewBag.processTypes[i]?permitID=@ViewBag.guid&dependentID=@ViewBag.dependentID&intrayID=@ViewBag.processes[i]">
+                        <div class="sidebar-button-text">
+                        
+                            <img width="10" src="@Url.Content("~/Content/Images/Icons/makeDecision.png")" /> @ViewBag.processDescs.line_txt[i]
+                        </div>
+                     </a>
+                    </div>
+                    
+                }
+                //other
+                else
+                {
+                    <div class="sidebar-button"><a href="/Permit/@ViewBag.processTypes[i]?permitID=@ViewBag.guid&noPARAM=">
+                        <div class="sidebar-button-text">
+                        
+                            <img width="10" src="@Url.Content("~/Content/Images/Icons/prin.png")" /> @ViewBag.processDescs.line_txt[i]
+                        </div>
+                     </a>
+                    </div>
+                }
+            }
+}
+
+
+<fieldset class="summaryDetsFieldSets">
+    <legend>Permit Details</legend>
+
+    <table class="summaryDetsTable">
+        <tr>
+            <td><b>VARN Reference</b></td>
+            <td><b>Permit Type</b></td>
+            <td><b>Permit Class</b></td>
+        </tr>
+        <tr>
+            <td>@ViewBag.varnRef</td>
+            <td>@ViewBag.permitType</td>
+            <td>@ViewBag.permitClass</td>
+        </tr>
+        <tr><td><br /></td></tr>
+        <tr>
+            <td><b>Permit Number</b></td>
+            <td><b>Lodged Date</b></td>
+            <td><b>Lodged At</b></td>
+        </tr>
+        <tr>
+            <td>@ViewBag.permitNo</td>
+            <td>@ViewBag.dateLodged</td>
+            <td>@ViewBag.lodgedDate</td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+<fieldset class="summaryDetsFieldSets">
+    <legend>Applicant Details</legend>
+    <table class="summaryDetsTable">
+        <tr>
+            <td><b>Applicant</b></td>
+            <td><b>Nationality</b></td>
+            <td><b>Date of Birth</b></td>
+        </tr>
+        <tr><td><br /></td></tr>
+        <tr>
+            <td>@ViewBag.applicant</td>
+            <td>@ViewBag.nationality</td>
+            <td>@ViewBag.dob </td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+<fieldset class="summaryDetsFieldSets">
+    <legend>Outcome</legend>
+    <table class="summaryDetsTable">
+        <tr>
+            <td><b>Outcome</b></td>
+            <td><b>Finalised</b></td>
+            <td><b>Decide Date</b></td>
+        </tr>
+        <tr><td><br /></td></tr>
+        <tr>
+            <td>@ViewBag.outcome</td>
+            <td>@ViewBag.finalised</td>
+            <td>@ViewBag.decidedDate</td>
+        </tr>
+    </table>
+</fieldset>
+
+<br />
+<button type="button" class="button" onclick ="location.href='/PermitIntray'">Permit Intray</button>

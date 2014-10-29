@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Shared/_Permit.cshtml";
+    ViewBag.Title = "Return Valued Document";
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/ViewModels/ReturnDocumentViewModel.js")"></script>
+}
+
+<div id="returnDocumentForm" class="maincontent">
+    <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.permit_guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
+                <div class="row row-offcanvas row-offcanvas-right" >
+                
+                    <div class="col-xs-6 col-sm-6 formFieldContainer" style="width:680px">
+                        <h4>Document</h4>
+                        <table>
+                            <tr>
+                                <td><b>Doc Type:</b> <span id="docType">@ViewBag.vdoctype</span></td>
+                                <td><b>Doc No:</b> <span id="docNo">@ViewBag.vdocno</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>Nationality:</b> <span id="nationality">@ViewBag.vdocNationality</span></td>
+                                <td><b>Expiry:</b> <span id="expiry">@ViewBag.vdocexpiry</span></td>
+                            </tr>
+                        </table>
+                        <b>Description: </b>
+                        @ViewBag.vdocdescription
+                        <h4>Person</h4>
+                        <table>
+                            <tr>
+                                <td><b>Surname:</b> <span id="surname">@ViewBag.vdocsurname</span></td>
+                                <td><b>Gender:</b> <span id="gender">@ViewBag.vdocgender</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>Given Name:</b> <span id="givenName">@ViewBag.vdocgivenname</span></td>
+                                <td><b>DOB:</b> <span id="dob">@ViewBag.dob</span></td>
+                            </tr>
+                        </table>
+                        <h4>Location</h4>
+                        <table>
+                            <tr>
+                                <td><b>Returned</b></td>
+                                <td><input type="text" data-bind="value: ReturnDocument.dateReturned"/> (actual date document was returned)</td>
+                            </tr>
+                            <tr>
+                                <td><b>Comments</b></td>
+                                <td><textarea class="textArea" data-bind="value: ReturnDocument.comments">
+
+                                    </textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 formFieldContainer" style="width:600px">
+                     <h4>Image</h4>
+                        
+                        <br />
+                        <div class="databox" ></div>
+   
+                    </div>
+                </div>
+    @{ if (ViewBag.isModifiable == "Y")
+               { 
+                    <div class="float-right" style="margin-top:-18px">
+                        <button class="button" data-bind="click: ReturnDocument.processReturnedDocument"><b>Ok</b></button>
+                        
+                    </div>
+               }
+             }
+                
+</div>
+<input type="text" hidden id="hiddenpermitID" value="@ViewBag.permitID" />
+
+<script type="text/javascript" >
+    ViewModels.ReturnDocument = new ReturnDocumentViewModel();
+</script>

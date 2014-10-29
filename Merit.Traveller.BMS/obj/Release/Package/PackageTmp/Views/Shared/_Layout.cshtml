@@ -1,0 +1,323 @@
+﻿@using System.Configuration
+@using System.Web
+@using System.Web.Optimization
+@using Merit.Traveller.BMS
+<!doctype html>
+
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<!-- the "no-js" class is for Modernizr. -->
+
+
+<head id="www-merit-com-au" data-template-set="html5-reset">
+    <meta charset="utf-8" />
+    <meta name="author" content="Jon Cleary">
+    <meta name="Copyright" content="Copyright Merit Technology Pty Ltd. 2012. All Rights Reserved.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="@Url.Content("~/Content/Images/Icons/favicon.png")" rel="shortcut icon" type="image/x-icon" />
+    @System.Web.Optimization.Styles.Render("~/Content/css/BMS")
+    @System.Web.Optimization.Scripts.Render("~/Content/scripts/BMS")
+    @RenderSection("scripts", false)
+
+    <script src="@Url.Content("~/Scripts/ViewModels/PopupViewModel.js")"></script>
+    <script src="@Url.Content("~/Scripts/ViewModels/SearchViewModel.js")"></script>
+
+    <script type="text/javascript">
+        var ViewModels = {
+            Popup: new PopupViewModel(),
+            Search: new SearchViewModel()
+        };
+
+    </script>
+
+    <title>Merit Traveller BMS - @ViewBag.Title</title>
+    <script>
+
+
+
+        function openSiteDialog() {
+            $("#changeSiteDialog").dialog("open");
+            $('#changeSiteDialog').css("background-color", "rgb(182, 197, 224)");
+        };
+        function openVideoDialog() {
+            $("#videoDialog").dialog("open");
+            $("#videoDialog").css("background-color", "rgb(182, 197, 224)");
+        };
+
+        function changeSite() {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("changeSite", "permitIntray")',
+                async: false,
+                data: {
+                    site: $("#changedSite").val(),
+                
+                },
+                success: function (result) {
+                    location.reload();
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <input hidden id="url" type="text" value="" />
+    <div id="popup" data-bind="fadeVisible: Popup.open">
+        <div class="popupTitle">
+            <div style="float: left;">
+                <h3 data-bind="text: Popup.popupTitle"></h3>
+            </div>
+
+            <div id="closeNames" class="closePopup" data-bind="click: Popup.popupClose">
+                <img src="@Url.Content("~/Content/Images/close.png")" />
+                Close
+            </div>
+        </div>
+
+        <div data-bind="html: Popup.popupHtml"></div>
+    </div>
+
+    <div id="wrapper">
+
+        @{
+            /*if(Request.Cookies[0].Expires.CompareTo(DateTime.Now) < 0 )
+            {
+                <h2>@HttpContext.Current.Request.Cookies["user_id"].Expires</h2>
+            }*/
+         
+                
+                
+            if (Request.IsAuthenticated)
+            {
+            <div id="bottomBar">
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#searchInput').keydown(function (event) {
+                            if (event.which == 13) {
+                                $("#searchResultsTable").jtable("load");
+                                $('#searchResults').show();
+                            }
+                        });
+                        $('#searchInput').on('input', function (event) {
+                            $('#searchResults').slideDown();
+                            $('#searchQuery').html("Search For:<b>" + $("#searchInput").val() + "</b>");
+                        });
+                        $('#searchInput').blur(function (event) {
+                            $('#searchResults').hide();
+                        });
+
+
+                    });
+
+                </script>
+                <div class="column half">
+                    <div class="profImage">
+                        <img src="@Url.Content("~/Content/Images/prof.gif")" width="20">
+                    </div>
+                    <div class="welcome">
+                        <h3>@User.Identity.Name</h3>
+                    </div>
+                    <div class="bottomButtons"><a href="http://support.merit.com.au/">Support</a><a href="mailto:support@merit.com.au" >Contact</a><a id="changeSiteLink" href="javascript:openSiteDialog()" >Change Site</a><a href="/Account/ChangePassword" >Change Password</a><a id="videosLink" href="javascript:openVideoDialog()" >Video Tutorials</a></div>
+                
+                    <div class="float-right version">
+                        <span id="copyright">@ConfigurationManager.AppSettings["TravellerVersion"] &copy; Merit 2014 Merit Technology Pty Ltd</span>
+                        <img border="0" src="@Url.Content("~/Content/Images/merit-logo.png")" alt="Merit Technology" height="25"  id="logo" />
+                    </div>
+                </div>
+                <div class="column half">
+                    
+                   
+                    
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search..." id="searchInput" data-bind="click: Search.getData">
+                             <div id="searchResults">
+                                  <span id="searchQuery"></span>
+                                 <div id="searchResultsTable">
+
+                                 </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <header >
+                
+                <div id="headerContainer">
+                    <nav>
+                        <img id="bannerLogo" border="0" src="@Url.Content("~/Content/Images/logo.png")" alt="Merit Technology"  >
+                        <!--@Html.ActionLink("<b>Intray</b>", "Index", "PermitIntray")-->
+                        <a href="@Url.Action("Index", "PermitIntray")"><b>PERMITS</b></a>
+                        <a href="@Url.Action("Index", "PermitIntray", new { visaReg = "Y" })"><b>VISA REGISTRATION</b></a>
+                        <a href="@Url.Action("Index", "Messages")"><!--<img src="@Url.Content("~/Content/Images/Icons/messageicon.png")" alt="Merit Technology"  height="12.95" width="19.5"  />--><b>MESSAGES</b>(<span id="unreadmsgs"></span>)</a>
+                        <!--@Html.ActionLink("Logout", "logoff", "account")-->
+                        <a href="@Url.Action("logoff", "account")"><b>LOGOUT</b></a>
+                        <span id="bannerMeritName">Merit Immigration</span>
+                    </nav>
+                    <span id="userDetails">@Request.Cookies["userGivenName"].Value @Request.Cookies["userSurname"].Value </span>
+                </div>
+            </header>
+            <div id="content-container">
+                <div id="banner">
+                    <h2 class="pageTitle">@ViewBag.Title</h2>
+                    <h2 class="float-right" id="bannerSiteName" >@Request.Cookies["centralName"].Value</h2>
+                </div>
+                <!--<button onclick="location.href='@Url.Action( "Index", "PermitIntray", new { visaReg = "Y" })'"> Visa Registration</button>
+                <button onclick="location.href='@Url.Action( "Index", "Messages")'" id="" type="button" class="button" ><b>(<span id="unreadmsgs"></span>) Messages</b></button>
+                <button onclick="location.href='@Url.Action( "logoff", "account")'"><b>Logout</b></button>-->
+                <div id="content-padding">
+                @{
+                if (IsSectionDefined("Sidebar"))
+                {
+                    <div class="row row-offcanvas row-offcanvas-right" id="back">
+                        <div class="col-xs-2 col-sm-2" id="homesidebar">
+                            <div id="sidebar">
+                                @RenderSection("Sidebar")
+                            </div>
+                            @if(IsSectionDefined("sitelist")){
+                                <!--<div id="sitelist">
+                                    @RenderSection("sitelist")
+                                </div>-->
+                            }
+                        </div>
+                        <!--/span-->
+                        <div class="col-xs-10 col-sm-10" id="homemaincontent">
+                            @RenderBody()
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                }
+                else
+                {
+
+                    @RenderBody()
+                }
+                }
+               </div>
+            </div>
+            }
+            else
+            {
+            <div id="content-container-nli">
+
+                <div class="content not-logged-in" id="content">
+                    @RenderBody()
+                </div>
+
+            </div>
+            }
+
+        }
+
+    </div>
+<div id="changeSiteDialog">
+    <table>
+        <tr>
+            <td><b>Site:</b></td>
+            <td>
+                <select id="changedSite">
+                    <option value="">-select-</option>
+                                    @{
+                                        if (ViewBag.officeList != null){
+                                            for (int i = 0; i < ViewBag.officeList.office_dets.Count; i++)
+                                            {
+                                                    <option value="@ViewBag.officeList.office_dets[i].office_guid|@ViewBag.officeList.office_dets[i].office_desc"> @ViewBag.officeList.office_dets[i].office_desc</option>
+                                            }  
+                                        }
+                                    }
+                </select>
+            </td>
+        </tr>
+    </table>
+    <button class="float-right" onclick="changeSite()">Ok</button>
+</div>
+    <div id="videoDialog">
+    <h3>BMS introduction tutorial</h3>
+    <video width="854" height="480" controls>
+        <source src="@Url.Content("~/videos/Test_Visa_Registration.mp4")" type="video/mp4">
+    </video>
+</div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ko.applyBindings(ViewModels);
+
+        $("#videoDialog").dialog({
+            resizable: false,
+            dialogClass: 'teststyle',
+            minHeight: 600,
+            width: 900,
+            show: { effect: 'fade', duration: 500 },
+            hide: { effect: 'fade', duration: 200 },
+            autoOpen: false,
+            title: "Video tutorials",
+            close: function (event, ui) { }
+        });
+
+        $("#changeSiteDialog").dialog({
+            resizable: false,
+            dialogClass: 'teststyle',
+            minHeight: 137,
+            width: 250,
+            show: { effect: 'fade', duration: 500 },
+            hide: { effect: 'fade', duration: 200 },
+            autoOpen: false,
+            title: "Change Site",
+            close: function (event, ui) { }
+        });
+
+
+        $("#searchInput").hide();
+        $('#searchResultsTable').jtable({
+
+            selecting: true,
+            //width: 500,
+            actions: {
+                listAction: 'PermitIntray/generateSearchQueryTable'
+            },
+            fields: {
+                VARN: {
+                    title: 'VARN',
+                    create: false,
+                    edit: false
+                },
+                matchedTerm: {
+                    title: 'matched term',
+                    create: false,
+                    edit: false,
+                }
+
+            },
+            selectionChanged: function (data) {
+
+
+            }
+        });
+        
+
+
+        var alias = $('#webAppAlias').val();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("getNumberUnreadMessages", "Messages")',
+            async: false,
+            data: {
+  
+            },
+            success: function (result) {
+                $("#unreadmsgs").html(result.number);
+            
+            }
+        });
+
+
+    });
+    
+</script>

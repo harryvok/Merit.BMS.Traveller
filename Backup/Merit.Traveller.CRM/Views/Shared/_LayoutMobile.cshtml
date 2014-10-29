@@ -1,0 +1,77 @@
+﻿<!doctype html>
+
+<html lang="en">
+<head id="www-merit-com-au" data-template-set="html5-reset">
+    <meta charset="utf-8" />
+    <meta name="author" content="Jon Cleary">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" sizes="72x72" href="/Content/Images/Icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/Content/Images/Icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" href="/Content/Images/Icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-startup-image" href="/Content/Images/Icons/splash-startup.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="Copyright" content="Copyright Merit Technology Pty Ltd. 2012. All Rights Reserved.">
+    <link href="/Content/Images/Icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width">
+    <link href="@Url.Content("~/Content/CSS/Mobile/Base.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/CSS/Mobile/Layout.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/CSS/Mobile/Module.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/CSS/Mobile/State.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.8.0.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.23.custom.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.5.3.js")"></script>
+    <title>Merit Technology - Traveller</title>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="logo">
+                <a href="/">
+                    <img border="0" src="/Content/Images/merit-logo.png" alt="Merit Technology" width="195" height="41" /></a>
+            </div>
+        </header>
+        @{
+            if(Request.IsAuthenticated) {
+                <nav>
+
+                </nav>
+            }
+        }
+        <div id="content-container">
+            @{
+                if(Request.IsAuthenticated) {
+                    <div id="sidebar">
+                        Test
+                    </div>
+                    <div id="content logged-in">
+                        <h1>@ViewBag.Title</h1>
+                        @RenderBody()
+                    </div>
+                }   
+                else{
+                    <div id="content">
+                        <h1>@ViewBag.Title</h1>
+                        @RenderBody()
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <footer>
+        <div id="footer-content">
+            <hr />
+            <br />
+            <div id="copyright">
+                <span class="medium bold">Copyright &copy; Merit Technology Pty. Ltd.</span><br />
+                Privacy Policy | Terms & Conditions
+                    <br />
+                <a href="/about/">About Merit</a> | <a href="/contact/">Contact Us</a> | <a href="http://support.merit.com.au/">Support Wiki</a>
+            </div>
+        </div>
+    </footer>
+    </div>
+</body>
+</html>

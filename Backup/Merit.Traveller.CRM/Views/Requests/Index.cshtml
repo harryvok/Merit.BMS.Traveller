@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section Sidebar{
+    <div class="sidebar-button"><a href="/"><div class="sidebar-button-text">Help</div></a></div>
+    <div class="sidebar-button"><a href="/ChangePassword/"><div class="sidebar-button-text">Change Password</div></a></div>
+    <div class="sidebar-button"><a href="mailto:support@merit.com.au"><div class="sidebar-button-text">Email</div></a></div>
+    <div class="sidebar-button"><a href="/Account/LogOff/"><div class="sidebar-button-text">Logout</div></a></div>
+}
+<a id="top"></a>
+<h2>Requests</h2>
+
+<div id="requestsIntrayController">
+     <table>
+        <tr>
+            <td>
+                <img border="0" src="/Content/Images/green-dot.png">
+                  Open Request &nbsp;
+                <img border="0" src="/Content/Images/yellow-dot.png">
+                  Suspended Request &nbsp;
+                <img border="0" src="/Content/Images/red-dot.png">
+                  Finalised Request
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;<a href="#bottom">Scroll To Bottom</a></td>
+        </tr>
+        <tr>
+            <td><br /></td>
+        </tr>
+        <tr>
+            <td>&nbsp;Filter: &nbsp;
+                 <select id="filters" data-bind="value: requestIntray.filterNumber">
+                        <option value="">Filter Options</option>
+                      @{
+                           for (int i = 0; i < ViewBag.filterList.filter_det.Count; i++)
+                            {
+                            <option value="@ViewBag.filterList.filter_det[i].filter_no">@ViewBag.filterList.filter_det[i].filter_name</option>
+                            }  
+                        }
+                 </select>
+            </td>
+        </tr>
+    </table>
+    <span class="float-right" id="totalNumText">Found [0] for the filter selected</span>
+    <input type="text" class="searchBar" placeholder="Search" data-bind="value: requestIntray.searchText, valueUpdate: 'afterkeydown'"/>
+
+    <div id="requestIntray" >
+    </div>
+  <a id="bottom"></a>
+  <a href="#top">Scroll To Top</a>
+</div>
+
+<script type="text/javascript" >
+    ViewModels.requestIntray = new RequestIntrayViewModel();
+</script>

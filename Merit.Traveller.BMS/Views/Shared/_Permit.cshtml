@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+@RenderSection("scripts", false)
+
+<div id="permitDetailsTable">
+    <div >
+        <div id="permitDetails">
+            <table>
+                <tr>
+                    <td><b>VARN:</b></td>
+                    <td>@ViewBag.varnRef</td>
+                    <td><b>Applicant:</b></td>
+                    <td>@ViewBag.applicant</td>
+                    <td><b>Permit Class:</b></td>
+                    <td>@ViewBag.permitType / @ViewBag.permitClass</td>
+                    <td><b>Registered:</b></td>
+                    <td>@ViewBag.dateLodged</td>
+                    <td><b>Decided:</b></td>
+                    <td>@ViewBag.approvalDate </td>
+                    <td><b>Outcome:</b></td>
+                    <td>@ViewBag.outcome</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+@RenderBody()
+

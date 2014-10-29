@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://merit-laptop-3/merit_traveller/ws_merit_admin.asmx?wsdl" docRef="http://merit-laptop-3/merit_traveller/ws_merit_admin.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://merit-laptop-3/merit_traveller/ws_merit_admin.asmx" xmlns:q1="http://tempurl.org" binding="q1:ws_merit_adminSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://merit-laptop-3/merit_traveller/ws_merit_admin.asmx" xmlns:q2="http://tempurl.org" binding="q2:ws_merit_adminSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

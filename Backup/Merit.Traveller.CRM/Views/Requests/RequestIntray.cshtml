@@ -1,0 +1,38 @@
+﻿@model Merit.Traveller.CRM.ws_merit_request.action_intray_list
+
+<div id="requestsTable">
+    <table class="intrayTable" id="rt">
+        <tr class="tableHeaders">
+            <th>Request ID</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Location Address</th>
+            <th>Customer</th>
+            <th>Due Date</th>
+            <th>Status</th>
+        </tr>
+        @foreach (var action in Model.action_intray_det)
+            {
+                <tr class="intrayRows" id="requestRows">
+                    <td>@action.request_id</td>
+                    <td>@action.request_description</td>
+                    <td>@action.service_name - @action.request_name - @action.function_name</td>
+                    <td>@action.location_house_no @action.location_name @action.location_street_type @action.location_locality_name</td>
+                    <td>@action.customer_given_name @action.customer_surname</td>
+                    <td>@action.due_date</td>
+                   @if (@action.status == "Open")
+                    {
+                        <td><img border="0" src="/Content/Images/green-dot.png"></td>
+                    }
+                    else if (@action.status == "Suspended")
+                    {
+                        <td><img border="0" src="/Content/Images/yellow-dot.png"></td>
+                    }
+                    else
+                    {
+                        <td><img border="0" src="/Content/Images/red-dot.png"></td>
+                    }
+                </tr>
+        }
+     </table>
+</div>

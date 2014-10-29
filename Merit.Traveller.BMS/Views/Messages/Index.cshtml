@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "Inbox";
+}
+
+@section scripts{
+     <script src="@Url.Content("~/Scripts/ViewModels/MessagesViewModel.js")"></script>
+}
+
+
+<div id="messageDialog">
+    <div id="message">
+        
+    </div>
+</div>
+
+<div id="permitIntrayContainer" class="maincontent">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-12 formFieldContainer">
+            <select>
+                <option>All</option>
+                <option>Current</option>
+                <option>Archived</option>
+            </select>
+            <input type="button" data-bind="click: messages.openNewMsgWindow" value="New" />
+            <input type="button" data-bind="click: messages.replyMsgWindow" value="Reply" />
+            <input type="button" data-bind="click: messages.forwardMsgWindow" value="Forward" />
+            <input type="button" data-bind="click: messages.refresh" value="Send / Receive" />
+            <input type="button" data-bind="click: messages.deleteMessage" value="Archive" />
+            <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.permit_guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
+        </div>
+
+    </div>
+    <br />
+    <hr class="greyhr"/>
+    <br />
+    <div class="row row-offcanvas row-offcanvas-right messages">
+        <div class="float-left  ">
+            <div id="messagesList">
+
+            </div>
+        </div>
+        <!--/span-->
+        <div class="col-xs-6 col-sm-6">
+            <div id="messageView">
+                <b>[Subject]</b><br />
+                <b>Date Sent:</b><br />
+                <b>From:</b>
+                <hr class="greyhr"/>
+            </div>
+        </div>
+        <!--/span-->
+    </div>
+
+</div>
+<div class="maincontent" id="newmessage">
+    <table>
+        <tr>
+            <td><b>To:</b></td>
+            <td>
+                <select class="msgrecipient">
+                    <option value="">-select-</option>
+                                    @{
+                                        for (int i = 0; i < ViewBag.officerList.merit_officer_details.Count; i++)
+                                        {
+                                                <option value="@ViewBag.officerList.merit_officer_details[i].officer_guid"> @ViewBag.officerList.merit_officer_details[i].user_id @ViewBag.officerList.merit_officer_details[i].given_name</option>
+                                        }  
+                                    }
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>Subject:</b></td>
+            <td><b><input type="text" class="msgsubject" /></b></td>
+        </tr>
+         <tr>
+            <td><b>Message:</b></td>
+            <td><textarea class="MessageTextArea" ></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input class="float-right" type="button" data-bind="click: messages.sendNewMessage.bind($data, 'new')" value="Send" /></td>
+        </tr>
+    </table>
+   
+</div>
+<div class="maincontent" id="replymessage">
+    <table>
+        <tr>
+            <td><b>To:</b></td>
+            <td><input type="text" class="msgrecipient" /></td>
+        </tr>
+        <tr>
+            <td><b>Subject:</b></td>
+            <td><b><input type="text" class="msgsubject"  /></b></td>
+        </tr>
+         <tr>
+            <td><b>Message:</b></td>
+            <td><textarea class="MessageTextArea" ></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input class="float-right" type="button" data-bind="click: messages.sendNewMessage.bind($data, 'reply')" value="Send" /></td>
+        </tr>
+    </table>
+   
+</div>
+<div class="maincontent" id="forwardmessage">
+    <table>
+         <tr>
+            <td><b>To:</b></td>
+            <td>
+                <select>
+                    <option value="">-select-</option>
+                                    @{
+                                        for (int i = 0; i < ViewBag.officerList.merit_officer_details.Count; i++)
+                                        {
+                                                <option value="@ViewBag.officerList.merit_officer_details[i].officer_guid"> @ViewBag.officerList.merit_officer_details[i].user_id @ViewBag.officerList.merit_officer_details[i].given_name</option>
+                                        }  
+                                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Subject:</b></td>
+            <td><b><input type="text" class="msgsubject"  /></b></td>
+        </tr>
+         <tr>
+            <td><b>Message:</b></td>
+            <td><textarea class="MessageTextArea" ></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input class="float-right" type="button" data-bind="click: messages.sendNewMessage.bind($data, 'forward')" value="Send" /></td>
+        </tr>
+    </table>
+   
+</div>
+<input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
+<script type="text/javascript">
+    ViewModels.messages = new MessagesViewModel();
+</script>
+

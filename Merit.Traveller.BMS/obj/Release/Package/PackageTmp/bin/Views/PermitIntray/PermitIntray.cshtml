@@ -1,0 +1,37 @@
+﻿@model Merit.Traveller.BMS.BMS_Web_Permit_Data.permit_list_list
+
+<div id="permitTable">
+    <!--<table>
+        <tr>
+            <th>Varn Ref.</th>
+            <th>Permit No.</th>
+            <th>Permit Class</th>
+            <th>Status</th>
+            <th>Finalised?</th>
+            <th>Date Lodged</th>
+            <th>Office</th>
+        </tr>
+        @{
+            foreach (var permit in Model.permit_list_dets)
+            {
+            <tr id="permitRows" onclick ="location.href='/Permit?id=@permit.permit_guid'">
+                <td>@permit.varn_ref</td>
+                    @{ 
+                        if (@permit.permit_no == 0){
+                                <td>-</td>
+                             }
+                         else{
+                                <td>@permit.permit_no</td>
+                             }
+                       }
+                
+                <td>@permit.permit_type_class</td>
+                <td>@permit.status_outcome</td>
+                <td></td>
+                <td>@permit.date_lodged.ToString().Split(' ')[0]</td>
+                <td>@permit.lodged_at_for</td>
+            </tr>     
+            }
+        }
+    </table>-->
+</div>

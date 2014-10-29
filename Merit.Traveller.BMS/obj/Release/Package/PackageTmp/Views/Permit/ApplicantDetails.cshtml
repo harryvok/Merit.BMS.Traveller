@@ -1,0 +1,262 @@
+﻿@{
+    Layout = "~/Views/Shared/_Permit.cshtml";
+    ViewBag.Title = "Applicant Details";
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/ViewModels/ApplicantDetailsViewModel.js")"></script>
+}
+
+<div class="processContainer">
+
+    <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.permit_guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
+    @using (Ajax.BeginForm("Default", "", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.InsertAfter, UpdateTargetId = "FeedbackSuccess" }, new { controller = "Permit", action = "updateApplicantDetails", id = "inputForm", enctype = "multipart/form-data" }))
+        {
+       
+
+        <div id="applicantformdiv" class="maincontent">
+            
+            <div class="row row-offcanvas row-offcanvas-right">
+                
+                <div class="col-xs-6 col-sm-6" style="width:680px">
+                    <div id="applicantDetailsLeftColumn">
+                        <div  class="formFieldContainer">
+                            <h4>Applicant Details</h4>
+                        
+                        <table id="PersonalApplicantDetails">
+                            <tr>
+                                <td style="width:95px"><b>Title:</b></td>
+                                <td>
+                                    <select id="titleSelect" data-bind="value: applicantDetails.title">
+                                        <option value="@ViewBag.applicantTitle">@ViewBag.titleName</option>
+                                        @{
+                                            for (int i = 0; i < ViewBag.titles.Count; i++)
+                                            {
+                                            <option value="@ViewBag.titles[i].code_guid">@ViewBag.titles[i].code_desc</option>
+                                            }  
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Surname:</b></td>
+                                <td>
+                                    <input type="text" id="surnameInput" name="surnameInput" value="@ViewBag.applicantSurName"  data-bind="value: applicantDetails.surname" />
+                                    <b>Given Name:</b>
+                                    <input type="text" id="givenNameInput" name="givenNameInput" value="@ViewBag.applicantGivenName" data-bind="value: applicantDetails.givenName" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td><b>Occupation:*</b></td>
+                                <td>
+                                    <input type="text" id="occupationInput" name="occupationInput" value="@ViewBag.applicantOccupation" data-bind="value: applicantDetails.occupation"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Country of Birth:*</b></td>
+                                <td>
+                                    <select id="cobInput" name="cobInput" data-bind="value: applicantDetails.cob">
+                                        <option value="@ViewBag.applicantCOB">@ViewBag.cobName</option>
+                                        @{
+                                            for (int i = 0; i < ViewBag.countriesOfBirth.Count; i++)
+                                            {
+                                            <option value="@ViewBag.countriesOfBirth[i].country_code">@ViewBag.countriesOfBirth[i].country_name</option>
+                                            }  
+                                        }
+                                    </select>
+                                    <b>Place of Birth:*</b>
+                                    <input type="text" id="pobInput" value="@ViewBag.applicantPOB" data-bind="value: applicantDetails.pob"/>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                            <h4>Work Permit Details</h4>
+
+                           <table id="workApplicantDetails">
+                                <tr>
+                                    <td><b>Work Permit No</b></td>
+                                    <td>
+                                        <input type="text" id="workPermitNoInput" value="@ViewBag.applicantWorkPermitNo" data-bind="value: applicantDetails.workPermNo"/>
+                                        <b>Position Number:</b>
+                                        <input type="text" id="positionNumberInput" value="@ViewBag.applicantPositionNumber" data-bind="value: applicantDetails.positionNo"/>
+                                    </td>
+                                </tr>
+                               
+                                <tr>
+                                    <td><b>Permit Expiry:</b></td>
+                                    <td>
+                                        <input type="text" id="workPermExpiryInput" placeholder="(dd-mm-yyyy)" value="@ViewBag.applicantExpiryDate" data-bind="value: applicantDetails.appWorkPermExpiry"/></td>
+                                </tr>
+                                <tr>
+                                    <td><b></b></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <h4>Overseas Address Details</h4>
+
+                           <table id="addressApplicantDetails">
+                                <tr>
+                                    <td><b>Address Line 1:</b></td>
+                                    <td>
+                                        <input type="text" id="add1Input" value="@ViewBag.applicantAddressLine1" data-bind="value: applicantDetails.add1"/></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Address Line 2:</b></td>
+                                    <td>
+                                        <input type="text" id="add2Input" value="@ViewBag.applicantAddressLine2" data-bind="value: applicantDetails.add2"/></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Address Line 3:</b></td>
+                                    <td>
+                                        <input type="text" id="add3Input" value="@ViewBag.applicantAddressLine3" data-bind="value: applicantDetails.add3"/></td>
+                                </tr>
+                            </table>
+                            <h4>Contact Details</h4>
+
+                            <table id="contactApplicantDetails">
+                                <tr>
+                                    <td style="width:58px;"><b>Email:</b></td>
+                                    <td>
+                                        <input type="text" id="emailInput" value="@ViewBag.applicantEmail" data-bind="value: applicantDetails.email" /></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Phone Number</b></td>
+                                    <td>
+                                        <input type="text" id="phoneNoInput" value="@ViewBag.applicantPhoneNumber" data-bind="value: applicantDetails.phone_no"/></td>
+                                </tr>
+                            </table>
+                            <h4>Address in Papua New Guinea</h4>
+                            <table>
+                                <tr>
+                                    <td style="width:120px;"><b>Address</b></td>
+                                    <td>
+                                        <input type="text" style="width:510px;" id="appAddInCountryInput" value="@ViewBag.applicantAddressInCountry" data-bind="value: applicantDetails.addrInCountry" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                       
+
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-sm-6" style="width:600px">
+                    <div id="">
+                      <div  class="formFieldContainer">
+                          <h4>Document Details</h4>
+                        <table id="personalApplicantDetailsRight">
+                            <tr>
+                                <td><b>Gender:</b></td>
+                                <td>
+                                    <select id="genderInput" data-bind="value: applicantDetails.gender">
+                                        @{
+                                            if (@ViewBag.applicantGender == "M")
+                                            {
+                                            <option value="@ViewBag.applicantGender">Male</option>
+                                            }
+                                            else
+                                            {
+                                            <option value="@ViewBag.applicantGender">Female</option>
+                                            }
+                                        }
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                    </select>
+                                    <b>Date of Birth:</b>
+                                    <input type="text" id="dobInput" name="dobInput" value="@ViewBag.applicantDob" data-bind="value: applicantDetails.dob"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Marital Status:</b></td>
+                                <td>
+                                    <select id="maritalStatusInput" data-bind="value: applicantDetails.maritalStatus">
+                                        <option value="@ViewBag.applicantMaritalStatus">@ViewBag.applicantMaritalStatusName</option>
+                                        @{
+                                            for (int i = 0; i < ViewBag.maritalstats.Count; i++)
+                                            {
+                                            <option value="@ViewBag.maritalstats[i].code_guid">@ViewBag.maritalstats[i].code_desc</option>
+                                            }  
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Nationality:*</b></td>
+                                <td>
+                                    <select id="nationalityInput" name="nationalityInput" data-bind="value: applicantDetails.nationality">
+                                        <option value="@ViewBag.applicantNationality">@ViewBag.applicantNationalityName</option>
+                                        @{
+                                            for (int i = 0; i < ViewBag.nationalities.Count; i++)
+                                            {
+                                            <option value="@ViewBag.nationalities[i].nationality_code">@ViewBag.nationalities[i].nationality_desc</option>
+                                            }  
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Passport Number:*</b></td>
+                                <td>
+                                    <input type="text" id="ppNoInput" value="@ViewBag.applicantPassportNumber" data-bind="value: applicantDetails.passportNo"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Expiry Date:*</b></td>
+                                <td>
+                                    <input type="text" id="expiryDateInput" value="@ViewBag.applicantExpiryDate" data-bind="value: applicantDetails.docExpiry"/></td>
+                            </tr>
+                            <tr>
+                                <td><b></b></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                          </div>
+                        <br />
+                        <h4>Picture:</h4>
+                        <hr class="greyhr" />
+                        <br />
+                        @{
+                            if (ViewBag.s_image_guid != ""){
+                                <img class="databox" id="uploadImageDiv" src="@Url.Content("~/pdf/"+ViewBag.s_image_guid+".jpg")"/>
+                            }else{
+                                <img class="databox" id="uploadImageDiv" src="@Url.Content("~/Content/Images/defaultprofilepic2.png")"/>
+                            }   
+                        }
+                        <input type="text" hidden id="hiddenImageGuid" value="@ViewBag.s_image_guid"/>
+                        <!--<Input type="file" name="file" />-->
+                          
+                    </div>
+                </div>
+            </div>
+            <br />
+            @{ if (ViewBag.modify != "N")
+               { 
+              <div class="float-right" style="margin-top:-25px">
+                  <input type="submit" value="Incomplete" id="incompletebutton" style="background:red" data-bind="click: applicantDetails.submitForm.bind($data, 'N')"/>
+                <input type="submit" value="Complete" id="completebutton" style="background:green"  data-bind="click: applicantDetails.submitForm.bind($data, 'Y')"/>
+                
+              </div>
+                 }
+           }
+            <span id="FeedbackSuccess"></span>
+            <!--<button type="button" class="button" id="processButton" data-bind="click: applicantDetails.processApplication">Complete</button>
+            <button type="button" class="button" id="incompleteButton" data-bind="">Incomplete</button>-->
+        </div>
+       
+    
+
+        <!-- HIDDEN FIELDS -->
+        <input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
+        <input type="text" hidden="hidden" id="hiddenInputField" data-bind="value: applicantDetails.isEditable" value="@ViewBag.editable"/>
+        <input type="text" hidden="hidden" id="hiddenPermitID" data-bind="value: applicantDetails.permitNo" value="@ViewBag.permitID"/>
+        <input type="text" hidden="hidden" id="hiddenApplicantID" data-bind="value: applicantDetails.applicantID" value="@ViewBag.applicantGuid"/>
+        <input type="text" hidden="hidden" id="hiddenOfficerID" data-bind="value: applicantDetails.officerID" value="@ViewBag.officerID"/>
+        <input type="text" hidden="hidden" id="hiddenImageID" data-bind="value: applicantDetails.imageID" value="@ViewBag.imageID"/>
+       
+          
+             
+        }
+
+
+ </div>
+<script type="text/javascript" >
+    ViewModels.applicantDetails = new ApplicantDetailsViewModel();
+</script>
