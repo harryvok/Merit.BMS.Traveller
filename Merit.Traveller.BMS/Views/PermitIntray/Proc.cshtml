@@ -1,0 +1,260 @@
+﻿@model Merit.Traveller.BMS.permitmodel
+@{
+    ViewBag.Title = "Process Summary > " +  @Model.varnRef ;
+}
+
+@*<a href="#" onclick="$('#permitProcessSummary').hide()" class="float-right">Close</a>*@
+
+
+<style type="text/css">
+
+    .summaryheader {
+        margin-top: 30px;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+        color: #333333;
+        font-weight:bold;
+    }
+
+    .summaryheader span{
+        margin-left:10px;
+    }
+</style>
+<div>
+
+
+    @{
+        String outcomeColour;
+        if (Model.outcome == "Declined")
+        {
+            outcomeColour = "darkred";
+        }
+        else if (Model.outcome == "Undecided")
+        {
+            outcomeColour = "#62a8d1"; //"#2a5669";
+        }
+        else
+        {
+            outcomeColour = "#00FF00";
+        }
+
+    }
+    <div style="background-color:@outcomeColour;" class="summaryheader">
+        <b>VARN:</b> @Model.varnRef  <span> <b>Permit Class:</b> @Model.permitClass </span> <span> <b>Permit Type:</b> @Model.permitType </span> <br /><br/>
+        <b>Applicant Name:</b> @Model.applicant <span><b>Date of Birth:</b> @Model.dob </span> <span><b>Nationality:</b>  @Model.nationality </span> <br /><br />
+    
+        <b>Registered:</b> @Model.dateLodged <b>at</b> @Model.lodgedAt <br /><br />
+    <b>Permit No:</b> @Model.permitNo <b>Decided</b> @Model.approvalDate <br /><br />
+</div>
+
+    <table id="processTable">
+        @{
+            <tr id="processTableHeader">
+                <th>Status</th>
+                <th>Process</th>
+            </tr>
+
+
+            for (int i = 0; i < Model.processes.Count; i++)
+            {
+                if (Model.processTypes[i] == "ApplicantDetails")
+                {
+                    <tr class="processRows" onclick="location.href='@Url.Action(Model.processTypes[i], "Permit", new { permitID = Model.guid, dependentID = Model.dependentID })'">
+                        <td>
+                            @if (Model.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@Model.processDescs.line_icon[i]</b>-->
+
+
+
+                        </td>
+                        <td class="procDescLineRow"> @Model.processDescs.line_txt[i]</td>
+                    </tr>
+                }
+                //sponsor details
+                else if (Model.processTypes[i] == "p999")
+                {
+                    <tr class="processRows" onclick="location.href='@Url.Action(Model.processTypes[i],"Permit",new { permitID = Model.guid, sponsorID = Model.sponsorID })'">
+                        <td>
+                            @if (Model.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@Model.processDescs.line_icon[i]</b>-->
+
+
+
+                        </td>
+                        <td class="procDescLineRow">@Model.processDescs.line_txt[i]</td>
+                    </tr>
+
+                }
+                //no sponsor required
+                else if (Model.processTypes[i] == "p998")
+                {
+                    <tr class="processRows">
+                        <td>
+                            @if (Model.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@Model.processDescs.line_icon[i]</b>-->
+
+
+
+                        </td>
+                        <td class="procDescLineRow">@Model.processDescs.line_txt[i]</td>
+                    </tr>
+
+                }
+                //check requirements
+                else if (Model.processTypes[i] == "p461")
+                {
+                    <tr class="processRows" onclick="location.href='@Url.Action(Model.processTypes[i],"Permit",new { permitID = Model.guid, dependentID = Model.dependentID,intrayID = Model.processes[i] })'">
+                        <td>
+                            @if (Model.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@Model.processDescs.line_icon[i]</b>-->
+
+
+
+                        </td>
+                        <td class="procDescLineRow">@Model.processDescs.line_txt[i]</td>
+                    </tr>
+
+                }
+                //make recommendations
+                else if (Model.processTypes[i] == "p462")
+                {
+                    <tr class="processRows" onclick="location.href='@Url.Action(Model.processTypes[i],"Permit",new { permitID = Model.guid, dependentID = Model.dependentID,intrayID = Model.processes[i] })'">
+                        <td>
+                            @if (Model.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@Model.processDescs.line_icon[i]</b>-->
+
+
+
+                        </td>
+                        <td class="procDescLineRow">@Model.processDescs.line_txt[i]</td>
+                    </tr>
+
+                }
+                //make decision
+                else if (Model.processTypes[i] == "p455")
+                {
+                    <tr class="processRows" onclick="location.href='@Url.Action(Model.processTypes[i],"Permit",new { permitID = Model.guid, dependentID = Model.dependentID,intrayID = Model.processes[i] })'">
+                        <td>
+                            @if (Model.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@Model.processDescs.line_icon[i]</b>-->
+
+
+
+                        </td>
+                        <td class="procDescLineRow">@Model.processDescs.line_txt[i]</td>
+                    </tr>
+
+                }
+                //print
+                else if (Model.processTypes[i] == "p456")
+                {
+                    <tr class="processRows" onclick="location.href='@Url.Action(Model.processTypes[i],"Permit",new { permitID = Model.guid})'" data-bind="click: permitIntray.displayFilterMenu">
+                        <td>
+                            @if (Model.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@Model.processDescs.line_icon[i]</b>-->
+
+
+
+                        </td>
+                        <td class="procDescLineRow">@Model.processDescs.line_txt[i]</td>
+                    </tr>
+
+                }
+                //print authorisation/rejection letter
+                else if (Model.processTypes[i] == "p453")
+                {
+                    <tr class="processRows" onclick="location.href='@Url.Action(Model.processTypes[i],"Permit",new { permitID = Model.guid, title=Model.processDescs.line_txt[i] })'">
+                        <td>
+                            @if (Model.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@Model.processDescs.line_icon[i]</b>-->
+
+
+
+                        </td>
+                        <td class="procDescLineRow">@Model.processDescs.line_txt[i]</td>
+                    </tr>
+
+                }
+                //other
+                else
+                {
+                    <tr class="processRows" onclick="location.href='@Url.Action(Model.processTypes[i],"Permit",new { permitID = Model.guid, noPARAM = "" })'">
+                        <td>
+                            @if (Model.processDescs.line_icon[i] == "Y")
+                            {
+                                <img src="@Url.Content("~/Content/Images/tick.png")" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/process-cross.png")" />
+                            }
+                            <!--<b>@Model.processDescs.line_icon[i]</b>-->
+
+
+
+                        </td>
+                        <td class="procDescLineRow">@Model.processDescs.line_txt[i]</td>
+                    </tr>
+                }
+            }
+        }
+    </table>
+
+</div>
