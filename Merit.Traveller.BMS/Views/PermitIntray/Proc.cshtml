@@ -1,6 +1,9 @@
 ﻿@model Merit.Traveller.BMS.permitmodel
 @{
-    ViewBag.Title = "Process Summary > " +  @Model.varnRef ;
+    ViewBag.Title = "Process Summary "; //+  @Model.varnRef ;
+    string lang = ViewBag.Title;
+    @Html.ActionLink(lang, "", "PermitIntray");
+    ViewBag.Subtitle = @Model.varnRef;
 }
 
 @*<a href="#" onclick="$('#permitProcessSummary').hide()" class="float-right">Close</a>*@
@@ -13,7 +16,7 @@
         padding-top: 10px;
         padding-right: 10px;
         padding-left: 10px;
-        color: #333333;
+        color: #000000;
         font-weight:bold;
     }
 
@@ -32,7 +35,7 @@
         }
         else if (Model.outcome == "Undecided")
         {
-            outcomeColour = "#62a8d1"; //"#2a5669";
+            outcomeColour = "darkorange";
         }
         else
         {
@@ -40,6 +43,8 @@
         }
 
     }
+    
+    <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.permit_guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
     <div style="background-color:@outcomeColour;" class="summaryheader">
         <b>VARN:</b> @Model.varnRef  <span> <b>Permit Class:</b> @Model.permitClass </span> <span> <b>Permit Type:</b> @Model.permitType </span> <br /><br/>
         <b>Applicant Name:</b> @Model.applicant <span><b>Date of Birth:</b> @Model.dob </span> <span><b>Nationality:</b>  @Model.nationality </span> <br /><br />
