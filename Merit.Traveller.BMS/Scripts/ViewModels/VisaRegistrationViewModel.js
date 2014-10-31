@@ -107,7 +107,7 @@ function VisaRegistrationViewModel() {
         gotoCurrent: true
     });*/
 
-    $("#sponsorDialog").dialog({
+    /*$("#sponsorDialog").dialog({
         columnSelectable: false,
         resizable: false,
         dialogClass: 'teststyle',
@@ -389,7 +389,7 @@ function VisaRegistrationViewModel() {
            
         }
     });
-    $("#countryDialogTable").jtable("load");
+    $("#countryDialogTable").jtable("load");*/
 
 
     //computed functions
