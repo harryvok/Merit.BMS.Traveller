@@ -44,6 +44,7 @@ namespace Merit.Traveller.BMS
             "~/Content/CSS/Module.css",
             "~/Content/CSS/State.css",
             "~/Content/CSS/jquery-ui.css",
+            "~/Content/CSS/ace-min.css",
             "~/Scripts/jtable/themes/metro/blue/jtable.css"));
 
             //Creating bundle for your js files

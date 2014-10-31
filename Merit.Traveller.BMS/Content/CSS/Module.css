@@ -710,7 +710,6 @@ messagesList .jtable {
     background: linear-gradient(to bottom, rgba(41,58,104,0.79) 0%,rgba(23,25,73,0.86) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9293a68', endColorstr='#db171949',GradientType=0 );
     padding-bottom:1px;
-    margin-left:-5px;
 }
     #lodgedDetailsTable table {
         width:50%;
