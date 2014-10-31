@@ -49,20 +49,26 @@
             $("#enquiryList tr").removeClass("selectedRow");
             $(this).addClass("selectedRow");
             var permitID = $(this).attr("data-permitID");
+            //location.href = 'PermitIntray/Proc'
+            location.href = "PermitIntray/Proc?permitID=" + permitID;
 
-            $.ajax({
-                type: "GET",
-                url: "PermitIntray/getPermitProcessSummary",
-                data: {
-                    permitID: permitID
-                },
-                success: function (result) {
-                    $("#permitProcessSummary").html(result);
-                    $("#permitProcessSummary").fadeIn("Fast");
-                }
-            });
+            //$.ajax({
+            //    type: "GET",
+            //    url: "PermitIntray/getPermitProcessSummary",
+            //    data: {
+            //        permitID: permitID
+            //    },
+            //    success: function (result) {
+            //       // $("#permitProcessSummary").html(result);
+            //        location.href = 'PermitIntray/Proc';
+            //        alert(permitID);
+            //        //$("#permitProcessSummary").html(result);
+            //       //$("#permitProcessSummary").fadeIn("Fast");
+            //    }
+            //});
         }
     }
+
     function initializeTable() {
         var oTable = $('#enquiryTable').dataTable({
             iDisplayLength: 50,

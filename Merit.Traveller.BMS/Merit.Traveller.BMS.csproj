@@ -1349,6 +1349,7 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\PermitIntray\EnquiryList.cshtml" />
+    <Content Include="Views\PermitIntray\Proc.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

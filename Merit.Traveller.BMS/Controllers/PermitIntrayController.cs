@@ -230,6 +230,55 @@ namespace Merit.Traveller.BMS.Controllers
         }
 
         [Authorize]
+        public ActionResult Proc(String permitID)
+        {
+            String user_id = Request.Cookies["user_id"].Value;
+            String password = getPassword();
+
+            var webpermitservices = getWebPermitDataServices();
+            var permitDets = webpermitservices.ws_get_permit_base_dets(user_id, password, permitID);
+            var permitProcDets = webpermitservices.ws_get_proc_permit_dets(user_id, password, permitID, Request.Cookies["officeID"].Value);
+
+            List<String> processes = new List<String>();
+            List<String> processTypes = new List<String>();
+
+            for (int i = 0; i < permitProcDets.line_txt.Count; i++)
+            {
+                if (permitProcDets.line_txt.ElementAt(i) != "")
+                {
+                    processes.Add(permitProcDets.line_guid.ElementAt(i));
+                    if (permitProcDets.line_type.ElementAt(i) == "")
+                        processTypes.Add("ApplicantDetails");
+                    else
+                        processTypes.Add("p" + permitProcDets.line_type.ElementAt(i));
+                }
+            }
+
+            permitmodel pm = new permitmodel(
+                permitID,
+                permitDets.s_varn_ref.ToString(),
+                permitDets.s_lodged_date,
+                permitDets.s_lodged_at,
+                permitDets.s_permit_class,
+                permitDets.s_permit_type,
+                permitDets.s_permit_no.ToString(),
+                permitDets.s_outcome,
+                permitDets.s_applicant,
+                permitDets.s_app_dob,
+                permitDets.s_app_nation,
+                permitDets.s_decide_date,
+                permitDets.s_finalised,
+                permitProcDets,
+                permitProcDets.dependant_guid,
+                permitProcDets.sponsor_guid,
+                processes,
+                processTypes);
+            return View(pm);
+        }
+
+
+
+        [Authorize]
         public ActionResult PermitIntray(String filterNum)
         {
             String user_id = Request.Cookies["user_id"].Value;
