@@ -8,7 +8,6 @@
 
 <div id="wholePage" class="">
 <div id="registerationfields" >
-    <div id="formContainer">
     <form id="documentDetailsForm" name="visaReg">
     <div> 
 
@@ -341,7 +340,6 @@
     </form>
     <input hidden id="HiddenLodgedFor"  type="text" value="@ViewBag.lodgedFor"/>
     <input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
-</div>
     </div>
 
 <div  id="countryDialog">
@@ -353,14 +351,14 @@
     <button id="countryOkButton" type="button" class="button" data-bind="click: visaRegistration.closeCountryWindow">Ok</button>
 </div>
 
-<div  id="sponsorDialog">
+@*<div  id="sponsorDialog">
     <div id="sponsorList">
         <div id="sponsorDialogTable">
 
         </div>
         <!--<button id="sponsorOkButton" type="button" class="button" data-bind="click: visaRegistration.closeSponsorWindow">Ok</button>-->
     </div>
-</div>
+</div>*@
 
 <div class="" id="successMessage">
     <span>The VARN for this application is: </span>
@@ -368,7 +366,19 @@
     <br />
     <button class="button float-right" data-bind="click: visaRegistration.closeSuccessWindow">Close</button>
 </div>
-<div class="" id="NoReceiptDialog">
+
+</div>
+
+
+
+
+
+<div class="messagebox" id="receiptMessage" hidden>
+    <span id="receiptMessageText">This receipt number has been entered on previously registered applications but may still be used if required.</span>
+    <br />
+    <button class="button float-right" data-bind="click: visaRegistration.closeWindow.bind($data, 'receiptMessage')">Close</button>
+</div>
+<div class="messagebox" id="NoReceiptDialog" hidden>
     <table>
         <tr>
             <td><b>Reason:</b></td>
@@ -385,9 +395,13 @@
             </td>
         </tr>
     </table>
-    <button class="button" data-bind="click: visaRegistration.closeReceiptWindow">Close</button>
+    <button class="button float-right" data-bind="click: visaRegistration.closeWindow.bind($data, 'NoReceiptDialog')">Close</button>
 </div>
+<div  class="popup" id="sponsorPopup" hidden>
+
 </div>
+
+
 
 <script type="text/javascript" >
     ViewModels.visaRegistration = new VisaRegistrationViewModel();

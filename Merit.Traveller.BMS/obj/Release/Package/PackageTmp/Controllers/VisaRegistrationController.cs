@@ -127,6 +127,12 @@ namespace Merit.Traveller.BMS.Controllers
                 return RedirectToAction("LogOff", "Account");
             }
         }
+        public ActionResult sponsorList(String searchQuery)
+        {
+            //params: userID, password, searchQuery
+            sponsor_list sponsors = getWebAdminServices().ws_get_all_sponsors(Request.Cookies["user_id"].Value, Request.Cookies["password"].Value, searchQuery);
+            return PartialView(sponsors);
+        }
         public JsonResult getProjectsList(String visaType, String visaClass)
         {
             String user_id = Request.Cookies["user_id"].Value;
