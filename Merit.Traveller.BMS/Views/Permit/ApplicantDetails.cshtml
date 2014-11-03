@@ -7,6 +7,25 @@
     <script src="@Url.Content("~/Scripts/ViewModels/ApplicantDetailsViewModel.js")"></script>
 }
 
+@*<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<style type="text/css">
+   
+     .txtdatepicker {
+         visibility: visible;
+    }
+
+</style>
+
+<script>
+    $(function () {
+        $(".txtdatepicker").datepicker();
+    });
+</script>*@
+
+
+
 <div class="processContainer">
 
     <button class="button float-right formclosebutton" onclick="location.href='@Url.Action("Index", "PermitIntray", new { permitID = ViewBag.permit_guid })'"><img src="@Url.Content("~/Scripts/jtable/themes/basic/close.png")" /></button>
@@ -50,7 +69,7 @@
                             <tr>
                                 <td><b>Occupation:*</b></td>
                                 <td>
-                                    <input type="text" id="occupationInput" name="occupationInput" value="@ViewBag.applicantOccupation" data-bind="value: applicantDetails.occupation"/></td>
+                                    <input type="text" id="occupationInput" name="occupationInput" value="@ViewBag.applicantOccupation" data-bind="value: applicantDetails.occupation"  /></td>
                             </tr>
                             <tr>
                                 <td><b>Country of Birth:*</b></td>
@@ -85,7 +104,7 @@
                                 <tr>
                                     <td><b>Permit Expiry:</b></td>
                                     <td>
-                                        <input type="text" id="workPermExpiryInput" placeholder="(dd-mm-yyyy)" value="@ViewBag.applicantExpiryDate" data-bind="value: applicantDetails.appWorkPermExpiry"/></td>
+                                        <input type="text" id="workPermExpiryInput"  placeholder="(dd-mm-yyyy)" value="@ViewBag.applicantExpiryDate" data-bind="value: applicantDetails.appWorkPermExpiry" /></td>
                                 </tr>
                                 <tr>
                                     <td><b></b></td>
@@ -162,7 +181,9 @@
                                         <option value="F">Female</option>
                                     </select>
                                     <b>Date of Birth:</b>
-                                    <input type="text" id="dobInput" name="dobInput" value="@ViewBag.applicantDob" data-bind="value: applicantDetails.dob"/>
+                                    @*<input type="text" id="dobInput" name="dobInput" value="@ViewBag.applicantDob" data-bind="value: applicantDetails.dob"/>*@
+                                    <input type="text" id="dobInput"  name="dobInput" value="@ViewBag.applicantDob" data-bind="value: applicantDetails.dob" />
+                                    
                                 </td>
                             </tr>
                             <tr>

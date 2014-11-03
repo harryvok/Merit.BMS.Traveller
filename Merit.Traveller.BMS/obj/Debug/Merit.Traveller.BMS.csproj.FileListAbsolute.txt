@@ -128,4 +128,3 @@ C:\Users\hvokolos\Desktop\Merit.Traveller\Merit.Traveller.BMS\bin\de\PdfSharp.Ch
 C:\Users\hvokolos\Desktop\Merit.Traveller\Merit.Traveller.BMS\obj\Debug\Merit.Traveller.BMS.csprojResolveAssemblyReference.cache
 C:\Users\hvokolos\Desktop\Merit.Traveller\Merit.Traveller.BMS\obj\Debug\Merit.Traveller.BMS.dll
 C:\Users\hvokolos\Desktop\Merit.Traveller\Merit.Traveller.BMS\obj\Debug\Merit.Traveller.BMS.pdb
-C:\Projects\Merit.BMS.Traveller\Merit.Traveller.BMS\bin\EntityFramework.dll
