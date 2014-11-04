@@ -49,68 +49,68 @@ namespace Merit.Traveller.BMS.Controllers
                 FormsAuthentication.SetAuthCookie(user_id, false);
                 HttpCookie loginCookie = new HttpCookie("user_id");
                 loginCookie.Value = user_id;
-                loginCookie.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie2 = new HttpCookie("password");
                 loginCookie2.Value = password;
-                loginCookie2.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie2.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie3 = new HttpCookie("mission");
                 loginCookie3.Name = login.central_guid;
-                loginCookie3.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie3.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie4 = new HttpCookie("officeID");
                 loginCookie4.Value = login.office_guid;
-                loginCookie4.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie4.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie5 = new HttpCookie("officerID");
                 loginCookie5.Value = login.responsible_code;
-                loginCookie5.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie5.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie6 = new HttpCookie("centralID");
                 loginCookie6.Value = login.central_guid;
-                loginCookie6.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie6.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie7 = new HttpCookie("centralName");
                 loginCookie7.Value = login.office_name;
-                loginCookie7.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie7.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie12 = new HttpCookie("userGivenName");
                 loginCookie12.Value = login.given_name;
-                loginCookie12.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie12.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie16 = new HttpCookie("userSurname");
                 loginCookie16.Value = login.surname;
-                loginCookie16.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie16.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie13 = new HttpCookie("role");
                 loginCookie13.Value = login.security_group;
-                loginCookie13.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie13.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie14 = new HttpCookie("vlid_bypass_officer");
                 loginCookie14.Value = login.vlid_bypass_officer;
-                loginCookie14.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie14.Expires = DateTime.Now.AddMinutes(500);
 
                 //The following are for the permit list filtering
                 HttpCookie loginCookie8 = new HttpCookie("filterID");
                 loginCookie8.Value = "1";
-                loginCookie8.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie8.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie9 = new HttpCookie("permitListDateFrom");
                 loginCookie9.Value = "";
-                loginCookie9.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie9.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie10 = new HttpCookie("permitListDateTo");
                 loginCookie10.Value = "";
-                loginCookie10.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie10.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie11 = new HttpCookie("permitListFilterString");
                 loginCookie11.Value = "";
-                loginCookie11.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie11.Expires = DateTime.Now.AddMinutes(500);
 
                 HttpCookie loginCookie15 = new HttpCookie("documentPictureID");
                 loginCookie15.Value = "";
-                loginCookie15.Expires = DateTime.Now.AddMinutes(9999);
+                loginCookie15.Expires = DateTime.Now.AddMinutes(500);
 
 
                 //end

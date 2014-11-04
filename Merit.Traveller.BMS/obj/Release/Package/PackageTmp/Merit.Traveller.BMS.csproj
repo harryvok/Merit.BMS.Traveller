@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{223E6A9A-E37A-4583-AB1D-03DC739ADB90}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Merit.Traveller.BMS</RootNamespace>
@@ -49,34 +49,7 @@
     <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime">
-      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.AspNet">
-      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.0.4.12182\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.Core">
-      <HintPath>..\packages\DotNetOpenAuth.Core.4.0.4.12182\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.0.4.12182\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.Consumer">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.0.4.12182\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId">
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.0.4.12182\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty">
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.0.4.12182\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
-    </Reference>
     <Reference Include="PdfSharp">
       <HintPath>..\packages\PdfSharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
     </Reference>
@@ -95,32 +68,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>App_Data\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -138,27 +88,41 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.20105.1\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Providers">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.1.0.20105.408\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.30506.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>App_Data\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AuthConfig.cs" />
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActionController.cs" />
-    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\PermitController.cs" />
@@ -199,9 +163,7 @@
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
-    <Content Include="Content\CSS\ace.min.css" />
     <Content Include="Content\CSS\Base.css" />
-    <Content Include="Content\CSS\calendar_main.css" />
     <Content Include="Content\CSS\jquery-ui.css" />
     <Content Include="Content\CSS\jquery-ui-1.8.23.custom.css" />
     <Content Include="Content\CSS\Layout.css" />
@@ -214,7 +176,6 @@
     <Content Include="Content\Images\banner.jpg" />
     <Content Include="Content\Images\banner2.jpg" />
     <Content Include="Content\Images\banner3.jpg" />
-    <Content Include="Content\Images\banner3.png" />
     <Content Include="Content\Images\bg.jpg" />
     <Content Include="Content\Images\close.png" />
     <Content Include="Content\Images\closecross.png" />
@@ -555,94 +516,13 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="doc\pngcustreceipt.pdf" />
     <Content Include="doc\Rejection Letter1 - Visa Branch.pdf" />
-    <Content Include="pdf\ViewMasterPage1.Master" />
     <None Include="Properties\PublishProfiles\Merit.Traveller.BMS.pubxml" />
     <None Include="Properties\PublishProfiles\package.pubxml" />
     <None Include="Properties\PublishProfiles\PHIL.pubxml" />
-    <Content Include="Scripts\calendar\components\bootstrap3\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\calendar\components\bootstrap3\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Scripts\calendar\components\bootstrap3\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Scripts\calendar\components\jquery\jquery-1.10.2.min.map" />
-    <Content Include="Scripts\calendar\less\calendar.less" />
-    <Content Include="Scripts\calendar\less\day.less" />
-    <Content Include="Scripts\calendar\less\events.less" />
-    <Content Include="Scripts\calendar\less\grid.less" />
-    <Content Include="Scripts\calendar\less\month.less" />
-    <Content Include="Scripts\calendar\less\theme.less" />
-    <Content Include="Scripts\calendar\less\variables.less" />
-    <Content Include="Scripts\calendar\less\week.less" />
     <None Include="Scripts\Libraries\jquery-1.9.1-vsdoc.js" />
     <Content Include="pdf\default.txt" />
-    <Content Include="Scripts\calendar\calendar.html" />
-    <Content Include="Scripts\calendar\components\bootstrap2\css\bootstrap-responsive.css" />
-    <Content Include="Scripts\calendar\components\bootstrap2\css\bootstrap.css" />
-    <Content Include="Scripts\calendar\components\bootstrap2\img\glyphicons-halflings-white.png" />
-    <Content Include="Scripts\calendar\components\bootstrap2\img\glyphicons-halflings.png" />
-    <Content Include="Scripts\calendar\components\bootstrap2\js\bootstrap.min.js" />
-    <Content Include="Scripts\calendar\components\bootstrap3\css\bootstrap-theme.css" />
-    <Content Include="Scripts\calendar\components\bootstrap3\css\bootstrap-theme.min.css" />
-    <Content Include="Scripts\calendar\components\bootstrap3\css\bootstrap.css" />
-    <Content Include="Scripts\calendar\components\bootstrap3\css\bootstrap.min.css" />
-    <Content Include="Scripts\calendar\components\bootstrap3\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Scripts\calendar\components\bootstrap3\js\bootstrap.js" />
-    <Content Include="Scripts\calendar\components\bootstrap3\js\bootstrap.min.js" />
-    <Content Include="Scripts\calendar\components\jquery\jquery.min.js" />
-    <Content Include="Scripts\calendar\components\jstimezonedetect\jstz.js" />
-    <Content Include="Scripts\calendar\components\jstimezonedetect\jstz.min.js" />
-    <Content Include="Scripts\calendar\components\jstimezonedetect\LICENCE.txt" />
-    <Content Include="Scripts\calendar\components\underscore\underscore-min.js" />
-    <Content Include="Scripts\calendar\css\calendar.css" />
-    <Content Include="Scripts\calendar\css\calendar.min.css" />
-    <Content Include="Scripts\calendar\img\dark_wood.png" />
-    <Content Include="Scripts\calendar\img\slide-bg.png" />
-    <Content Include="Scripts\calendar\img\tick.png" />
-    <Content Include="Scripts\calendar\js\app.js" />
-    <Content Include="Scripts\calendar\js\calendar.js" />
-    <Content Include="Scripts\calendar\js\calendar.min.js" />
-    <Content Include="Scripts\calendar\js\calendar_servicecall.js" />
-    <Content Include="Scripts\calendar\js\eventslist.js" />
-    <Content Include="Scripts\calendar\js\language\ar-SA.js" />
-    <Content Include="Scripts\calendar\js\language\bs-BA.js" />
-    <Content Include="Scripts\calendar\js\language\cs-CZ.js" />
-    <Content Include="Scripts\calendar\js\language\da-DK.js" />
-    <Content Include="Scripts\calendar\js\language\de-AT.js" />
-    <Content Include="Scripts\calendar\js\language\de-DE.js" />
-    <Content Include="Scripts\calendar\js\language\el-GR.js" />
-    <Content Include="Scripts\calendar\js\language\es-ES.js" />
-    <Content Include="Scripts\calendar\js\language\es-MX.js" />
-    <Content Include="Scripts\calendar\js\language\fi-FI.js" />
-    <Content Include="Scripts\calendar\js\language\fr-FR.js" />
-    <Content Include="Scripts\calendar\js\language\hr-HR.js" />
-    <Content Include="Scripts\calendar\js\language\hu-HU.js" />
-    <Content Include="Scripts\calendar\js\language\it-IT.js" />
-    <Content Include="Scripts\calendar\js\language\ja-JP.js" />
-    <Content Include="Scripts\calendar\js\language\ko-KR.js" />
-    <Content Include="Scripts\calendar\js\language\nl-NL.js" />
-    <Content Include="Scripts\calendar\js\language\no-NO.js" />
-    <Content Include="Scripts\calendar\js\language\pl-PL.js" />
-    <Content Include="Scripts\calendar\js\language\pt-BR.js" />
-    <Content Include="Scripts\calendar\js\language\ro-RO.js" />
-    <Content Include="Scripts\calendar\js\language\ru-RU.js" />
-    <Content Include="Scripts\calendar\js\language\sl-SL.js" />
-    <Content Include="Scripts\calendar\js\language\sv-SE.js" />
-    <Content Include="Scripts\calendar\js\language\template.js" />
-    <Content Include="Scripts\calendar\js\language\tr-TR.js" />
-    <Content Include="Scripts\calendar\js\language\zh-CN.js" />
-    <Content Include="Scripts\calendar\js\language\zh-TW.js" />
-    <Content Include="Scripts\calendar\tmpls\day.html" />
-    <Content Include="Scripts\calendar\tmpls\events-list.html" />
-    <Content Include="Scripts\calendar\tmpls\modal.html" />
-    <Content Include="Scripts\calendar\tmpls\month-day.html" />
-    <Content Include="Scripts\calendar\tmpls\month.html" />
-    <Content Include="Scripts\calendar\tmpls\week-days.html" />
-    <Content Include="Scripts\calendar\tmpls\week.html" />
-    <Content Include="Scripts\calendar\tmpls\year-month.html" />
-    <Content Include="Scripts\calendar\tmpls\year.html" />
     <Content Include="Scripts\jquery-1.5.2.js" />
     <Content Include="Scripts\jquery-1.5.2.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-ui-1.10.3.custom.js" />
-    <Content Include="Scripts\jquery.dataTables.js" />
     <Content Include="Scripts\Libraries\jquery.form.js" />
     <Content Include="Scripts\Libraries\jquery.form.min.js" />
     <Content Include="Scripts\Libraries\knockout-2.3.0.debug.js" />
@@ -777,8 +657,6 @@
     <Content Include="Scripts\jtable\themes\metro\red\loading.gif" />
     <Content Include="Scripts\Libraries\jquery-timepicker.js" />
     <Content Include="Scripts\Libraries\jquery-ui.js" />
-    <Content Include="Scripts\modernizr.js" />
-    <Content Include="Scripts\sorttable.js" />
     <Content Include="Scripts\ViewModels\advFilterViewModel.js" />
     <Content Include="Scripts\ViewModels\ApplicantDetailsViewModel.js" />
     <Content Include="Scripts\ViewModels\CheckRequirementsViewModel.js" />
@@ -1346,10 +1224,6 @@
     <Content Include="Views\Messages\Index.cshtml" />
     <Content Include="Views\Account\ChangeSite.cshtml" />
     <Content Include="Views\Permit\pDocument.cshtml" />
-    <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
-    <Content Include="Views\PermitIntray\EnquiryList.cshtml" />
-    <Content Include="Views\VisaRegistration\sponsorList.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

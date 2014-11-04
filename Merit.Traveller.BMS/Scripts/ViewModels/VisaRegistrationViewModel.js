@@ -88,7 +88,7 @@ function VisaRegistrationViewModel() {
     var date = new Date().toUTCString().split(',')[1].split(' ');
     $("#lodgedOnDateInput").html( date[1] + "-" + date[2] + "-" + date[3]);
 
-    /*$("#expDate").datepicker({
+    $("#expDate1").datepicker({
         dateFormat: 'dd-M-yy', //e.g 10-Oct-2013
         changeMonth: true,
         changeYear: true,
@@ -97,6 +97,9 @@ function VisaRegistrationViewModel() {
         duration: '',
         gotoCurrent: true
     });
+
+    $("#expDate").datepicker({ dateFormat: 'dd/mm/yy' });
+
     $("#dob").datepicker({
         dateFormat: 'dd-M-yy', //e.g 10-Oct-2013
         changeMonth: true,
@@ -105,7 +108,7 @@ function VisaRegistrationViewModel() {
         constrainInput: false,
         duration: '',
         gotoCurrent: true
-    });*/
+    });
 
     /*$("#sponsorDialog").dialog({
         columnSelectable: false,

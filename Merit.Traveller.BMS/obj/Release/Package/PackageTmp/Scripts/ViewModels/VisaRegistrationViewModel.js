@@ -88,7 +88,7 @@ function VisaRegistrationViewModel() {
     var date = new Date().toUTCString().split(',')[1].split(' ');
     $("#lodgedOnDateInput").html( date[1] + "-" + date[2] + "-" + date[3]);
 
-    $("#expDate").datepicker({
+    /*$("#expDate").datepicker({
         dateFormat: 'dd-M-yy', //e.g 10-Oct-2013
         changeMonth: true,
         changeYear: true,
@@ -105,9 +105,9 @@ function VisaRegistrationViewModel() {
         constrainInput: false,
         duration: '',
         gotoCurrent: true
-    });
+    });*/
 
-    /*$("#sponsorDialog").dialog({
+    $("#sponsorDialog").dialog({
         columnSelectable: false,
         resizable: false,
         dialogClass: 'teststyle',
@@ -389,7 +389,7 @@ function VisaRegistrationViewModel() {
            
         }
     });
-    $("#countryDialogTable").jtable("load");*/
+    $("#countryDialogTable").jtable("load");
 
 
     //computed functions
@@ -554,14 +554,14 @@ function VisaRegistrationViewModel() {
             self.extraDetails(false);
         }
     }, this);
-    this.projectCompute = ko.computed(function () {
+    /*this.projectCompute = ko.computed(function () {
 
         if (this.projectSelected() == "Y")
             this.projectDetails(true);
         else
             this.projectDetails(false);
 
-    }, this);
+    }, this);*/
     this.projectIDCompute = ko.computed(function () {
 
         if (this.projectID().length > 0) {
@@ -771,12 +771,14 @@ function VisaRegistrationViewModel() {
         self.eraseForm();
     }
     this.closeWindow = function (window) {
-        $('#' + window+'').fadeOut("fast");
+        $('#' + window+'').dialog("close");
     }
     this.closeCountryWindow = function () {
         $('#countryDialog').dialog("close");
     }
-
+    this.closeReceiptWindow = function () {
+        $('#NoReceiptDialog').dialog("close");
+    }
     this.filterVisaClassesByTypeID = function (visatypeId) {
         
         var self = this;
@@ -981,7 +983,9 @@ function VisaRegistrationViewModel() {
 
                 if (result > 0) {
                     self.receiptNotice("Times used: " + result);
-                    $("#receiptMessage").fadeIn("fast");
+                    $("#receiptMessage").dialog("open");
+                    $("#receiptMessage").css("background-color", "RGB(203,220,249)");
+                    $("#receiptMessage").css("font-size", "12px");
                 } else {
                     self.receiptNotice("");
                 }
@@ -1042,27 +1046,7 @@ function VisaRegistrationViewModel() {
 
     };
     this.searchForSponsor = function () {
-        $.ajax({
-            type: "GET",
-            url: "VisaRegistration/sponsorList",
-            data: {
-                searchQuery: self.sponsorName()
-            },
-            success: function (result) {
-                $("#sponsorPopup").html(result);
-                $("#sponsorPopup").fadeIn("fast");
-                var oTable = $('#sponsorTable').dataTable({
-                    iDisplayLength: 50,
-                    "aaSorting": [[0, "desc"]],
-                    "bLengthChange": false,
-                    "oLanguage": {
-                        "sSearch": "<b>Enquiry Filter: </b>"
-                    }
-                });
-                
-            }
-        });
-
+        $("#sponsorDialogTable").jtable("load", { userInput: self.sponsorName() });
     };
     this.getSponsorDialog = function () {
         if (self.sponsorName().length > 0) {
@@ -1083,7 +1067,8 @@ function VisaRegistrationViewModel() {
 
     }
     this.openNoReceiptDialog = function () {
-        $("#NoReceiptDialog").fadeIn("fast");
+        $("#NoReceiptDialog").dialog("open");
+        $("#NoReceiptDialog").css("background-color", "rgb(182, 197, 224)");
     };
     this.getCountryList = function () {
         
