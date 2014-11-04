@@ -4,39 +4,40 @@
 
 @section scripts{
     <script src="@Url.Content("~/Scripts/ViewModels/PermitIntrayViewModel.js")"></script>
-    @*<script src="@Url.Content("~/Scripts/ViewModels/advFilterViewModel.js")"></script>
+    <script src="@Url.Content("~/Scripts/ViewModels/advFilterViewModel.js")"></script>
     <script src="@Url.Content("~/Scripts/ViewModels/VisaRegistrationViewModel.js")"></script>
-    <script src="@Url.Content("~/Scripts/ViewModels/MessagesViewModel.js")"></script>*@
-    <script src="@Url.Content("~/Scripts/jquery-1.9.1.js")"></script>
-    <script src="@Url.Content("~/Scripts/jquery.dataTables.js")"></script>
-    <script src="@Url.Content("~/Scripts/sorttable.js")"></script>
+    <script src="@Url.Content("~/Scripts/ViewModels/MessagesViewModel.js")"></script>
 }
-
-<select id="filterOption">
-    <option value="">-Filter Options-</option>
-    @{
-        for (int i = 0; i < ViewBag.permitFilters.merit_ini_det.Count; i++)
-        {
-            <option value="@ViewBag.permitFilters.merit_ini_det[i].ini_name">@ViewBag.permitFilters.merit_ini_det[i].ini_data</option>
-        }  
-    }
-</select>
-<div id="enquiryList">
-
-</div>
-<div id="permitProcessSummary" hidden>
-    
-</div>
-
-
-
-
-
 
 
 
 <div id="permitIntrayContainer" class="maincontent">
-
+    <div id="toolbar">
+        <table>
+            <tr>
+                <td id="filterDropdown" class="float-left">
+                    <input id="filterInput" type="text"  placeholder="Filter Results..." data-bind="value: permitIntray.filterInput,  valueUpdate: 'keyup'" />
+                    <button id="clearfilterButton" type="button" class="button" data-bind="click: permitIntray.clearFilter"><b>Clear</b></button>
+                     <select id="filters" data-bind="value: permitIntray.filterNumber">
+                        <option value="">-Filter Options-</option>
+                        @{
+                            for (int i = 0; i < ViewBag.permitFilters.merit_ini_det.Count; i++)
+                            {
+                            <option value="@ViewBag.permitFilters.merit_ini_det[i].ini_name">@ViewBag.permitFilters.merit_ini_det[i].ini_data</option>
+                            }  
+                        }
+                    </select>
+                    <button id="" type="button" class="button" data-bind="click: permitIntray.displayFilterMenu"><b>Search</b></button>
+                </td>
+                <td class="float-right">
+                    <!--<button id="" type="button" class="button" data-bind="click: permitIntray.toggleNewVisaForm"> <img src="@Url.Content("~/Content/Images/plus.png")" height="12.95" width="13"/><b>New..</b></button>
+                    <button id="" type="button" class="button" data-bind="click: permitIntray.toggleMessageListDialogue"><img src="@Url.Content("~/Content/Images/Icons/messageicon.png")" alt="Merit Technology"  height="12.95" width="19.5"  /><b>Messages</b></button>-->
+                    <!--<button id="viewButton" type="button" disabled class="button" data-bind="click: permitIntray.viewPermitProcesses">View Permit</button>
+                    <button id="completeButton" type="button" disabled class="button" data-bind="click: permitIntray.openUncompletedProcess">Complete Next Action</button>-->
+                </td>
+            </tr>
+        </table>
+    </div>
 
 
     <div id="permitIntray">
@@ -625,7 +626,7 @@
 
 
 <script type="text/javascript" >
-    //ViewModels.visaRegistration = new VisaRegistrationViewModel();
+    ViewModels.visaRegistration = new VisaRegistrationViewModel();
 </script>
 </div>
 <div hidden id="messageListDialogue">
@@ -838,6 +839,6 @@
  <input type="text" hidden id="isVisaRegWindowOpen" value="@ViewBag.isVisaRegScreen"/>
 <script type="text/javascript">
     ViewModels.permitIntray = new PermitIntrayViewModel();
-    //ViewModels.messages = new MessagesViewModel();
-    //ViewModels.advFilter = new advFilterViewModel();
+    ViewModels.messages = new MessagesViewModel();
+    ViewModels.advFilter = new advFilterViewModel();
 </script>
