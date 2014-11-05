@@ -8,7 +8,6 @@
 
 <div id="wholePage" class="">
 <div id="registerationfields" >
-    <div id="formContainer">
     <form id="documentDetailsForm" name="visaReg">
     <div> 
 
@@ -117,7 +116,7 @@
                                         <tr>
                                             <td>Expiry Date:</td>
                                             <td>
-                                                <input type="text" id="expDate" class="numberInputField" name="expDate" placeholder="dd-mm-yyyy" data-bind="value: visaRegistration.expiryDate" /></td>
+                                                <input type="text" id="expDate" placeholder="(dd-mm-yyyy)" class="numberInputField" name="expDate" data-bind="value: visaRegistration.expiryDate" /></td>
                                         </tr>
                                     </table>
                                     <div data-bind="fadeVisible: visaRegistration.adtnlDocDets ">
@@ -341,7 +340,6 @@
     </form>
     <input hidden id="HiddenLodgedFor"  type="text" value="@ViewBag.lodgedFor"/>
     <input type="text" hidden id="webAppAlias" value="@ViewBag.webAppAlias" />
-</div>
     </div>
 
 <div  id="countryDialog">
