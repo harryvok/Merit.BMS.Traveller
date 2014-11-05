@@ -230,18 +230,22 @@
                         <a href="#">Home</a>
                     </li>
                     <li class="active"><a href="#">@ViewBag.Title</a></li>
-                    @{ if (ViewBag.Subtitle1 != "")
-                       {
-                           <li class="active"><a href="#">@ViewBag.Subtitle1</a></li>
-                       }
-                       if (ViewBag.Subtitle2 != "")
-                       {
-                           <li class="active"><a href="#">@ViewBag.Subtitle2</a></li>
-                       }
-                       if (ViewBag.Subtitle3 != "")
-                       {
-                           <li class="active"><a href="#">@ViewBag.Subtitle3</a></li>
-                       }
+                    @{ if (ViewBag.Subtitle1 != null)
+                        {
+                                <li class="active"><a href="#">@ViewBag.Subtitle1</a></li>
+                                if (ViewBag.Subtitle2 != null)
+                                {
+                                    <li class="active"><a href="#">@ViewBag.Subtitle2</a></li>
+
+                                if (ViewBag.Subtitle3 != null)
+                                     {
+                                        <li class="active"><a href="#">@ViewBag.Subtitle3</a></li>
+                                    }
+                                }
+
+                        }
+
+
                     }
                     
 
