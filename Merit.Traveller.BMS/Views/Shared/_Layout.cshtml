@@ -229,8 +229,22 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">@ViewBag.Title</li>
-                    <li class="active"><a href="#">@ViewBag.Subtitle</a></li>
+                    <li class="active"><a href="#">@ViewBag.Title</a></li>
+                    @{ if (ViewBag.Subtitle1 != "")
+                       {
+                           <li class="active"><a href="#">@ViewBag.Subtitle1</a></li>
+                       }
+                       if (ViewBag.Subtitle2 != "")
+                       {
+                           <li class="active"><a href="#">@ViewBag.Subtitle2</a></li>
+                       }
+                       if (ViewBag.Subtitle3 != "")
+                       {
+                           <li class="active"><a href="#">@ViewBag.Subtitle3</a></li>
+                       }
+                    }
+                    
+
                 </ul><!-- /.breadcrumb -->
             </div>
             <div class="">
