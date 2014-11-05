@@ -1195,6 +1195,18 @@
     <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_proc_vdoc_detsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.permit_summary_daily.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.permit_summary_monthly.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_permit_summary_dailyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\BMS_Web_Permit_Data\Merit.Traveller.BMS.BMS_Web_Permit_Data.ws_get_permit_summary_monthlyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\BMS_Web_Permit_Data\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
