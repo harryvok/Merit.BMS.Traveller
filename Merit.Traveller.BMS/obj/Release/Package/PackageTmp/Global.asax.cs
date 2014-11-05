@@ -27,7 +27,7 @@ namespace Merit.Traveller.BMS
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "PermitIntray", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
+                new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
                 new String[] { "Merit.Traveller.BMS.Controllers" }
             );
 
@@ -44,6 +44,7 @@ namespace Merit.Traveller.BMS
             "~/Content/CSS/Module.css",
             "~/Content/CSS/State.css",
             "~/Content/CSS/jquery-ui.css",
+            "~/Content/CSS/ace-min.css",
             "~/Scripts/jtable/themes/metro/blue/jtable.css"));
 
             //Creating bundle for your js files
@@ -56,6 +57,8 @@ namespace Merit.Traveller.BMS
             "~/Scripts/Libraries/jquery.validate.js",
             "~/Scripts/Libraries/jquery-timepicker.js",
             "~/Scripts/Libraries/jquery.form.min.js",
+            "~/Scripts/jquery.dataTables.js",
+            "~/Scripts/sorttable.js",
             "~/Scripts/jtable/jquery.jtable.js"));
         }
 

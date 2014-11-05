@@ -1354,6 +1354,109 @@
           <s:element minOccurs="1" maxOccurs="1" name="received_date" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ws_get_permit_summary_monthly">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="office_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="start_date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_permit_summary_monthlyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_permit_summary_monthlyResult" type="tns:permit_summary_monthly" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="permit_summary_monthly">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="month_01" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_02" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_03" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_04" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_05" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_06" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_07" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_08" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_09" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_10" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_11" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="month_12" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="grand_total" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPermit_summary_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="permit_summary_details" nillable="true" type="tns:permit_summary_details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="permit_summary_details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="filter_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="filter_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="permit_total" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_get_permit_summary_daily">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="office_guid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="start_date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_permit_summary_dailyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_permit_summary_dailyResult" type="tns:permit_summary_daily" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="permit_summary_daily">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="day_01" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_02" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_03" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_04" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_05" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_06" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_07" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_08" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_09" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_10" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_11" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_12" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_13" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_14" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_15" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_16" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_17" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_18" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_19" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_20" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_21" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_22" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_23" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_24" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_25" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_26" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_27" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_28" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_29" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_30" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="day_31" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="grand_total" type="tns:ArrayOfPermit_summary_details" />
+          <s:element minOccurs="0" maxOccurs="1" name="ws_message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ws_status" type="s:int" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ws_check_outstand_itemsSoapIn">
@@ -1578,6 +1681,18 @@
   <wsdl:message name="ws_get_proc_vdoc_detsSoapOut">
     <wsdl:part name="parameters" element="tns:ws_get_proc_vdoc_detsResponse" />
   </wsdl:message>
+  <wsdl:message name="ws_get_permit_summary_monthlySoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_permit_summary_monthly" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_permit_summary_monthlySoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_permit_summary_monthlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_permit_summary_dailySoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_permit_summary_daily" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_permit_summary_dailySoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_permit_summary_dailyResponse" />
+  </wsdl:message>
   <wsdl:portType name="bms_web_permit_dataSoap">
     <wsdl:operation name="ws_check_outstand_items">
       <wsdl:input message="tns:ws_check_outstand_itemsSoapIn" />
@@ -1726,6 +1841,14 @@
     <wsdl:operation name="ws_get_proc_vdoc_dets">
       <wsdl:input message="tns:ws_get_proc_vdoc_detsSoapIn" />
       <wsdl:output message="tns:ws_get_proc_vdoc_detsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_permit_summary_monthly">
+      <wsdl:input message="tns:ws_get_permit_summary_monthlySoapIn" />
+      <wsdl:output message="tns:ws_get_permit_summary_monthlySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_permit_summary_daily">
+      <wsdl:input message="tns:ws_get_permit_summary_dailySoapIn" />
+      <wsdl:output message="tns:ws_get_permit_summary_dailySoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="bms_web_permit_dataSoap" type="tns:bms_web_permit_dataSoap">
@@ -2063,6 +2186,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ws_get_permit_summary_monthly">
+      <soap:operation soapAction="http://tempurl.org/ws_get_permit_summary_monthly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_permit_summary_daily">
+      <soap:operation soapAction="http://tempurl.org/ws_get_permit_summary_daily" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="bms_web_permit_dataSoap12" type="tns:bms_web_permit_dataSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -2392,6 +2533,24 @@
     </wsdl:operation>
     <wsdl:operation name="ws_get_proc_vdoc_dets">
       <soap12:operation soapAction="http://tempurl.org/ws_get_proc_vdoc_dets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_permit_summary_monthly">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_permit_summary_monthly" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_permit_summary_daily">
+      <soap12:operation soapAction="http://tempurl.org/ws_get_permit_summary_daily" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -54,9 +54,9 @@
 
 
     //apply jquery plugin to date pickers
-    /*$("#dobInput").datepicker({ dateFormat: 'dd/mm/yy' });
+    $("#dobInput").datepicker({ dateFormat: 'dd/mm/yy' });
     $("#workPermExpiryInput").datepicker({ dateFormat: 'dd/mm/yy' });
-    $("#expiryDateInput").datepicker({ dateFormat: 'dd/mm/yy' });*/
+    $("#expiryDateInput").datepicker({ dateFormat: 'dd/mm/yy' });
 
 
     /*if (this.isEditable() == 'N') {
@@ -173,18 +173,18 @@
 
         if (completeIndicator == "Y") {
 
-            $('#inputForm').validate({
+            $("#inputForm").validate({
                 errorContainer: "#errorContainer",
                 errorLabelContainer: "#errorContainer",
                 errorElement: "li",
 
                 rules: {
-                    surnameInput: 'required',
-                    givenNameInput: 'required',
-                    dobInput: 'required',
-                    nationalityInput: 'required',
-                    cobInput: 'required',
-                    occupationInput: 'required'
+                    surnameInput: "required",
+                    givenNameInput: "required",
+                    dobInput: "required",
+                    nationalityInput: "required",
+                    cobInput: "required",
+                    occupationInput: "required",
                 }
 
             }).form();
