@@ -1,21 +1,28 @@
 ﻿@model Merit.Traveller.BMS.permitmodel
+ <a href="#" onclick="$('#permitProcessSummary').hide()" class="float-right">Close</a>
+<div >
 
-<div class="processContainer">
- 
-    <div>
+
+    @{
+        String outcomeColour;
+        if(Model.outcome== "Declined"){
+            outcomeColour = "darkred";
+        }
+        else if (Model.outcome == "Undecided"){
+            outcomeColour = "darkorange";
+        }else{
+            outcomeColour = "#00FF00";
+        }
+    
+    }
+    <div style="background-color:@outcomeColour">
         <b>VARN:</b> @Model.varnRef @Model.permitClass @Model.permitType <br />
         @Model.applicant - @Model.dob - @Model.nationality <br />
         <b>Registered:</b> @Model.dateLodged <b>at</b> @Model.lodgedAt <br />
         <b>Permit No:</b> @Model.permitNo <b>Decided</b> @Model.approvalDate <br />
     </div>
-    <br />
 
-
-    <div id="processContainerTable">
-
-    </div>
-
-    <table hidden id="processTable">
+    <table  id="processTable">
         @{
           <tr id="processTableHeader">
             <th>Status</th>

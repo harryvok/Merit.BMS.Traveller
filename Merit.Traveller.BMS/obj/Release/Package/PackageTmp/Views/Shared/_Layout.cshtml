@@ -2,6 +2,7 @@
 @using System.Web
 @using System.Web.Optimization
 @using Merit.Traveller.BMS
+
 <!doctype html>
 
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
@@ -13,7 +14,6 @@
 <!--<![endif]-->
 <!-- the "no-js" class is for Modernizr. -->
 
-
 <head id="www-merit-com-au" data-template-set="html5-reset">
     <meta charset="utf-8" />
     <meta name="author" content="Jon Cleary">
@@ -23,9 +23,30 @@
     @System.Web.Optimization.Styles.Render("~/Content/css/BMS")
     @System.Web.Optimization.Scripts.Render("~/Content/scripts/BMS")
     @RenderSection("scripts", false)
-
     <script src="@Url.Content("~/Scripts/ViewModels/PopupViewModel.js")"></script>
     <script src="@Url.Content("~/Scripts/ViewModels/SearchViewModel.js")"></script>
+    <meta name="description" content="overview &amp; stats">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="http://responsiweb.com/themes/preview/ace/1.3.1/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <!-- page specific plugin styles -->
+    <!-- text fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
+    <!-- ace styles -->
+    <link rel="stylesheet" href="~/Content/CSS/ace.min.css" id="main-ace-style">
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="assets/css/ace-part2.min.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="http://responsiweb.com/themes/preview/ace/1.3.1/assets/css/ace-skins.min.css">
+    <link rel="stylesheet" href="http://responsiweb.com/themes/preview/ace/1.3.1/assets/css/ace-rtl.min.css">
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <!-- inline styles related to this page -->
+    <!-- ace settings handler -->
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/ace-extra.min.js"></script>
 
     <script type="text/javascript">
         var ViewModels = {
@@ -36,9 +57,286 @@
     </script>
 
     <title>Merit Traveller BMS - @ViewBag.Title</title>
-    <script>
+</head>
+
+<body class="no-skin" style="margin-top:40px">
+@{
+    if (Request.IsAuthenticated && Request.Cookies["userSurname"] != null)
+    {
+    <header >
+                
+                <div id="headerContainer">
+                    <nav>
+                        <img id="bannerLogo" border="0" src="@Url.Content("~/Content/Images/logo.png")" alt="Merit Technology"  >
+                        <span id="userDetails">@Request.Cookies["userGivenName"].Value @Request.Cookies["userSurname"].Value </span>
+                        <!--<a href="@Url.Action("logoff", "account")"><b>LOGOUT</b></a>-->
+                        <span id="bannerMeritName">Merit Immigration</span>
+                    </nav>
+                    
+                </div>
+            </header>
+    <div id="banner" class="navbar navbar-default" style="background-image: url(/Merit.BMS.Traveller/Content/Images/banner3.png); background-size: 100% 100%; background-repeat: no-repeat; ">
+        <script type="text/javascript">
+            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="navbar-container" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <h2 class="pageTitle">@ViewBag.Title</h2>
+
+                </a>
+            </div>
+
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            
+                            <span class="user-info">
+                               <b>@Request.Cookies["centralName"].Value</b>
+                                
+                            </span>
+
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    Settings
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="profile.html">
+                                    <i class="ace-icon fa fa-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li style="height:40px;" align="center">
+                      
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.navbar-container -->
+    </div>
+    <input hidden id="url" type="text" value="" />
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+        </script>
+
+        <div id="sidebar" class="sidebar                  responsive">
+            <script type="text/javascript">
+                try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+            </script>
+
+            <ul class="nav nav-list" style="top: 0px;">
+                <li class="active">
+                    <a href="@Url.Action("Index", "Dashboard")">
+                        <i class="menu-icon fa fa-tachometer"></i>
+                        <span class="menu-text"> Dashboard </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="hsub">
+                    <a href="@Url.Action("Index", "VisaRegistration")">
+                    @*<a href="@Url.Action("Index", "VisaRegistration", new { visaReg = "Y" })">*@
+                        <i class="menu-icon fa fa-desktop"></i>
+                        <span class="menu-text"> Visa Registration </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <script>
+                    function getPaging(str) {
+                        $("#loading-content").load("dataSearch.php?" + str, hideLoader);
+                    }
+                </script>
+                <li class="hsub" onclick="getPaging(this.id);">
+                    <a href="@Url.Action("Index", "PermitIntray")">
+                    <i class="menu-icon fa fa-list"></i>
+                    <span class="menu-text">Permits</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="hsub" onclick="getPaging(this.id);">
+                    <a href="@Url.Action("Index", "Messages")">
+                    <i class="menu-icon fa fa-list"></i>
+                    <span class="menu-text">Messages(<span id="unreadmsgs"></span>)</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="hsub">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-pencil-square-o"></i>
+                        <span class="menu-text"> Contact us </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="form-elements.html">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Support
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="form-wizard.html">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Contact
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+            </ul><!-- /.nav-list -->
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+            <script type="text/javascript">
+                try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+            </script>
+        </div>
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+                </script>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="active"><a href="#">@ViewBag.Title</a></li>
+                    @{ if (ViewBag.Subtitle1 != "")
+                       {
+                           <li class="active"><a href="#">@ViewBag.Subtitle1</a></li>
+                       }
+                       if (ViewBag.Subtitle2 != "")
+                       {
+                           <li class="active"><a href="#">@ViewBag.Subtitle2</a></li>
+                       }
+                       if (ViewBag.Subtitle3 != "")
+                       {
+                           <li class="active"><a href="#">@ViewBag.Subtitle3</a></li>
+                       }
+                    }
+                    
+
+                </ul><!-- /.breadcrumb -->
+            </div>
+            <div class="">
+                <div id="homemaincontent">
+                    @RenderBody()
+                </div>
+            </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+        @*<div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <span class="bigger-120">
+                        <span class="blue bolder">Ace</span>
+                        Application © 2013-2014
+                    </span>
+                    &nbsp; &nbsp;
+                    <span class="action-buttons">
+                        <a href="#">
+                            <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                        </a>
+                        <a href="#">
+                            <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+                        </a>
+                        <a href="#">
+                            <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>*@
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
 
 
+    @*<!--[if IE]>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <![endif]-->
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='assets/js/jquery.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/jquery.mobile.custom.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- page specific plugin scripts -->
+    <!--[if lte IE 8]>
+      <script src="assets/js/excanvas.min.js"></script>
+    <![endif]-->*@
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/jquery-ui.custom.min.js"></script>
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/jquery.easypiechart.min.js"></script>
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/jquery.sparkline.min.js"></script>
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/flot/jquery.flot.min.js"></script>
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/flot/jquery.flot.pie.min.js"></script>
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/flot/jquery.flot.resize.min.js"></script>
+    <!-- ace scripts -->
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/ace-elements.min.js"></script>
+    <script src="http://responsiweb.com/themes/preview/ace/1.3.1/assets/js/ace.min.js"></script>
+
+
+
+
+    <div class="tooltip top in" style="display: none;"><div class="tooltip-inner"></div></div>
+    }
+    else
+    {
+        <div id="wrapper">
+            <div id="content-container-nli">
+
+                <div class="content not-logged-in" id="content">
+                    @RenderBody()
+                </div>
+
+            </div>
+        </div>
+    }
+}
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        ko.applyBindings(ViewModels);
 
         function openSiteDialog() {
             $("#changeSiteDialog").dialog("open");
@@ -56,198 +354,13 @@
                 async: false,
                 data: {
                     site: $("#changedSite").val(),
-                
+
                 },
                 success: function (result) {
                     location.reload();
                 }
             });
         }
-    </script>
-</head>
-<body>
-    <input hidden id="url" type="text" value="" />
-    <div id="popup" data-bind="fadeVisible: Popup.open">
-        <div class="popupTitle">
-            <div style="float: left;">
-                <h3 data-bind="text: Popup.popupTitle"></h3>
-            </div>
-
-            <div id="closeNames" class="closePopup" data-bind="click: Popup.popupClose">
-                <img src="@Url.Content("~/Content/Images/close.png")" />
-                Close
-            </div>
-        </div>
-
-        <div data-bind="html: Popup.popupHtml"></div>
-    </div>
-
-    <div id="wrapper">
-
-        @{
-            /*if(Request.Cookies[0].Expires.CompareTo(DateTime.Now) < 0 )
-            {
-                <h2>@HttpContext.Current.Request.Cookies["user_id"].Expires</h2>
-            }*/
-         
-                
-                
-            if (Request.IsAuthenticated)
-            {
-            <div id="bottomBar">
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $('#searchInput').keydown(function (event) {
-                            if (event.which == 13) {
-                                $("#searchResultsTable").jtable("load");
-                                $('#searchResults').show();
-                            }
-                        });
-                        $('#searchInput').on('input', function (event) {
-                            $('#searchResults').slideDown();
-                            $('#searchQuery').html("Search For:<b>" + $("#searchInput").val() + "</b>");
-                        });
-                        $('#searchInput').blur(function (event) {
-                            $('#searchResults').hide();
-                        });
-
-
-                    });
-
-                </script>
-                <div class="column half">
-                    <div class="profImage">
-                        <img src="@Url.Content("~/Content/Images/prof.gif")" width="20">
-                    </div>
-                    <div class="welcome">
-                        <h3>@User.Identity.Name</h3>
-                    </div>
-                    <div class="bottomButtons"><a href="http://support.merit.com.au/">Support</a><a href="mailto:support@merit.com.au" >Contact</a><a id="changeSiteLink" href="javascript:openSiteDialog()" >Change Site</a><a href="/Account/ChangePassword" >Change Password</a><a id="videosLink" href="javascript:openVideoDialog()" >Video Tutorials</a></div>
-                
-                    <div class="float-right version">
-                        <span id="copyright">@ConfigurationManager.AppSettings["TravellerVersion"] &copy; Merit 2014 Merit Technology Pty Ltd</span>
-                        <img border="0" src="@Url.Content("~/Content/Images/merit-logo.png")" alt="Merit Technology" height="25"  id="logo" />
-                    </div>
-                </div>
-                <div class="column half">
-                    
-                   
-                    
-                    <div class="searchBar">
-                        <input type="text" placeholder="Search..." id="searchInput" data-bind="click: Search.getData">
-                             <div id="searchResults">
-                                  <span id="searchQuery"></span>
-                                 <div id="searchResultsTable">
-
-                                 </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <header >
-                
-                <div id="headerContainer">
-                    <nav>
-                        <img id="bannerLogo" border="0" src="@Url.Content("~/Content/Images/logo.png")" alt="Merit Technology"  >
-                        <!--@Html.ActionLink("<b>Intray</b>", "Index", "PermitIntray")-->
-                        <a href="@Url.Action("Index", "PermitIntray")"><b>PERMITS</b></a>
-                        <a href="@Url.Action("Index", "PermitIntray", new { visaReg = "Y" })"><b>VISA REGISTRATION</b></a>
-                        <a href="@Url.Action("Index", "Messages")"><!--<img src="@Url.Content("~/Content/Images/Icons/messageicon.png")" alt="Merit Technology"  height="12.95" width="19.5"  />--><b>MESSAGES</b>(<span id="unreadmsgs"></span>)</a>
-                        <!--@Html.ActionLink("Logout", "logoff", "account")-->
-                        <a href="@Url.Action("logoff", "account")"><b>LOGOUT</b></a>
-                        <span id="bannerMeritName">Merit Immigration</span>
-                    </nav>
-                    <span id="userDetails">@Request.Cookies["userGivenName"].Value @Request.Cookies["userSurname"].Value </span>
-                </div>
-            </header>
-            <div id="content-container">
-                <div id="banner">
-                    <h2 class="pageTitle">@ViewBag.Title</h2>
-                    <h2 class="float-right" id="bannerSiteName" >@Request.Cookies["centralName"].Value</h2>
-                </div>
-                <!--<button onclick="location.href='@Url.Action( "Index", "PermitIntray", new { visaReg = "Y" })'"> Visa Registration</button>
-                <button onclick="location.href='@Url.Action( "Index", "Messages")'" id="" type="button" class="button" ><b>(<span id="unreadmsgs"></span>) Messages</b></button>
-                <button onclick="location.href='@Url.Action( "logoff", "account")'"><b>Logout</b></button>-->
-                <div id="content-padding">
-                @{
-                if (IsSectionDefined("Sidebar"))
-                {
-                    <div class="row row-offcanvas row-offcanvas-right" id="back">
-                        <div class="col-xs-2 col-sm-2" id="homesidebar">
-                            <div id="sidebar">
-                                @RenderSection("Sidebar")
-                            </div>
-                            @if(IsSectionDefined("sitelist")){
-                                <!--<div id="sitelist">
-                                    @RenderSection("sitelist")
-                                </div>-->
-                            }
-                        </div>
-                        <!--/span-->
-                        <div class="col-xs-10 col-sm-10" id="homemaincontent">
-                            @RenderBody()
-                        </div>
-                        <!--/span-->
-                    </div>
-                    <!--/row-->
-                }
-                else
-                {
-
-                    @RenderBody()
-                }
-                }
-               </div>
-            </div>
-            }
-            else
-            {
-            <div id="content-container-nli">
-
-                <div class="content not-logged-in" id="content">
-                    @RenderBody()
-                </div>
-
-            </div>
-            }
-
-        }
-
-    </div>
-<div id="changeSiteDialog">
-    <table>
-        <tr>
-            <td><b>Site:</b></td>
-            <td>
-                <select id="changedSite">
-                    <option value="">-select-</option>
-                                    @{
-                                        if (ViewBag.officeList != null){
-                                            for (int i = 0; i < ViewBag.officeList.office_dets.Count; i++)
-                                            {
-                                                    <option value="@ViewBag.officeList.office_dets[i].office_guid|@ViewBag.officeList.office_dets[i].office_desc"> @ViewBag.officeList.office_dets[i].office_desc</option>
-                                            }  
-                                        }
-                                    }
-                </select>
-            </td>
-        </tr>
-    </table>
-    <button class="float-right" onclick="changeSite()">Ok</button>
-</div>
-    <div id="videoDialog">
-    <h3>BMS introduction tutorial</h3>
-    <video width="854" height="480" controls>
-        <source src="@Url.Content("~/videos/Test_Visa_Registration.mp4")" type="video/mp4">
-    </video>
-</div>
-</body>
-</html>
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        ko.applyBindings(ViewModels);
 
         $("#videoDialog").dialog({
             resizable: false,
@@ -275,49 +388,19 @@
 
 
         $("#searchInput").hide();
-        $('#searchResultsTable').jtable({
-
-            selecting: true,
-            //width: 500,
-            actions: {
-                listAction: 'PermitIntray/generateSearchQueryTable'
-            },
-            fields: {
-                VARN: {
-                    title: 'VARN',
-                    create: false,
-                    edit: false
-                },
-                matchedTerm: {
-                    title: 'matched term',
-                    create: false,
-                    edit: false,
-                }
-
-            },
-            selectionChanged: function (data) {
-
-
-            }
-        });
         
-
-
         var alias = $('#webAppAlias').val();
         $.ajax({
             type: "POST",
             url: '@Url.Action("getNumberUnreadMessages", "Messages")',
             async: false,
             data: {
-  
+
             },
             success: function (result) {
                 $("#unreadmsgs").html(result.number);
-            
+
             }
         });
-
-
     });
-    
 </script>

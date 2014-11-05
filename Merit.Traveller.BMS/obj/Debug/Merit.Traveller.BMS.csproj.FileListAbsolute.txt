@@ -128,6 +128,7 @@ C:\Users\hvokolos\Desktop\Merit.Traveller\Merit.Traveller.BMS\bin\de\PdfSharp.Ch
 C:\Users\hvokolos\Desktop\Merit.Traveller\Merit.Traveller.BMS\obj\Debug\Merit.Traveller.BMS.csprojResolveAssemblyReference.cache
 C:\Users\hvokolos\Desktop\Merit.Traveller\Merit.Traveller.BMS\obj\Debug\Merit.Traveller.BMS.dll
 C:\Users\hvokolos\Desktop\Merit.Traveller\Merit.Traveller.BMS\obj\Debug\Merit.Traveller.BMS.pdb
+<<<<<<< HEAD
 C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.BMS\bin\Views\PermitIntray\PermitIntray.cshtml
 C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.BMS\bin\Merit.Traveller.BMS.dll.config
 C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.BMS\bin\Merit.Traveller.BMS.dll
@@ -183,3 +184,6 @@ C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.BMS\bin\de\PdfSharp.C
 C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.BMS\obj\Debug\Merit.Traveller.BMS.csprojResolveAssemblyReference.cache
 C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.BMS\obj\Debug\Merit.Traveller.BMS.dll
 C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.BMS\obj\Debug\Merit.Traveller.BMS.pdb
+=======
+C:\projects\Merit2013\Merit.BMS.Traveller\Merit.BMS.Traveller\Merit.BMS.Traveller\Merit.Traveller.BMS\bin\System.Web.WebPages.dll
+>>>>>>> origin/master
