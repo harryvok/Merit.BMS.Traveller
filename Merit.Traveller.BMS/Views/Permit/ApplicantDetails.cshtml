@@ -1,6 +1,9 @@
-﻿@{
+﻿
+@{
     Layout = "~/Views/Shared/_Permit.cshtml";
-    ViewBag.Title = "Applicant Details";
+    ViewBag.Subtitle1 = "Applicant Details";
+    ViewBag.Title =  "VARN - " + @ViewBag.varnRef;
+  
 }
 
 @section scripts{
@@ -44,7 +47,7 @@
                         
                         <table id="PersonalApplicantDetails">
                             <tr>
-                                <td style="width:95px"><b>Title:</b></td>
+                                <td style="width:125px"><b>Title:</b></td>
                                 <td>
                                     <select id="titleSelect" data-bind="value: applicantDetails.title">
                                         <option value="@ViewBag.applicantTitle">@ViewBag.titleName</option>
@@ -61,15 +64,19 @@
                                 <td><b>Surname:</b></td>
                                 <td>
                                     <input type="text" id="surnameInput" name="surnameInput" value="@ViewBag.applicantSurName"  data-bind="value: applicantDetails.surname" />
-                                    <b>Given Name:</b>
-                                    <input type="text" id="givenNameInput" name="givenNameInput" value="@ViewBag.applicantGivenName" data-bind="value: applicantDetails.givenName" />
+                                    @*<b>Given Name:</b>
+                                    <input type="text" id="givenNameInput" name="givenNameInput" value="@ViewBag.applicantGivenName" data-bind="value: applicantDetails.givenName" />*@
                                 </td>
                             </tr>
-                            
+                            <tr>
+                                <td><b>Given Name:</b></td>
+                                <td><input type="text" id="givenNameInput" name="givenNameInput" value="@ViewBag.applicantGivenName" data-bind="value: applicantDetails.givenName" /></td>
+                            </tr>
+
                             <tr>
                                 <td><b>Occupation:*</b></td>
                                 <td>
-                                    <input type="text" id="occupationInput" name="occupationInput" value="@ViewBag.applicantOccupation" data-bind="value: applicantDetails.occupation"  /></td>
+                                    <input type="text" id="occupationInput" style="width:210px" name="occupationInput" value="@ViewBag.applicantOccupation" data-bind="value: applicantDetails.occupation"  /></td>
                             </tr>
                             <tr>
                                 <td><b>Country of Birth:*</b></td>
@@ -79,13 +86,18 @@
                                         @{
                                             for (int i = 0; i < ViewBag.countriesOfBirth.Count; i++)
                                             {
-                                            <option value="@ViewBag.countriesOfBirth[i].country_code">@ViewBag.countriesOfBirth[i].country_name</option>
+                                                <option value="@ViewBag.countriesOfBirth[i].country_code">@ViewBag.countriesOfBirth[i].country_name</option>
                                             }  
                                         }
                                     </select>
-                                    <b>Place of Birth:*</b>
-                                    <input type="text" id="pobInput" value="@ViewBag.applicantPOB" data-bind="value: applicantDetails.pob"/>
+                                    @*<b>Place of Birth:*</b>
+                                    <input type="text" id="pobInput" value="@ViewBag.applicantPOB" data-bind="value: applicantDetails.pob"/>*@
                                 </td>
+                            </tr>
+                            
+                            <tr>
+                                <td><b>Place of Birth:*</b></td>
+                                <td><input type="text" id="pobInput" style="width:210px" value="@ViewBag.applicantPOB" data-bind="value: applicantDetails.pob" /></td>
                             </tr>
                             
                         </table>
@@ -158,7 +170,7 @@
                     </div>
                 </div>
 
-                <div class="col-xs-6 col-sm-6" style="width:600px">
+                <div class="col-xs-6 col-sm-6" style="width:650px">
                     <div id="">
                       <div  class="formFieldContainer">
                           <h4>Document Details</h4>

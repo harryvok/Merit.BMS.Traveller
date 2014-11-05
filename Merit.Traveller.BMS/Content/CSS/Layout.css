@@ -449,6 +449,9 @@ div.popupContent{
 .error {
     color: red;
     font-weight:bold;
+    display: inline;
+    padding-left: 15px;
+
 }
 
 #permitTable th{
@@ -1012,3 +1015,20 @@ border-width: 1px;
     background-color: rgb(182, 197, 224);
     cursor:pointer;
 }
+
+
+
+/*Added By Sweety for Proc.cshtml*/
+
+    .summaryheader {
+        margin-top: 30px;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+        color: #000000;
+        font-weight:bold;
+    }
+
+    .summaryheader span{
+        margin-left:10px;
+    }

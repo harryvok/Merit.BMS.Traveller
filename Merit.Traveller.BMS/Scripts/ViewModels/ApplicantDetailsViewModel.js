@@ -92,7 +92,8 @@
                 givenNameInput: 'required',
                 dobInput: 'required',
                 nationalityInput: 'required',
-                cobInput: 'required'
+                cobInput: 'required',
+                pobInput: "required",
             }
 
         }).form();
@@ -185,9 +186,40 @@
                     nationalityInput: "required",
                     cobInput: "required",
                     occupationInput: "required",
+                    pobInput: "required",
+                },
+                messages: {
+                    surnameInput: {
+                        required: "Please Enter Surname!"
+
+                    },
+                    givenNameInput: {
+                        required: "Please Enter Given Name!"
+
+                    },
+                    dobInput: {
+                        required: "Please Enter Date of Birth!"
+
+                    },
+                    nationalityInput: {
+                        required: "Please Enter Nationality!"
+
+                    },
+                    cobInput: {
+                        required: "Please Enter Country of Birth!"
+
+                    },
+                    occupationInput: {
+                        required: "Please Enter Occupation!"
+
+                    },
+                    pobInput: {
+                        required: "Please Enter Place of Birth!"
+
+                    }
                 }
 
-            }).form();
+        }).form();
 
         } else {
             $('#inputForm').validate({
