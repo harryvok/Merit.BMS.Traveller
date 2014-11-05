@@ -121,7 +121,7 @@
   text-overflow: ellipsis;
 }
 .cal-events-num {
-  margin-top: 20px;
+  /*margin-top: 20px;*/
 }
 .cal-month-day {
   position: relative;

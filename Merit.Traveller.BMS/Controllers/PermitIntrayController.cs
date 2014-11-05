@@ -151,17 +151,17 @@ namespace Merit.Traveller.BMS.Controllers
                 merit_ini_list PermitFilters = webAdminDataServices.ws_get_permit_list_filters(user_id, password, office_guid);
 
                 Debug.WriteLine("user_id: " + user_id);
-                Debug.WriteLine("password: "+ password);
+                Debug.WriteLine("password: " + password);
 
                 var permitProcDets = getWebPermitDataServices().ws_get_proc_permit_dets(user_id, password, permitID, Request.Cookies["officeID"].Value);
                 ViewBag.dependentID = permitProcDets.dependant_guid;
-            
+
                 //fill select element with permit filters
                 ViewBag.permitFilters = new List<merit_ini_details>();
                 ViewBag.permitFilters = PermitFilters;
 
                 ViewBag.permitID = permitID;
-                Debug.WriteLine("permitID"+permitID);
+                Debug.WriteLine("permitID" + permitID);
 
                 DateTime today = DateTime.Today;
                 ViewBag.todaysDate = today.ToString();
@@ -182,7 +182,7 @@ namespace Merit.Traveller.BMS.Controllers
                 ViewBag.outcomes = new List<common_codes_list>();
                 ViewBag.outcomes = outcomes.common_codes_dets;
 
- 
+
                 var WebAdminWebServices = getWebAdminServices();
                 common_codes_list pTypesList = WebAdminWebServices.ws_get_pclasses(user_id, password);
                 ViewBag.pTypesList = new List<common_codes_list>();
@@ -302,7 +302,7 @@ namespace Merit.Traveller.BMS.Controllers
             var permitProcDets = webpermitservices.ws_get_proc_permit_dets(user_id, password, permitID, Request.Cookies["officeID"].Value);
             List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
 
-          
+
 
             for (int i = jtStartIndex; i < permitProcDets.line_txt.Count; i++)
             {
@@ -354,7 +354,8 @@ namespace Merit.Traveller.BMS.Controllers
                             };
                         data.Add(keyValues);
                     }
-                    else{
+                    else
+                    {
                         var keyValues = new Dictionary<string, string>
                             {
                                 { "processGUID", permitProcDets.line_guid.ElementAt(i)},
@@ -382,12 +383,12 @@ namespace Merit.Traveller.BMS.Controllers
                 if ((i + 1) > permitProcDets.line_type.Count() - 1)
                     break;
 
-                if ( permitProcDets.line_type.ElementAt(i+1) == "")
+                if (permitProcDets.line_type.ElementAt(i + 1) == "")
                     break;
             }
 
-            String permNo="";
-            if(permitDets.s_permit_no==0)
+            String permNo = "";
+            if (permitDets.s_permit_no == 0)
                 permNo = "-";
             else
                 permNo = permitDets.s_permit_no.ToString();
@@ -424,7 +425,7 @@ namespace Merit.Traveller.BMS.Controllers
             }
         }
 
-        public JsonResult getList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null, string filterNum = "", string filterString = "", string fromDate="", string toDate="")
+        public JsonResult getList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null, string filterNum = "", string filterString = "", string fromDate = "", string toDate = "")
         {
             String sortingKey = jtSorting.Split(' ')[0];
             String order = jtSorting.Split(' ')[1];
@@ -432,7 +433,7 @@ namespace Merit.Traveller.BMS.Controllers
             String office_guid = Request.Cookies["officeID"].Value;
             String password = getPassword();
             var permitDataServices = getWebPermitDataServices();
-            BMS_Web_Permit_Data.permit_list_list permitIntray=null;
+            BMS_Web_Permit_Data.permit_list_list permitIntray = null;
 
             //set to new filter
             Response.Cookies["filterID"].Value = filterNum;
@@ -453,13 +454,13 @@ namespace Merit.Traveller.BMS.Controllers
                 Response.Cookies["permitListDateTo"].Value = toDate;
                 permitIntray = permitDataServices.ws_get_perm_list(user_id, password, filterNum, office_guid, "", "");
             }
-            
+
             List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
 
             if (permitIntray.permit_list_dets.Count() == 0)
             {
-                
-                    var keyValues = new Dictionary<string, string>
+
+                var keyValues = new Dictionary<string, string>
                    {
                        { "permID", " "},
                        { "varnRef", " "},
@@ -474,9 +475,9 @@ namespace Merit.Traveller.BMS.Controllers
                        { "DateLodged", " "},
                        { "Site", " "}
                    };
-                    data.Add(keyValues);
-                
-                
+                data.Add(keyValues);
+
+
                 return Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() }, JsonRequestBehavior.AllowGet);
             }
 
@@ -484,20 +485,20 @@ namespace Merit.Traveller.BMS.Controllers
             int iterator = 0;
             for (int i = jtStartIndex; i < permitIntray.permit_list_dets.Count(); i++)
             {
-                
+
 
                 //if we are loading the whole table
                 if (filterString == "")
                 {
                     Response.Cookies["permitListFilterString"].Value = "";
-                        if (String.IsNullOrEmpty(permitIntray.permit_list_dets.ElementAt(i).document_no))
-                            permitIntray.permit_list_dets.ElementAt(i).document_no = "none";
+                    if (String.IsNullOrEmpty(permitIntray.permit_list_dets.ElementAt(i).document_no))
+                        permitIntray.permit_list_dets.ElementAt(i).document_no = "none";
 
-                        String permitNo = permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString();
-                        if (permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString().Equals("0"))
-                            permitNo = "";
+                    String permitNo = permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString();
+                    if (permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString().Equals("0"))
+                        permitNo = "";
 
-                        var keyValues = new Dictionary<string, string>
+                    var keyValues = new Dictionary<string, string>
                         {
                             { "permID", permitIntray.permit_list_dets.ElementAt(i).permit_guid.ToString()},
                             { "varnRef", permitIntray.permit_list_dets.ElementAt(i).varn_ref.ToString()},
@@ -512,40 +513,40 @@ namespace Merit.Traveller.BMS.Controllers
                             { "DateLodged", permitIntray.permit_list_dets.ElementAt(i).date_lodged.ToString("dd-MMM-yyyy").Split(' ')[0]},
                             { "Site", permitIntray.permit_list_dets.ElementAt(i).lodged_at_for}
                         };
-                        data.Add(keyValues);
+                    data.Add(keyValues);
 
-                        iterator++;
-                        if (iterator == jtPageSize)
-                            break;
+                    iterator++;
+                    if (iterator == jtPageSize)
+                        break;
                 }
                 else //if we have a filter 
                 {
                     Response.Cookies["permitListFilterString"].Value = filterString;
-                    
-                        if (String.IsNullOrEmpty(permitIntray.permit_list_dets.ElementAt(i).document_no))
-                            permitIntray.permit_list_dets.ElementAt(i).document_no = "none";
 
-                        String permitNo = permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString();
-                        if (permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString().Equals("0"))
-                            permitNo = "";
+                    if (String.IsNullOrEmpty(permitIntray.permit_list_dets.ElementAt(i).document_no))
+                        permitIntray.permit_list_dets.ElementAt(i).document_no = "none";
 
-                        //this object used for ignoring case
-                        CompareInfo ci = CultureInfo.CurrentCulture.CompareInfo;
-               
-             
-                        //if we find a match in any of these fields:
-                        if (
-                            ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).varn_ref.ToString(), filterString, CompareOptions.IgnoreCase) != -1 ||
-                            ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString(), filterString, CompareOptions.IgnoreCase) != -1 ||
-                            ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).given_name, filterString, CompareOptions.IgnoreCase) != -1 ||
-                            ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).surname, filterString, CompareOptions.IgnoreCase) != -1 ||
-                            ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).permit_type_class, filterString, CompareOptions.IgnoreCase) != -1 ||
-                            ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).status_outcome, filterString, CompareOptions.IgnoreCase) != -1 ||
-                            ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).document_no, filterString, CompareOptions.IgnoreCase) != -1 ||
-                            ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).date_lodged.ToString().Split(' ')[0], filterString, CompareOptions.IgnoreCase) != -1 ||
-                            ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).lodged_at_for, filterString, CompareOptions.IgnoreCase) != -1)
-                        {
-                            var keyValues = new Dictionary<string, string>
+                    String permitNo = permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString();
+                    if (permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString().Equals("0"))
+                        permitNo = "";
+
+                    //this object used for ignoring case
+                    CompareInfo ci = CultureInfo.CurrentCulture.CompareInfo;
+
+
+                    //if we find a match in any of these fields:
+                    if (
+                        ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).varn_ref.ToString(), filterString, CompareOptions.IgnoreCase) != -1 ||
+                        ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString(), filterString, CompareOptions.IgnoreCase) != -1 ||
+                        ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).given_name, filterString, CompareOptions.IgnoreCase) != -1 ||
+                        ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).surname, filterString, CompareOptions.IgnoreCase) != -1 ||
+                        ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).permit_type_class, filterString, CompareOptions.IgnoreCase) != -1 ||
+                        ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).status_outcome, filterString, CompareOptions.IgnoreCase) != -1 ||
+                        ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).document_no, filterString, CompareOptions.IgnoreCase) != -1 ||
+                        ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).date_lodged.ToString().Split(' ')[0], filterString, CompareOptions.IgnoreCase) != -1 ||
+                        ci.IndexOf(permitIntray.permit_list_dets.ElementAt(i).lodged_at_for, filterString, CompareOptions.IgnoreCase) != -1)
+                    {
+                        var keyValues = new Dictionary<string, string>
                         {
                             { "permID", permitIntray.permit_list_dets.ElementAt(i).permit_guid.ToString()},
                             { "varnRef", permitIntray.permit_list_dets.ElementAt(i).varn_ref.ToString()},
@@ -561,15 +562,15 @@ namespace Merit.Traveller.BMS.Controllers
                             { "Site", permitIntray.permit_list_dets.ElementAt(i).lodged_at_for}
                 
                         };
-                            data.Add(keyValues);
-                        }
-
-                        iterator++;
-                        if (iterator == jtPageSize)
-                            break;
+                        data.Add(keyValues);
                     }
-                
-                
+
+                    iterator++;
+                    if (iterator == jtPageSize)
+                        break;
+                }
+
+
             }
 
             //sort records with LINQ
@@ -577,7 +578,7 @@ namespace Merit.Traveller.BMS.Controllers
 
             if (!sortingKey.Equals("DateLodged"))
             {
-                
+
                 if (order.Equals("DESC"))
                 {
                     sortedRecords =
@@ -611,9 +612,9 @@ namespace Merit.Traveller.BMS.Controllers
                 }
 
             }
-            List<Dictionary<string, string>> listifiedIEnumerable =  sortedRecords.ToList();
+            List<Dictionary<string, string>> listifiedIEnumerable = sortedRecords.ToList();
 
-  
+
             try
             {
                 return Json(new { Result = "OK", Records = listifiedIEnumerable, TotalRecordCount = permitIntray.permit_list_dets.Count() }, JsonRequestBehavior.AllowGet);
@@ -626,77 +627,334 @@ namespace Merit.Traveller.BMS.Controllers
         }
 
 
-        public void getCalendarFirst()
+        public void getCalendarDetailsdays(String Date)
         {
             String user_id = Request.Cookies["user_id"].Value;
             String office_guid = Request.Cookies["officeID"].Value;
             String password = getPassword();
             var permitDataServices = getWebPermitDataServices();
-            permit_list_list permitIntray = null;
+            permit_summary_daily permitIntray = null;
             JavaScriptSerializer objSerializer = new JavaScriptSerializer();
 
-            Response.Cookies["permitListDateFrom"].Value = "";
-            Response.Cookies["permitListDateTo"].Value = "";
-            permitIntray = permitDataServices.ws_get_perm_list(user_id, password, "1", office_guid, "", "");
+            permitIntray = permitDataServices.ws_get_permit_summary_daily(user_id, password, office_guid, Date);
 
             List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
 
-            if (permitIntray.permit_list_dets.Count() == 0)
-            {
+            var keyValues = new Dictionary<string, string> { };
 
-                var keyValues = new Dictionary<string, string>
-                   {
-                       { "permID", " "},
-                       { "varnRef", " "},
-                       { "PermitNo", " "},
-                       { "surname", " "},
-                       { "givenName", " "},
-                       { "PermitClass", " "},
-                       { "NextAction", " "},
-                       { "Status", " "},
-                       { "Finalised", " "},
-                       { "DocumentNumber", " "},
-                       { "DateLodged", " "},
-                       { "Site", " "}
-                   };
-                data.Add(keyValues);
-
-                Response.Write(objSerializer.Serialize(Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() })));
-                //return Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() }, JsonRequestBehavior.AllowGet);
-            }
-            int iterator = 0;
-            for (int i = 0; i < permitIntray.permit_list_dets.Count(); i++)
-            {
-                Response.Cookies["permitListFilterString"].Value = "";
-                if (String.IsNullOrEmpty(permitIntray.permit_list_dets.ElementAt(i).document_no))
-                    permitIntray.permit_list_dets.ElementAt(i).document_no = "none";
-
-                String permitNo = permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString();
-                if (permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString().Equals("0"))
-                    permitNo = "";
-
-                var keyValues = new Dictionary<string, string>
+            keyValues = new Dictionary<string, string>
                         {
-                            { "permID", permitIntray.permit_list_dets.ElementAt(i).permit_guid.ToString()},
-                            { "varnRef", permitIntray.permit_list_dets.ElementAt(i).varn_ref.ToString()},
-                            { "PermitNo", permitNo},
-                            { "surname", permitIntray.permit_list_dets.ElementAt(i).applic_surname_given.Split(' ')[0]},
-                            { "givenName", permitIntray.permit_list_dets.ElementAt(i).given_name.ToString()},
-                            { "PermitClass", permitIntray.permit_list_dets.ElementAt(i).permit_type_class},
-                            { "NextAction", permitIntray.permit_list_dets.ElementAt(i).next_action},
-                            { "Status", permitIntray.permit_list_dets.ElementAt(i).status_outcome},
-                            { "Finalised", permitIntray.permit_list_dets.ElementAt(i).finalised_ind},
-                            { "DocumentNumber", permitIntray.permit_list_dets.ElementAt(i).document_no},
-                            { "DateLodged", permitIntray.permit_list_dets.ElementAt(i).date_lodged.ToString("dd-MMM-yyyy").Split(' ')[0]},
-                            { "Site", permitIntray.permit_list_dets.ElementAt(i).lodged_at_for}
+                            { "Day", "01"},
+                            { "unapproval", permitIntray.day_01.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_01.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_01.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_01.ElementAt(3).permit_total.ToString()}
                         };
-                data.Add(keyValues);
-                iterator++;
-            }
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "02"},
+                            { "unapproval", permitIntray.day_02.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_02.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_02.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_02.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "03"},
+                            { "unapproval", permitIntray.day_03.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_03.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_03.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_03.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "04"},
+                            { "unapproval", permitIntray.day_04.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_04.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_04.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_04.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "05"},
+                            { "unapproval", permitIntray.day_05.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_05.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_05.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_05.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "06"},
+                            { "unapproval", permitIntray.day_06.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_06.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_06.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_06.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "07"},
+                            { "unapproval", permitIntray.day_07.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_07.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_07.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_07.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "08"},
+                            { "unapproval", permitIntray.day_08.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_08.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_08.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_08.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "09"},
+                            { "unapproval", permitIntray.day_09.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_09.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_09.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_09.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "10"},
+                            { "unapproval", permitIntray.day_10.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_10.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_10.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_10.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "11"},
+                            { "unapproval", permitIntray.day_11.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_11.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_11.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_11.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "12"},
+                            { "unapproval", permitIntray.day_12.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_12.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_12.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_12.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "13"},
+                            { "unapproval", permitIntray.day_13.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_13.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_13.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_13.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "14"},
+                            { "unapproval", permitIntray.day_14.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_14.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_14.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_14.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "15"},
+                            { "unapproval", permitIntray.day_15.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_15.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_15.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_15.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "16"},
+                            { "unapproval", permitIntray.day_16.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_16.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_16.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_16.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "17"},
+                            { "unapproval", permitIntray.day_17.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_17.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_17.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_17.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "18"},
+                            { "unapproval", permitIntray.day_18.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_18.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_18.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_18.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "19"},
+                            { "unapproval", permitIntray.day_19.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_19.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_19.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_19.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "20"},
+                            { "unapproval", permitIntray.day_20.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_20.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_20.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_20.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "21"},
+                            { "unapproval", permitIntray.day_21.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_21.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_21.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_21.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "22"},
+                            { "unapproval", permitIntray.day_22.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_22.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_22.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_22.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "23"},
+                            { "unapproval", permitIntray.day_23.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_23.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_23.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_23.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "24"},
+                            { "unapproval", permitIntray.day_24.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_24.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_24.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_24.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "25"},
+                            { "unapproval", permitIntray.day_25.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_25.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_25.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_25.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "26"},
+                            { "unapproval", permitIntray.day_26.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_26.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_26.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_26.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "27"},
+                            { "unapproval", permitIntray.day_27.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_27.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_27.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_27.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "28"},
+                            { "unapproval", permitIntray.day_28.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_28.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_28.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_28.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "29"},
+                            { "unapproval", permitIntray.day_29.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_29.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_29.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_29.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "30"},
+                            { "unapproval", permitIntray.day_30.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_30.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_30.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_30.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Day", "31"},
+                            { "unapproval", permitIntray.day_31.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.day_31.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.day_31.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.day_31.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
 
             try
             {
-                Response.Write(objSerializer.Serialize(Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() })));
+                Response.Write(objSerializer.Serialize(Json(new { Result = "OK", Records = data, TotalRecordCount = 31 })));
             }
             catch (Exception ex)
             {
@@ -705,77 +963,145 @@ namespace Merit.Traveller.BMS.Controllers
 
         }
 
-        public void getCalendarSecond()
+
+        public void getCalendarDetailsmonths(String Date)
         {
             String user_id = Request.Cookies["user_id"].Value;
             String office_guid = Request.Cookies["officeID"].Value;
             String password = getPassword();
             var permitDataServices = getWebPermitDataServices();
-            permit_list_list permitIntray = null;
+            permit_summary_monthly permitIntray = null;
             JavaScriptSerializer objSerializer = new JavaScriptSerializer();
 
-            Response.Cookies["permitListDateFrom"].Value = "";
-            Response.Cookies["permitListDateTo"].Value = "";
-            permitIntray = permitDataServices.ws_get_perm_list(user_id, password, "2", office_guid, "", "");
+            permitIntray = permitDataServices.ws_get_permit_summary_monthly(user_id, password, office_guid, Date);
 
             List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
 
-            if (permitIntray.permit_list_dets.Count() == 0)
-            {
+            var keyValues = new Dictionary<string, string> { };
 
-                var keyValues = new Dictionary<string, string>
-                   {
-                       { "permID", " "},
-                       { "varnRef", " "},
-                       { "PermitNo", " "},
-                       { "surname", " "},
-                       { "givenName", " "},
-                       { "PermitClass", " "},
-                       { "NextAction", " "},
-                       { "Status", " "},
-                       { "Finalised", " "},
-                       { "DocumentNumber", " "},
-                       { "DateLodged", " "},
-                       { "Site", " "}
-                   };
-                data.Add(keyValues);
-
-                Response.Write(objSerializer.Serialize(Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() })));
-                //return Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() }, JsonRequestBehavior.AllowGet);
-            }
-            int iterator = 0;
-            for (int i = 0; i < permitIntray.permit_list_dets.Count(); i++)
-            {
-                Response.Cookies["permitListFilterString"].Value = "";
-                if (String.IsNullOrEmpty(permitIntray.permit_list_dets.ElementAt(i).document_no))
-                    permitIntray.permit_list_dets.ElementAt(i).document_no = "none";
-
-                String permitNo = permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString();
-                if (permitIntray.permit_list_dets.ElementAt(i).permit_no.ToString().Equals("0"))
-                    permitNo = "";
-
-                var keyValues = new Dictionary<string, string>
+            keyValues = new Dictionary<string, string>
                         {
-                            { "permID", permitIntray.permit_list_dets.ElementAt(i).permit_guid.ToString()},
-                            { "varnRef", permitIntray.permit_list_dets.ElementAt(i).varn_ref.ToString()},
-                            { "PermitNo", permitNo},
-                            { "surname", permitIntray.permit_list_dets.ElementAt(i).applic_surname_given.Split(' ')[0]},
-                            { "givenName", permitIntray.permit_list_dets.ElementAt(i).given_name.ToString()},
-                            { "PermitClass", permitIntray.permit_list_dets.ElementAt(i).permit_type_class},
-                            { "NextAction", permitIntray.permit_list_dets.ElementAt(i).next_action},
-                            { "Status", permitIntray.permit_list_dets.ElementAt(i).status_outcome},
-                            { "Finalised", permitIntray.permit_list_dets.ElementAt(i).finalised_ind},
-                            { "DocumentNumber", permitIntray.permit_list_dets.ElementAt(i).document_no},
-                            { "DateLodged", permitIntray.permit_list_dets.ElementAt(i).date_lodged.ToString("dd-MMM-yyyy").Split(' ')[0]},
-                            { "Site", permitIntray.permit_list_dets.ElementAt(i).lodged_at_for}
+                            { "Month", "01"},
+                            { "unapproval", permitIntray.month_01.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_01.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_01.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_01.ElementAt(3).permit_total.ToString()}
                         };
-                data.Add(keyValues);
-                iterator++;
-            }
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "02"},
+                            { "unapproval", permitIntray.month_02.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_02.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_02.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_02.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "03"},
+                            { "unapproval", permitIntray.month_03.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_03.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_03.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_03.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "04"},
+                            { "unapproval", permitIntray.month_04.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_04.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_04.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_04.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "05"},
+                            { "unapproval", permitIntray.month_05.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_05.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_05.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_05.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "06"},
+                            { "unapproval", permitIntray.month_06.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_06.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_06.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_06.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "07"},
+                            { "unapproval", permitIntray.month_07.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_07.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_07.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_07.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "08"},
+                            { "unapproval", permitIntray.month_08.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_08.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_08.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_08.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "09"},
+                            { "unapproval", permitIntray.month_09.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_09.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_09.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_09.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "10"},
+                            { "unapproval", permitIntray.month_10.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_10.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_10.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_10.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "11"},
+                            { "unapproval", permitIntray.month_11.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_11.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_11.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_11.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
+
+            keyValues = new Dictionary<string, string>
+                        {
+                            { "Month", "12"},
+                            { "unapproval", permitIntray.month_12.ElementAt(0).permit_total.ToString()},
+                            { "unwork", permitIntray.month_12.ElementAt(1).permit_total.ToString()},
+                            { "unprocess", permitIntray.month_12.ElementAt(2).permit_total.ToString()},
+                            { "finpermit", permitIntray.month_12.ElementAt(3).permit_total.ToString()}
+                        };
+            data.Add(keyValues);
 
             try
             {
-                Response.Write(objSerializer.Serialize(Json(new { Result = "OK", Records = data, TotalRecordCount = permitIntray.permit_list_dets.Count() })));
+                Response.Write(objSerializer.Serialize(Json(new { Result = "OK", Records = data, TotalRecordCount = 12 })));
             }
             catch (Exception ex)
             {
@@ -788,7 +1114,7 @@ namespace Merit.Traveller.BMS.Controllers
 
 
 
-        public JsonResult generateSearchQueryTable(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null, string SearchQuery= "")
+        public JsonResult generateSearchQueryTable(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null, string SearchQuery = "")
         {
             String user_id = Request.Cookies["user_id"].Value;
             String password = getPassword();
@@ -813,13 +1139,13 @@ namespace Merit.Traveller.BMS.Controllers
             String user_id = Request.Cookies["user_id"].Value;
             String password = getPassword();
 
-     
+
 
             var webpermitservices = getWebPermitDataServices();
             var permitDets = webpermitservices.ws_get_permit_base_dets(user_id, password, id);
             var permitProcDets = webpermitservices.ws_get_proc_permit_dets(user_id, password, id, Request.Cookies["officeID"].Value);
 
-    
+
 
             List<String> processes = new List<String>();
             List<String> processTypes = new List<String>();
@@ -835,7 +1161,7 @@ namespace Merit.Traveller.BMS.Controllers
                         processTypes.Add("p" + permitProcDets.line_type.ElementAt(i));
                 }
             }
-       
+
             permitmodel pm = new permitmodel(
                 id,
                 permitDets.s_varn_ref.ToString(),
@@ -867,7 +1193,7 @@ namespace Merit.Traveller.BMS.Controllers
                                                  String permitClass = "", String mission = "", String outcome = "", String finalised = "",
                                                  String docNo = "", String givenName = "", String surname = "")
         {
-            
+
 
             //if null, this means an invalid date was set. set default date. 
             DateTime dtDateLodgedFrom = DateTime.Parse(dateLodgedFrom);
@@ -894,20 +1220,20 @@ namespace Merit.Traveller.BMS.Controllers
             searchCriteria.surname = surname;
             searchCriteria.varn_ref = Convert.ToInt32(varn);
             var permitIntray = getWebPermitDataServices().ws_search_perm_list(user_id, password, searchCriteria);
-            
+
             //return PartialView(permitIntray);
             return null;
-            
+
 
         }
         public String changeSite(String site)
         {
-            Response.Cookies["officeID"].Value= site.Split('|').ElementAt(0);
+            Response.Cookies["officeID"].Value = site.Split('|').ElementAt(0);
             Response.Cookies["centralName"].Value = site.Split('|').ElementAt(1);
             return "success";
         }
 
-        public String reassignAction( String comments, String intray_guid, String permit_guid)
+        public String reassignAction(String comments, String intray_guid, String permit_guid)
         {
             String user_id = Request.Cookies["user_id"].Value;
             String officeID = Request.Cookies["officeID"].Value;

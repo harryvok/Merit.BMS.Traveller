@@ -319,7 +319,7 @@ if(!String.prototype.formatNum) {
 					return false;
 				}
 				switch(i) {
-					case 0:
+				    case 0:
 						firstDay = date;
 						break;
 					case 1:
@@ -697,6 +697,7 @@ if(!String.prototype.formatNum) {
 				break;
 		}
 
+		//alert(date.toDateString());
 		addClass(date.toDateString(), classes);
 
 		return classes.join(" ");

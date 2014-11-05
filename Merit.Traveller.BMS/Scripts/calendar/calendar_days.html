@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Twitter Bootstrap jQuery Calendar component</title>
+	<title>Twitter Bootstrap jQuery Calendar component</title>
 
-    <link rel="stylesheet" href="/Scripts/calendar/components/bootstrap2/css/bootstrap.css">
+	<link rel="stylesheet" href="/Scripts/calendar/components/bootstrap2/css/bootstrap.css">
     <link rel="stylesheet" href="/Scripts/calendar/components/bootstrap2/css/bootstrap-responsive.css">
     <link rel="stylesheet" href="/Scripts/calendar/css/calendar.css">
     <script src="/Scripts/calendar/js/eventslist.js"></script>
@@ -12,13 +12,39 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
     <script>
-        getcalendar_days("01-10-2014");
-    </script>
 
+        function monthDiff(d1, d2) {
+            //alert("date-1:"+d1);
+            //alert("date-2:" + d2);
+            var months;
+            months = (d2.getFullYear() - d1.getFullYear()) * 12;
+            months -= d1.getMonth() + 1;
+            months += d2.getMonth();
+            return months+1;
+        }
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var date_str = "01-"+getParameterByName('date');
+        //alert(date_str);
+
+        var date_spl = date_str.split('-');
+
+        var date_mondiff = monthDiff(new Date(2013,02,01), new Date(parseInt(date_spl[2]), parseInt(date_spl[1]) - 1, 1));
+
+        getcalendar_days(date_str);
+
+    </script>
+	
 </head>
 <body>
     <div class="container1">
-        <div class="page-header">
+        <div class="page-header" style="display:none;">
 
             <h3></h3>
 
@@ -138,6 +164,23 @@
         </script>
     </div>
 
-    </div>
+</div>
 </body>
+<script>
+    if (date_mondiff < 0)
+    {
+        for (var l = 0; l < date_mondiff; l++) {
+            document.getElementById('prev_button').click();
+        }
+    }
+    if (date_mondiff > 0) {
+        for (var l=0; l < date_mondiff; l++)
+        {
+            document.getElementById('next_button').click();
+        }
+    }
+    if (date_mondiff == 0) {
+        document.getElementById('today_button').click();
+    }
+</script>
 </html>
