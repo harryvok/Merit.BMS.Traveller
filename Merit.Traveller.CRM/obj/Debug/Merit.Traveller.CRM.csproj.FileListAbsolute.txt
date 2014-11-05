@@ -29,19 +29,3 @@ C:\Users\pkumar\Desktop\Merit.Traveller\Merit.Traveller.CRM\bin\EntityFramework.
 C:\Users\pkumar\Desktop\Merit.Traveller\Merit.Traveller.CRM\obj\Debug\Merit.Traveller.CRM.csprojResolveAssemblyReference.cache
 C:\Users\pkumar\Desktop\Merit.Traveller\Merit.Traveller.CRM\obj\Debug\Merit.Traveller.CRM.dll
 C:\Users\pkumar\Desktop\Merit.Traveller\Merit.Traveller.CRM\obj\Debug\Merit.Traveller.CRM.pdb
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\Merit.Traveller.CRM.dll.config
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\Merit.Traveller.CRM.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\Merit.Traveller.CRM.pdb
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\EntityFramework.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\Microsoft.Web.Infrastructure.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\System.Web.Helpers.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\System.Web.Mvc.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\System.Web.Providers.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\System.Web.Razor.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\System.Web.WebPages.Deployment.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\System.Web.WebPages.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\System.Web.WebPages.Razor.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\bin\EntityFramework.xml
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\obj\Debug\Merit.Traveller.CRM.csprojResolveAssemblyReference.cache
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\obj\Debug\Merit.Traveller.CRM.dll
-C:\Projects\New folder\Merit.BMS.Traveller\Merit.Traveller.CRM\obj\Debug\Merit.Traveller.CRM.pdb
