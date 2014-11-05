@@ -573,8 +573,8 @@ messagesList .jtable {
     
 }
 #homemaincontent {
-    background-color: RGB(203,220,249);
-    margin-top:10px;
+    /*background-color: RGB(203,220,249);
+    margin-top:10px;*/
 }
 #permitIntrayContainer {
     padding:2px;
@@ -710,7 +710,6 @@ messagesList .jtable {
     background: linear-gradient(to bottom, rgba(41,58,104,0.79) 0%,rgba(23,25,73,0.86) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9293a68', endColorstr='#db171949',GradientType=0 );
     padding-bottom:1px;
-    margin-left:-5px;
 }
     #lodgedDetailsTable table {
         width:50%;
@@ -920,6 +919,7 @@ background-image: none;
 #bannerLogo {
     padding-top: 5px;
     float:left;
+    width:40px;
 }
 #bannerMeritName {
     display: block;
@@ -938,7 +938,7 @@ line-height: 25px !important;
 #userDetails {
     display:block;
     float:left;
-    margin-left:200px;
+  
     color: #FFF;
     font-weight: bold;
     text-align: right;
