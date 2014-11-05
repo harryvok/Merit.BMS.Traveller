@@ -53,20 +53,20 @@
     var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var date_cal = new Date();
     date_cal.setMonth(date_cal.getMonth() - 1);
-    document.getElementById('calendar-frame').src = 'Scripts/calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
+    document.getElementById('calendar-frame').src = '/Scripts/calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
     document.getElementById('cal_date').innerHTML = monthNames[date_cal.getMonth()] + " " + date_cal.getFullYear();
 
     function prev_click() {
         date_cal.setMonth(date_cal.getMonth() - 1);
         document.getElementById('cal_date').innerHTML = monthNames[date_cal.getMonth()] + " " + date_cal.getFullYear();
-        document.getElementById('calendar-frame').src = 'Scripts/calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
+        document.getElementById('calendar-frame').src = '/Scripts/calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
     }
 
     function next_click() {
 
         date_cal.setMonth(date_cal.getMonth() + 1);
         document.getElementById('cal_date').innerHTML = monthNames[date_cal.getMonth()] + " " + date_cal.getFullYear();
-        document.getElementById('calendar-frame').src = 'Scripts/calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
+        document.getElementById('calendar-frame').src = '/Scripts/calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
     }
 
     function today_click() {
